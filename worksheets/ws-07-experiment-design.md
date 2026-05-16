@@ -103,17 +103,13 @@ Threat Analysis:
 
 Statistical Plan:
 
-Uji statistik   :
-Perbandingan rata-rata accuracy dan F1-Score antar model.
+Uji statistik   :Perbandingan rata-rata accuracy dan F1-Score antar model.
 
-Justifikasi     :
-Digunakan untuk mengetahui apakah EfficientNet-B6 benar-benar lebih baik dibanding CNN standar.
+Justifikasi     :Digunakan untuk mengetahui apakah EfficientNet-B6 benar-benar lebih baik dibanding CNN standar.
 
-Alpha           :
-0.05
+Alpha           :0.05
 
-Effect size min :
-Perbedaan accuracy minimal 3%.
+Effect size min :Perbedaan accuracy minimal 3%.
 ```
 
 ---
