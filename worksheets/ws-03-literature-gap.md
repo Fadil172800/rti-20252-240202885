@@ -75,42 +75,49 @@ Membandingkan deep learning 2024 dengan decision tree sederhana tanpa justifikas
 ## Template A.3 — Literature Mapping & Gap Identification
 
 ```
-LITERATURE MAPPING
+**LITERATURE MAPPING**
 
-Topik      : ____________________
-Database   : ____________________
-Query      : ____________________
-Tahun      : ____________________
-Hasil awal : ____ paper → Screening → ____ paper final
+**Topik** : Klasifikasi Penyakit Daun Padi Menggunakan Deep Learning EfficientNet-B6.
+**Database** : Google Scholar, IEEE Xplore, ResearchGate.
+**Query** : `("rice leaf disease" OR "plant disease classification") AND ("CNN" OR "EfficientNet" OR "deep learning")`
+**Tahun** : 2020 - 2024
+**Hasil awal** : 12 paper → Screening → 5 paper final
 
-Literature Matrix (concept-centric):
+**Literature Matrix (concept-centric):**
 
 | Study | Tahun | Method | Data | Result | Limitation |
 |-------|-------|--------|------|--------|------------|
-|       |       |        |      |        |            |
+| Amanda Caecilia Milano et al. | 2024 | EfficientNet-B6 | 3355 citra daun padi | Akurasi terbaik 77.05% | Klasifikasi kelas Hispa dan LeafBlast masih sering salah |
+| Singh et al. | 2023 | EfficientNet-B6 | Dataset daun buncis | EfficientNet-B6 unggul dibanding MobileNet dan NasNet | Fokus hanya pada daun buncis |
+| Yuliany et al. | 2022 | CNN | Dataset hama padi | CNN mampu mengenali hama dengan baik | Belum menggunakan arsitektur modern |
+| Agustiani et al. | 2022 | Random Forest + Color Histogram | Dataset daun padi | Dapat melakukan klasifikasi penyakit daun padi | Akurasi lebih rendah dibanding deep learning |
+| Atila et al. | 2021 | EfficientNet | Dataset penyakit daun tanaman | EfficientNet memiliki performa tinggi dan efisien | Belum fokus pada tanaman padi Indonesia |
 
-Pola yang ditemukan:
-  Metode dominan     : ____________________
-  Dataset umum       : ____________________
-  Limitasi berulang  : ____________________
+**Pola yang ditemukan:**
+* **Metode dominan:** CNN dan EfficientNet menjadi metode yang paling sering digunakan untuk klasifikasi citra daun tanaman.
+* **Dataset umum:** Dataset citra daun tanaman dengan beberapa kelas penyakit.
+* **Limitasi berulang:** Akurasi model masih belum optimal dan sering terjadi kesalahan klasifikasi pada kelas tertentu.
 
-GAP IDENTIFICATION
+---
 
-Gap 1: [Jenis: performance / method / data / context]
-  Deskripsi    : ____________________
-  Bukti        : ____________________
-  Signifikansi : ____________________
+**GAP IDENTIFICATION**
 
-Gap 2: [Jenis: ____]
-  Deskripsi    : ____________________
-  Bukti        : ____________________
-  Signifikansi : ____________________
+**Gap 1: [Performance Gap]**
+* **Deskripsi** : Akurasi klasifikasi penyakit daun padi masih berada di sekitar 77% sehingga performa model belum optimal.
+* **Bukti** : Penelitian Amanda Caecilia Milano et al. (2024) menghasilkan akurasi tertinggi sebesar 77.05%.
+* **Signifikansi** : Akurasi yang lebih tinggi sangat penting agar diagnosis penyakit tanaman lebih tepat dan membantu petani mencegah gagal panen.
 
-Baseline Selection:
+**Gap 2: [Method Gap]**
+* **Deskripsi** : Sebagian besar penelitian masih menggunakan CNN biasa dan EfficientNet, sedangkan metode transformer masih jarang digunakan.
+* **Bukti** : Dari beberapa paper yang dianalisis, metode dominan masih berbasis CNN.
+* **Signifikansi** : Penggunaan metode yang lebih modern dapat meningkatkan performa klasifikasi citra daun padi.
+
+**Baseline Selection:**
+
 | Baseline | Relevansi | Representatif | Source |
 |----------|-----------|---------------|--------|
-|          |           |               |        |
-```
+| CNN Standar | Digunakan untuk klasifikasi citra daun padi | Banyak dipakai pada penelitian sebelumnya | Yuliany et al. (2022) |
+| EfficientNet-B6 | Digunakan pada klasifikasi penyakit daun padi | Termasuk metode modern dengan performa tinggi | Amanda et al. (2024) |
 
 ---
 
@@ -123,51 +130,57 @@ Gunakan topik riset dari WS-02. Cari minimal 5 paper relevan menggunakan databas
 > - Tulis query Boolean yang digunakan: contoh `("object detection" OR "image classification") AND ("edge computing") NOT ("medical")`. Dokumentasikan query secara eksplisit.
 > - Akses gratis: buka Google Scholar → cari judul paper → klik [PDF] jika tersedia, atau akses lewat campus VPN
 
-**Topik riset:** ________________________________________
-**Query pencarian:** ____________________________________
-**Database:** ___________________________________________
+Topik riset: Klasifikasi Penyakit Daun Padi Menggunakan Deep Learning EfficientNet-B6.
+Query pencarian: ("rice leaf disease" OR "plant disease classification") AND ("CNN" OR "EfficientNet")
+Database: Google Scholar, IEEE Xplore.
 
-| # | Study | Tahun | Method | Dataset | Result | Limitasi |
-|---|-------|-------|--------|---------|--------|----------|
-| 1 | *Contoh: Rahman et al.* | *2023* | *CNN* | *ImageNet subset* | *Acc 91%* | *Hanya 3 kelas* |
-| 2 | | | | | | |
-| 3 | | | | | | |
-| 4 | | | | | | |
-| 5 | | | | | | |
+| # | Study                         | Tahun | Method          | Dataset                   | Result                                   | Limitasi                           |
+| - | ----------------------------- | ----- | --------------- | ------------------------- | ---------------------------------------- | ---------------------------------- |
+| 1 | Amanda Caecilia Milano et al. | 2024  | EfficientNet-B6 | 3355 citra daun padi      | Akurasi 77.05%                           | Kesalahan klasifikasi masih tinggi |
+| 2 | Singh et al.                  | 2023  | EfficientNet-B6 | Dataset daun buncis       | EfficientNet unggul dibanding model lain | Fokus bukan pada daun padi         |
+| 3 | Yuliany et al.                | 2022  | CNN             | Dataset hama tanaman padi | CNN cukup efektif                        | Belum memakai arsitektur modern    |
+| 4 | Agustiani et al.              | 2022  | Random Forest   | Dataset daun padi         | Mampu mengklasifikasi penyakit           | Akurasi lebih rendah               |
+| 5 | Atila et al.                  | 2021  | EfficientNet    | Dataset daun tanaman      | Performa model tinggi                    | Belum diuji pada konteks Indonesia |
 
-**Pola yang terlihat — Metode dominan:** ___________________
-**Limitasi yang berulang:** ______________________________
 
+Pola yang terlihat — Metode dominan:
+CNN dan EfficientNet mendominasi penelitian klasifikasi citra daun tanaman.
+
+Limitasi yang berulang:
+Akurasi model masih belum stabil dan dataset yang digunakan masih terbatas.
 ---
 
 ## Latihan 2 — Gap Identification
 
 Berdasarkan tabel di Latihan 1, identifikasi gap.
 
-| Jenis Gap | Ditemukan? | Gap Statement |
-|-----------|-----------|---------------|
-| Performance Gap | [ ] Ya / [ ] Tidak | *Contoh: Akurasi turun di bawah 80% untuk kelas minoritas* |
-| Method Gap | [ ] Ya / [ ] Tidak | |
-| Data Gap | [ ] Ya / [ ] Tidak | |
-| Context Gap | [ ] Ya / [ ] Tidak | |
+| Jenis Gap       | Ditemukan?         | Gap Statement                                                                |
+| --------------- | ------------------ | ---------------------------------------------------------------------------- |
+| Performance Gap | [X] Ya / [ ] Tidak | Akurasi klasifikasi masih sekitar 77% sehingga model belum optimal.          |
+| Method Gap      | [X] Ya / [ ] Tidak | Belum banyak penelitian menggunakan transformer untuk klasifikasi daun padi. |
+| Data Gap        | [X] Ya / [ ] Tidak | Dataset masih terbatas dan jumlah kelas penyakit sedikit.                    |
+| Context Gap     | [X] Ya / [ ] Tidak | Belum banyak penelitian pada kondisi pertanian Indonesia secara luas.        |
 
-**Gap utama yang dipilih:** _____________________________
-**Mengapa gap ini penting (bukan sekadar "belum ada yang meneliti")?**
-> ___________________________________________________
 
+Gap utama yang dipilih: Performance Gap dan Method Gap.
+
+Mengapa gap ini penting?
+
+Karena hasil klasifikasi yang kurang akurat dapat menyebabkan kesalahan diagnosis penyakit tanaman padi. Jika metode yang lebih baik digunakan, maka petani dapat melakukan penanganan lebih cepat dan tepat.
 ---
 
 ## Latihan 3 — Baseline Selection
 
 Pilih 2 baseline dari literatur yang sudah dibaca.
 
-| # | Baseline | Mengapa Relevan | Mengapa Representatif | Apakah SOTA? | Sumber |
-|---|----------|----------------|----------------------|-------------|--------|
-| 1 | *Contoh: RF + TF-IDF* | *Task sama: klasifikasi teks* | *Dipakai 6 dari 10 paper* | *Bukan, tapi common practice* | *Lee et al., 2022* |
-| 2 | | | | | |
+| # | Baseline        | Mengapa Relevan                                       | Mengapa Representatif                         | Apakah SOTA? | Sumber               |
+| - | --------------- | ----------------------------------------------------- | --------------------------------------------- | ------------ | -------------------- |
+| 1 | CNN Standar     | Sama-sama digunakan untuk klasifikasi citra daun padi | Metode umum pada penelitian sebelumnya        | Tidak        | Yuliany et al., 2022 |
+| 2 | EfficientNet-B6 | Digunakan pada klasifikasi penyakit daun tanaman      | Memiliki performa tinggi dibanding model lain | Ya           | Amanda et al., 2024  |
 
-**Apakah pemilihan baseline ini bisa dianggap straw man?** [ ] Ya / [ ] Tidak
-> Justifikasi: ________________________________________
+
+**Apakah pemilihan baseline ini bisa dianggap straw man?** [ ] Ya / [X] Tidak
+> Justifikasi: Justifikasi: Baseline dipilih secara adil karena menggunakan metode yang benar-benar relevan dan umum digunakan dalam penelitian klasifikasi citra daun tanaman.
 
 ---
 
@@ -176,5 +189,4 @@ Pilih 2 baseline dari literatur yang sudah dibaca.
 > Apa perbedaan antara "belum ada yang meneliti ini" (klaim tanpa bukti) dengan research gap yang valid? Bagaimana cara membuktikan bahwa sebuah gap benar-benar ada?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+>Klaim “belum ada yang meneliti ini” tanpa bukti hanyalah asumsi biasa. Sedangkan research gap yang valid harus dibuktikan dengan membaca dan membandingkan beberapa penelitian sebelumnya. Gap dapat ditemukan jika terdapat kekurangan yang terus muncul, seperti akurasi rendah, metode yang belum digunakan, atau dataset yang terbatas.
