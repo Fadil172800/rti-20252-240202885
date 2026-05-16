@@ -78,27 +78,33 @@ Jika variabel tidak bisa di-map ke komponen apapun → arsitektur perlu didesain
 ## Template A.6 — Mapping RQ ke Arsitektur Sistem
 
 ```
-SYSTEM-EXPERIMENT MAPPING
+**SYSTEM-EXPERIMENT MAPPING**
 
-Research Question: ____________________
+**Research Question:**  
+Apakah metode EfficientNet-B6 menghasilkan accuracy dan F1-Score yang lebih tinggi dibandingkan CNN standar pada klasifikasi penyakit daun padi?
 
-Variable → Component Mapping:
+**Variable → Component Mapping:**
+
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi/Pengukuran |
 |----------|------|-----------------|---------------------------|
-|          | IV   |                 |                           |
-|          | DV   |                 |                           |
-|          | CV   |                 |                           |
+| **Jenis Model Deep Learning** | IV | Modul Training Model | Mengganti model CNN standar menjadi EfficientNet-B6 pada script training |
+| **Accuracy & F1-Score** | DV | Modul Evaluasi Model | Menggunakan confusion matrix untuk menghitung accuracy dan F1-Score |
+| **Jumlah Epoch** | CV | Parameter Training | Menentukan jumlah epoch tetap (25 dan 50) |
+| **Ukuran Input Citra** | CV | Modul Preprocessing | Resize citra menjadi ukuran 224 dan 528 pixel |
+| **Dataset Daun Padi** | CV | Dataset Loader | Menggunakan dataset tetap sebanyak 3355 citra |
 
-4 Prinsip Desain:
-  [ ] Traceability — Setiap komponen bisa ditelusuri ke variabel
-  [ ] Variable Isolation — IV bisa diubah tanpa mengubah CV
-  [ ] Measurement Integration — Pengukuran DV built-in
-  [ ] Reproducibility — Setup bisa direkonstruksi
+**4 Prinsip Desain:**
 
-Experimental Setup:
-  Input data     : ____________________
-  Parameter      : ____________________
-  Output format  : ____________________
+* [x] **Traceability** — Setiap komponen berhubungan langsung dengan variabel penelitian.
+* [x] **Variable Isolation** — Pergantian model dapat dilakukan tanpa mengubah dataset dan preprocessing.
+* [x] **Measurement Integration** — Accuracy dan F1-Score dihitung otomatis setelah training selesai.
+* [x] **Reproducibility** — Eksperimen dapat diulang dengan parameter yang sama.
+
+**Experimental Setup:**
+
+* **Input data:** 3355 citra daun padi dengan 4 kelas penyakit.
+* **Parameter:** Epoch 25 dan 50, input size 224 dan 528.
+* **Output format:** Nilai accuracy, precision, recall, F1-Score, dan confusion matrix.
 ```
 
 ---
@@ -107,16 +113,17 @@ Experimental Setup:
 
 Gunakan RQ dan variabel dari WS-05. Petakan ke komponen sistem.
 
-**RQ:** __________________________________________________
+**RQ:**Apakah metode EfficientNet-B6 menghasilkan accuracy dan F1-Score yang lebih tinggi dibandingkan CNN standar pada klasifikasi penyakit daun padi?
 
-| Variabel | Tipe | Komponen Sistem | Cara Manipulasi / Pengukuran |
-|----------|------|-----------------|---------------------------|
-| *Contoh: Jenis model* | *IV* | *Modul classifier (swap RF ↔ CNN)* | *Ganti config `model_type`* |
-| | DV | | |
-| | CV | | |
+| Variabel         | Tipe | Komponen Sistem       | Cara Manipulasi / Pengukuran                       |
+| ---------------- | ---- | --------------------- | -------------------------------------------------- |
+| **Jenis Model**  | IV   | Script Training Model | Mengubah model dari CNN standar ke EfficientNet-B6 |
+| **Accuracy**     | DV   | Modul Evaluasi        | Menghitung accuracy dari confusion matrix          |
+| **F1-Score**     | DV   | Modul Evaluasi        | Menghitung F1-Score otomatis                       |
+| **Jumlah Epoch** | CV   | Parameter Training    | Menentukan jumlah epoch tetap                      |
 
-**Apakah semua variabel bisa di-map?** [ ] Ya / [ ] Tidak
-> Jika tidak, komponen apa yang perlu ditambahkan? _________
+
+**Apakah semua variabel bisa di-map?** [X] Ya / [ ] Tidak
 
 ---
 
@@ -124,16 +131,17 @@ Gunakan RQ dan variabel dari WS-05. Petakan ke komponen sistem.
 
 Evaluasi desain sistem terhadap 4 prinsip.
 
-| Prinsip | Status | Bukti / Penjelasan |
-|---------|--------|-------------------|
-| Traceability | *Contoh: ✅ — setiap modul punya label variabel* | |
-| Modularity | | |
-| Controllability | | |
-| Measurability | | |
+| Prinsip             | Status      | Bukti / Penjelasan                                                                    |
+| ------------------- | ----------- | ------------------------------------------------------------------------------------- |
+| **Traceability**    | ✅ Terpenuhi | Semua variabel memiliki komponen sistem masing-masing                                 |
+| **Modularity**      | ✅ Terpenuhi | Model dapat diganti tanpa mengubah preprocessing dan dataset                          |
+| **Controllability** | ⚠️ Sebagian | Parameter training dapat dikontrol, tetapi performa hardware masih mempengaruhi hasil |
+| **Measurability**   | ✅ Terpenuhi | Sistem otomatis menghasilkan accuracy dan F1-Score                                    |
 
-**Prinsip mana yang paling sulit dipenuhi?** _______________
+
+**Prinsip mana yang paling sulit dipenuhi?** Controllability
 **Strategi untuk mengatasinya:**
-> ___________________________________________________
+> Menggunakan hardware dan environment yang sama selama eksperimen agar hasil pengujian tetap konsisten.
 
 ---
 
@@ -144,23 +152,20 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 > **Panduan jumlah kondisi:** Untuk 3 komponen (A, B, C), kondisi minimal yang direkomendasikan:
 > Full + (-A) + (-B) + (-C) = **4 kondisi dasar**. Jika waktu memungkinkan, tambahkan kombinasi ganda: (-A,-B), (-A,-C), (-B,-C) = **7 kondisi**. Sesuaikan dengan *computational cost* dan tenggat waktu penelitian.
 
-| Kondisi | Komponen A | Komponen B | Komponen C | Hasil yang Diharapkan |
-|---------|-----------|-----------|-----------|----------------------|
-| Full | *Contoh: ✅ CNN* | *Contoh: ✅ Temporal features* | *Contoh: ✅ Z-score norm* | *Baseline penuh* |
-| – A | ❌ (ganti RF) | ✅ | ✅ | |
-| – B | ✅ | ❌ (tanpa temporal) | ✅ | |
-| – C | ✅ | ✅ | ❌ (tanpa normalisasi) | |
+| Kondisi  | Komponen A (Jenis Model) | Komponen B (Ukuran Input) | Komponen C (Jumlah Epoch) | Hasil yang Diharapkan                                     |
+| -------- | ------------------------ | ------------------------- | ------------------------- | --------------------------------------------------------- |
+| **Full** | ✅ EfficientNet-B6        | ✅ 224 Pixel               | ✅ 50 Epoch                | Hasil akurasi terbaik                                     |
+| **– A**  | ❌ CNN Standar            | ✅ 224 Pixel               | ✅ 50 Epoch                | Akurasi lebih rendah dibanding EfficientNet-B6            |
+| **– B**  | ✅ EfficientNet-B6        | ❌ 528 Pixel               | ✅ 50 Epoch                | Performa dapat berubah karena ukuran input berbeda        |
+| **– C**  | ✅ EfficientNet-B6        | ✅ 224 Pixel               | ❌ 25 Epoch                | Akurasi kemungkinan menurun karena training lebih singkat |
 
-**Komponen mana yang diprediksi paling berkontribusi?** _____
+**Komponen mana yang diprediksi paling berkontribusi?** Komponen A (Jenis Model Deep Learning)
 **Mengapa?**
-> ___________________________________________________
-
+> Karena arsitektur EfficientNet-B6 memiliki kemampuan ekstraksi fitur yang lebih baik dibanding CNN standar sehingga dapat meningkatkan performa klasifikasi citra daun padi.
 ---
 
 ## Refleksi
 
 > Apa risiko jika sistem dibangun seperti produk (monolitik, fitur lengkap) lalu baru dilakukan eksperimen? Mengapa arsitektur modular penting untuk riset?
-
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Jika sistem dibuat terlalu kompleks seperti produk nyata, maka akan muncul banyak faktor lain yang mempengaruhi hasil eksperimen sehingga sulit mengetahui penyebab utama perubahan performa. Arsitektur modular penting agar peneliti dapat mengubah satu variabel tanpa mempengaruhi bagian lain sehingga hasil eksperimen lebih valid dan mudah dianalisis.
