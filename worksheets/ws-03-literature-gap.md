@@ -65,7 +65,7 @@ Membandingkan deep learning 2024 dengan decision tree sederhana tanpa justifikas
 **Database** : Google Scholar, IEEE Xplore, ResearchGate.
 **Query** : `("rice leaf disease" OR "plant disease classification") AND ("CNN" OR "EfficientNet" OR "deep learning")`
 **Tahun** : 2020 - 2024
-**Hasil awal** : 12 paper → Screening → 5 paper final
+**Hasil awal** : Beberapa paper hasil pencarian → Screening → 5 paper yang relevan
 
 **Literature Matrix (concept-centric):**
 
@@ -135,9 +135,9 @@ Akurasi model masih belum stabil dan dataset yang digunakan masih terbatas.
 
 | Jenis Gap       | Ditemukan?         | Gap Statement                                                                |
 | --------------- | ------------------ | ---------------------------------------------------------------------------- |
-| Performance Gap | [X] Ya / [ ] Tidak | Akurasi klasifikasi masih sekitar 77% sehingga model belum optimal.          |
-| Method Gap      | [X] Ya / [ ] Tidak | Belum banyak penelitian menggunakan transformer untuk klasifikasi daun padi. |
-| Data Gap        | [X] Ya / [ ] Tidak | Dataset masih terbatas dan jumlah kelas penyakit sedikit.                    |
+| Performance Gap | [X] Ya / [ ] Tidak | Akurasi terbaik yang dilaporkan pada penelitian acuan masih sebesar 77,05%, sehingga masih terdapat peluang peningkatan performa melalui pengembangan metode maupun konfigurasi model.          |
+| Method Gap      | [X] Ya / [ ] Tidak | Belum banyak penelitian yang mengevaluasi pengaruh variasi ukuran input citra dan jumlah epoch pada arsitektur EfficientNet-B6 untuk klasifikasi penyakit daun padi menggunakan dataset Rice Leafs. |
+| Data Gap        | [X] Ya / [ ] Tidak | Sebagian besar penelitian masih menggunakan satu dataset sehingga kemampuan generalisasi model pada dataset lain belum banyak dievaluasi.                    |
 | Context Gap     | [X] Ya / [ ] Tidak | Belum banyak penelitian pada kondisi pertanian Indonesia secara luas.        |
 
 Gap utama yang dipilih: Performance Gap dan Method Gap.
