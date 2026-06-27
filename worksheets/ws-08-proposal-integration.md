@@ -73,32 +73,42 @@ Jika ada lompatan (section B tidak menjawab pertanyaan section A), red thread pu
 PROPOSAL INTEGRATION CHECKLIST
 
 Koneksi Vertikal (Flow Atas-Bawah):
-  [ ] Problem → Gap: masalah terdokumentasi di literatur
-  [ ] Gap → RQ: pertanyaan menjawab gap spesifik
-  [ ] RQ → Hypothesis: hipotesis memprediksi jawaban
-  [ ] Hypothesis → Metric: metrik mengukur variabel dalam hipotesis
-  [ ] Metric → System: komponen sistem menghasilkan/mengukur metrik
-  [ ] System → Experiment: desain eksperimen menggunakan sistem
+
+[x] Problem → Gap: masalah terdokumentasi di literatur
+[x] Gap → RQ: pertanyaan menjawab gap spesifik
+[x] RQ → Hypothesis: hipotesis memprediksi jawaban
+[x] Hypothesis → Metric: metrik mengukur variabel dalam hipotesis
+[x] Metric → System: komponen sistem menghasilkan/mengukur metrik
+[x] System → Experiment: desain eksperimen menggunakan sistem
 
 Koneksi Horizontal (Konsistensi):
-  [ ] Istilah sama di semua bagian
-  [ ] Variabel di RQ = variabel di hipotesis = metrik di desain
-  [ ] Scope tidak berubah dari masalah ke eksperimen
+
+[x] Istilah sama di semua bagian
+[x] Variabel di RQ = variabel di hipotesis = metrik di desain
+[x] Scope tidak berubah dari masalah ke eksperimen
 
 Cognitive Trap Checklist:
-  [ ] Tidak ada paragraf "promosi" di pendahuluan (hanya data & gap)
-  [ ] Metodologi disesuaikan ke RQ, bukan copy-paste textbook
-  [ ] Timeline sudah ditambah buffer 30-50% dari estimasi awal
-  [ ] Proposal mengakui kemungkinan H0 tidak ditolak (honest uncertainty)
-  [ ] Tidak ada klaim "pasti berhasil" atau "meningkatkan signifikan"
 
-Rubrik Self-Assessment:
-| Kriteria     | 1 (Lemah)                                        | 2 (Cukup)                                     | 3 (Baik)                                           | Skor |
-|------------- |--------------------------------------------------|-----------------------------------------------|----------------------------------------------------|------|
-| Koherensi    | >2 koneksi vertikal terputus                     | 1-2 koneksi lemah, argumen masih bisa diikuti | Semua 6 koneksi terhubung, red thread jelas        |      |
-| Specificity  | Variabel/metrik masih abstrak, tidak ada angka   | Sebagian metrik terdefinisi numerik           | Semua metrik + threshold + unit pengukuran jelas   |      |
-| Feasibility  | Timeline >6 bulan tanpa memperhitungkan sumber   | Timeline 3-6 bulan dengan asumsi tertentu     | Timeline 1-3 bulan realistis dengan rencana detail |      |
-| Rigor        | Baseline tidak jelas atau straw man              | 1-2 baseline dengan justifikasi partial       | 2+ baseline SOTA + justifikasi pemilihan lengkap   |      |
+[x] Tidak ada paragraf "promosi" di pendahuluan (hanya data & gap)
+[x] Metodologi disesuaikan ke RQ, bukan copy-paste textbook
+[x] Timeline sudah ditambah buffer 30–50% dari estimasi awal
+[x] Proposal mengakui kemungkinan H₀ tidak ditolak (honest uncertainty)
+[x] Tidak ada klaim "pasti berhasil" atau "meningkatkan signifikan"
+
+Rubrik Self-Assessment
+
+| Kriteria | 1 (Lemah) | 2 (Cukup) | 3 (Baik) | Skor |
+|-----------|-----------|-----------|----------|------|
+| Koherensi | | | ✓ | **3** |
+| Specificity | | | ✓ | **3** |
+| Feasibility | | | ✓ | **3** |
+| Rigor | | | ✓ | **3** |
+
+**Total Skor : 12 / 12**
+
+**Catatan:**
+
+Proposal telah memiliki hubungan yang konsisten antara permasalahan, research gap, research question, hipotesis, variabel penelitian, metodologi, sistem, dan desain eksperimen sehingga siap dilanjutkan ke tahap implementasi menggunakan Google Colab.
 ```
 
 ---
