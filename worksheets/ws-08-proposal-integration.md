@@ -92,7 +92,7 @@ Cognitive Trap Checklist:
 [x] Tidak ada paragraf "promosi" di pendahuluan (hanya data & gap)
 [x] Metodologi disesuaikan ke RQ, bukan copy-paste textbook
 [x] Timeline sudah ditambah buffer 30–50% dari estimasi awal
-[x] Proposal mengakui kemungkinan H₀ tidak ditolak (honest uncertainty)
+[x] Proposal mengakui kemungkinan hasil penelitian berbeda dengan penelitian acuan
 [x] Tidak ada klaim "pasti berhasil" atau "meningkatkan signifikan"
 
 Rubrik Self-Assessment
@@ -108,7 +108,7 @@ Rubrik Self-Assessment
 
 **Catatan:**
 
-Proposal telah memiliki hubungan yang konsisten antara permasalahan, research gap, research question, hipotesis, variabel penelitian, metodologi, sistem, dan desain eksperimen sehingga siap dilanjutkan ke tahap implementasi menggunakan Google Colab.
+Proposal telah memiliki hubungan yang konsisten antara problem statement, research gap, research question, hipotesis, variabel penelitian, metodologi, sistem, dan desain eksperimen. Seluruh komponen telah disesuaikan dengan implementasi penelitian menggunakan Google Colab sehingga proposal dan hasil praktikum memiliki keterkaitan yang konsisten.
 ```
 
 ---
@@ -117,15 +117,16 @@ Proposal telah memiliki hubungan yang konsisten antara permasalahan, research ga
 
 Kumpulkan hasil dari WS-02 sampai WS-07 menjadi satu ringkasan proposal.
 
-| Komponen | Sumber | Isi (1-2 kalimat) |
-|----------|--------|-------------------|
-| **Problem Statement** | WS-02 | Identifikasi penyakit daun padi secara manual masih membutuhkan waktu yang relatif lama dan berpotensi menimbulkan kesalahan diagnosis sehingga diperlukan sistem klasifikasi otomatis berbasis Deep Learning. |
-| **Gap** | WS-03 | Penelitian sebelumnya menunjukkan bahwa EfficientNet-B6 memiliki performa yang baik, namun evaluasi terhadap pengaruh variasi ukuran input citra (224×224 dan 528×528) serta jumlah epoch (25 dan 50) terhadap performa model masih terbatas. |
-| **Research Question** | WS-04 | Bagaimana pengaruh variasi ukuran input citra (224×224 dan 528×528) serta jumlah epoch (25 dan 50) terhadap performa model EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi? |
-| **Hipotesis** | WS-04 | Variasi ukuran input citra dan jumlah epoch diduga mempengaruhi performa model EfficientNet-B6 berdasarkan nilai Accuracy, Precision, Recall, F1-Score, dan AUC. |
-| **Variabel & Metrik** | WS-05 | Variabel bebas berupa ukuran input citra dan jumlah epoch, sedangkan variabel terikat berupa Accuracy, Precision, Recall, F1-Score, dan AUC sebagai metrik evaluasi model. |
-| **Sistem** | WS-06 | Sistem klasifikasi dibangun menggunakan arsitektur EfficientNet-B6 yang dijalankan pada Google Colab dengan dataset Rice Leafs dan metode validasi 5-Fold Cross Validation. |
-| **Desain Eksperimen** | WS-07 | Penelitian akan menggunakan empat skenario eksperimen berdasarkan kombinasi ukuran input (224×224 dan 528×528) serta jumlah epoch (25 dan 50) untuk menentukan konfigurasi terbaik model EfficientNet-B6. |
+| Komponen              | Sumber | Isi (1–2 kalimat)                                                                                                                                                                                                                                        |
+| --------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Problem Statement** | WS-02  | Identifikasi penyakit daun padi secara manual masih memerlukan waktu dan berpotensi menghasilkan kesalahan diagnosis sehingga diperlukan sistem klasifikasi otomatis berbasis Deep Learning.                                                             |
+| **Gap**               | WS-03  | Penelitian sebelumnya menunjukkan EfficientNet-B6 memiliki performa yang baik, namun implementasi menggunakan skema 5-Fold Cross Validation memerlukan sumber daya komputasi yang cukup besar sehingga kurang sesuai untuk lingkungan Google Colab Free. |
+| **Research Question** | WS-04  | Bagaimana performa model EfficientNet-B6 menggunakan pendekatan transfer learning dalam mengklasifikasikan penyakit daun padi berdasarkan metrik accuracy, precision, recall, F1-score, dan confusion matrix?                                            |
+| **Hipotesis**         | WS-04  | Model EfficientNet-B6 dengan pendekatan transfer learning mampu menghasilkan performa klasifikasi yang dapat dievaluasi menggunakan accuracy, precision, recall, F1-score, dan confusion matrix.                                                         |
+| **Variabel & Metrik** | WS-05  | Variabel bebas berupa penggunaan model EfficientNet-B6 dengan pendekatan transfer learning, sedangkan variabel terikat berupa accuracy, precision, recall, F1-score, dan confusion matrix sebagai metrik evaluasi.                                       |
+| **Sistem**            | WS-06  | Sistem klasifikasi dibangun menggunakan EfficientNet-B6 dengan bobot pretrained ImageNet yang dijalankan pada Google Colab menggunakan dataset Rice Leafs.                                                                                               |
+| **Desain Eksperimen** | WS-07  | Penelitian menggunakan satu konfigurasi model EfficientNet-B6 dengan pendekatan transfer learning menggunakan pembagian data 80% data latih dan 20% data validasi (single split) untuk mengevaluasi performa model.                                      |
+
 
 ---
 
@@ -133,28 +134,29 @@ Kumpulkan hasil dari WS-02 sampai WS-07 menjadi satu ringkasan proposal.
 
 Verifikasi 6 koneksi kritis berdasarkan proposal penelitian.
 
-| Koneksi | Status | Bukti |
-|---------|--------|-------|
-| Problem → Gap | ✅ | Research gap diperoleh dari hasil analisis penelitian sebelumnya yang menunjukkan masih terbatasnya evaluasi variasi ukuran input dan jumlah epoch pada EfficientNet-B6. |
-| Gap → RQ | ✅ | Research Question disusun secara langsung untuk menjawab research gap mengenai pengaruh variasi parameter terhadap performa model. |
-| RQ → Hypothesis | ✅ | Hipotesis memprediksi bahwa variasi ukuran input citra dan jumlah epoch akan memberikan perbedaan performa pada model EfficientNet-B6. |
-| Hypothesis → Metric | ✅ | Hipotesis diuji menggunakan Accuracy, Precision, Recall, F1-Score, dan AUC sebagai metrik evaluasi. |
-| Metric → System | ✅ | Sistem menghasilkan seluruh metrik evaluasi secara otomatis setelah proses pelatihan dan pengujian model selesai. |
-| System → Experiment | ✅ | Sistem digunakan sebagai instrumen utama dalam empat skenario eksperimen dengan metode 5-Fold Cross Validation. |
+| Koneksi             | Status | Bukti                                                                                                                                                                          |
+| ------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Problem → Gap       | ✅      | Research gap diperoleh dari penelitian sebelumnya yang menggunakan skema evaluasi dengan kebutuhan komputasi tinggi sehingga belum sesuai untuk lingkungan komputasi terbatas. |
+| Gap → RQ            | ✅      | Research Question disusun untuk mengevaluasi performa EfficientNet-B6 menggunakan pendekatan transfer learning pada skema single split yang lebih ringan.                      |
+| RQ → Hypothesis     | ✅      | Hipotesis memprediksi bahwa EfficientNet-B6 mampu menghasilkan performa klasifikasi yang dapat diukur menggunakan metrik evaluasi yang ditentukan.                             |
+| Hypothesis → Metric | ✅      | Hipotesis diuji menggunakan accuracy, precision, recall, F1-score, dan confusion matrix.                                                                                       |
+| Metric → System     | ✅      | Sistem menghasilkan seluruh metrik evaluasi setelah proses pelatihan dan pengujian model selesai.                                                                              |
+| System → Experiment | ✅      | Sistem digunakan sebagai instrumen utama pada eksperimen menggunakan EfficientNet-B6 dengan transfer learning dan pembagian data single split.                                 |
+
 
 **Koneksi mana yang paling lemah?**
 
-Belum terdapat koneksi yang benar-benar lemah, namun hubungan antara research gap dan research question masih dapat diperkuat dengan menambahkan referensi penelitian terbaru mengenai pengaruh variasi parameter pelatihan pada EfficientNet.
+Hubungan antara research gap dan research question masih dapat diperkuat dengan menambahkan referensi yang membahas penerapan EfficientNet-B6 pada lingkungan komputasi terbatas sehingga alasan penggunaan skema single split menjadi lebih kuat.
 
 **Bagaimana cara memperkuatnya?**
 
-> Menambahkan beberapa referensi ilmiah terbaru (2023–2025) yang membahas pengaruh ukuran input citra dan jumlah epoch terhadap performa model EfficientNet sehingga research gap menjadi lebih kuat.
+> Menambahkan referensi penelitian terbaru mengenai implementasi transfer learning EfficientNet pada Google Colab atau lingkungan komputasi dengan sumber daya terbatas sehingga research gap memiliki dasar yang lebih kuat.
 
 **Konsistensi horizontal — apakah istilah dan scope konsisten?**
 
 **[X] Ya**
 
-Seluruh istilah yang digunakan pada proposal telah konsisten mulai dari rumusan masalah, research question, hipotesis, variabel penelitian, sistem, hingga desain eksperimen.
+Seluruh istilah telah konsisten mulai dari problem statement, research question, hipotesis, variabel penelitian, metode, sistem, hingga desain eksperimen.
 
 ---
 
@@ -162,12 +164,13 @@ Seluruh istilah yang digunakan pada proposal telah konsisten mulai dari rumusan 
 
 Evaluasi proposal menggunakan rubrik berikut.
 
-| Kriteria | Skor (1-3) | Justifikasi |
-|----------|-----------|-------------|
-| **Koherensi** | **3** | Alur proposal telah tersusun secara logis mulai dari identifikasi masalah, research gap, research question, hipotesis, metodologi, hingga desain eksperimen. |
-| **Specificity** | **3** | Variabel penelitian, dataset, metode, metrik evaluasi, dan skenario eksperimen telah dijelaskan secara spesifik. |
-| **Feasibility** | **3** | Penelitian dapat dilaksanakan menggunakan Google Colab dan dataset Rice Leafs dengan sumber daya yang tersedia. |
-| **Rigor** | **3** | Penelitian menggunakan metode Deep Learning EfficientNet-B6, validasi 5-Fold Cross Validation, serta metrik evaluasi Accuracy, Precision, Recall, F1-Score, dan AUC. |
+| Kriteria        | Skor (1–3) | Justifikasi                                                                                                                                                                                                       |
+| --------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Koherensi**   | **3**      | Proposal memiliki alur yang logis mulai dari identifikasi masalah, research gap, research question, hipotesis, metode, hingga desain eksperimen.                                                                  |
+| **Specificity** | **3**      | Dataset, model EfficientNet-B6, metode transfer learning, metrik evaluasi, dan konfigurasi eksperimen dijelaskan secara spesifik.                                                                                 |
+| **Feasibility** | **3**      | Penelitian dapat dilaksanakan menggunakan Google Colab Free dan dataset Rice Leafs sesuai dengan implementasi yang telah dilakukan.                                                                               |
+| **Rigor**       | **3**      | Penelitian menggunakan pendekatan Deep Learning EfficientNet-B6, preprocessing, transfer learning, serta evaluasi menggunakan accuracy, precision, recall, F1-score, confusion matrix, dan classification report. |
+
 
 **Skor total:** **12 / 12**
 
@@ -175,7 +178,7 @@ Evaluasi proposal menggunakan rubrik berikut.
 
 **[X] Ya**
 
-Proposal telah memiliki keterkaitan yang konsisten antara permasalahan, research gap, research question, metodologi, dan desain eksperimen sehingga siap dilanjutkan ke tahap implementasi.
+Proposal telah memiliki keterkaitan yang konsisten antara problem statement, research gap, research question, hipotesis, metodologi, sistem, dan desain eksperimen. Selain itu, proposal telah disesuaikan dengan implementasi penelitian sehingga konsisten dengan hasil praktikum yang telah diperoleh.
 
 ---
 
@@ -185,12 +188,12 @@ Proposal telah memiliki keterkaitan yang konsisten antara permasalahan, research
 
 **Bagian termudah:**
 
-Menganalisis isi jurnal dan menyusun ringkasan setiap bagian karena penelitian acuan telah memiliki struktur yang jelas sehingga memudahkan proses identifikasi masalah dan metode penelitian.
+Menyusun latar belakang, problem statement, dan research question karena didukung oleh jurnal acuan serta hasil implementasi yang telah selesai sehingga hubungan antarbagian lebih mudah dibangun.
 
 **Bagian tersulit:**
 
-Menentukan research gap dan menjaga konsistensi antara research question, hipotesis, variabel penelitian, serta metodologi karena seluruh komponen harus saling berkaitan dan tidak boleh bertentangan.
+Menjaga konsistensi antara proposal dan implementasi penelitian. Pada awal penyusunan, rancangan penelitian masih mengacu pada beberapa skenario eksperimen, sedangkan implementasi akhir menggunakan satu konfigurasi EfficientNet-B6 dengan pendekatan transfer learning. Oleh karena itu, proposal perlu disesuaikan agar seluruh komponen tetap konsisten dengan penelitian yang benar-benar dilakukan.
 
 **Yang akan dilakukan berbeda:**
 
-> Jika mengulang dari awal, saya akan melakukan telaah literatur yang lebih luas sebelum menentukan research gap sehingga proposal memiliki dasar teori yang lebih kuat. Selain itu, saya akan menyusun rancangan eksperimen sejak awal agar proses implementasi penelitian dapat berjalan lebih terarah dan efisien.
+> Jika mengulang penelitian dari awal, saya akan menetapkan rancangan eksperimen yang benar-benar sesuai dengan kemampuan komputasi yang tersedia sebelum menyusun proposal. Dengan demikian, proposal, implementasi, dan hasil penelitian akan tetap konsisten sejak awal hingga akhir penelitian tanpa memerlukan banyak revisi.
