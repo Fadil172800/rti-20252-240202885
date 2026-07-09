@@ -69,47 +69,62 @@ Ancaman validitas harus diidentifikasi **sebelum** eksperimen dan mitigasinya di
 EXPERIMENT DESIGN
 
 Research Question :
-Apakah metode EfficientNet-B6 menghasilkan accuracy dan F1-Score yang lebih tinggi dibandingkan CNN standar pada klasifikasi penyakit daun padi?
+
+Bagaimana pengaruh variasi ukuran input citra dan jumlah epoch terhadap performa model EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi?
 
 Hypothesis :
-EfficientNet-B6 memiliki accuracy dan F1-Score lebih tinggi dibanding CNN standar pada dataset citra daun padi.
+
+Variasi ukuran input citra dan jumlah epoch mempengaruhi performa model EfficientNet-B6 berdasarkan Accuracy, Precision, Recall, F1-Score, dan AUC.
 
 Tipe Eksperimen :
-[X] Comparison  [ ] Ablation  [ ] Parameter
 
-Kondisi Eksperimen:
+[ ] Comparison
+[ ] Ablation
+[X] Parameter
+
+Kondisi Eksperimen
 
 | Kondisi | Deskripsi | IV Value | CV Settings |
 |---------|-----------|----------|-------------|
-| Control | Model klasifikasi dasar | CNN Standar | Dataset 3355 citra, epoch 50, input size 224 |
-| Treatment | Model deep learning modern | EfficientNet-B6 | Dataset 3355 citra, epoch 50, input size 224 |
+| Skenario 1 | EfficientNet-B6 | Input 224×224, Epoch 25 | Dataset Rice Leafs, 5-Fold Cross Validation |
+| Skenario 2 | EfficientNet-B6 | Input 224×224, Epoch 50 | Dataset Rice Leafs, 5-Fold Cross Validation |
+| Skenario 3 | EfficientNet-B6 | Input 528×528, Epoch 25 | Dataset Rice Leafs, 5-Fold Cross Validation |
+| Skenario 4 | EfficientNet-B6 | Input 528×528, Epoch 50 | Dataset Rice Leafs, 5-Fold Cross Validation |
 
-Fairness Checklist:
+Fairness Checklist
 
-[x] Dataset identik untuk semua kondisi (Menggunakan dataset citra daun padi yang sama).
-[x] Preprocessing setara (Resize citra dan preprocessing dilakukan dengan cara yang sama).
-[x] Tuning effort setara (Kedua model menggunakan jumlah epoch dan parameter training yang sama).
-[x] Environment identik (Training dilakukan pada hardware dan software environment yang sama).
-[x] Metrik evaluasi sama (Accuracy, Precision, Recall, dan F1-Score).
+[x] Dataset identik untuk semua skenario.
 
-Threat Analysis:
+[x] Preprocessing dilakukan dengan prosedur yang sama.
+
+[x] Arsitektur model tetap menggunakan EfficientNet-B6.
+
+[x] Environment pelatihan menggunakan perangkat dan software yang sama.
+
+[x] Metrik evaluasi sama (Accuracy, Precision, Recall, F1-Score, dan AUC).
+
+Threat Analysis
 
 | Threat Type | Ancaman Spesifik | Mitigasi |
-|-------------|-----------------|----------|
-| Internal | Perbedaan performa hardware saat training | Menggunakan perangkat dan environment yang sama |
-| External | Dataset hanya berasal dari satu sumber | Menggunakan beberapa kelas penyakit daun padi |
-| Construct | Accuracy tidak cukup menggambarkan performa | Menambahkan F1-Score sebagai secondary metric |
-| Conclusion | Hasil dipengaruhi random seed training | Melakukan pengujian berulang menggunakan cross-validation |
+|-------------|------------------|----------|
+| Internal | Variasi hasil akibat proses training | Menggunakan konfigurasi eksperimen yang sama pada setiap skenario |
+| External | Dataset berasal dari satu sumber | Menjelaskan keterbatasan penelitian pada bagian pembahasan |
+| Construct | Accuracy belum cukup menggambarkan performa model | Menggunakan Precision, Recall, F1-Score, dan AUC sebagai metrik tambahan |
+| Conclusion | Variasi parameter belum mencakup seluruh kemungkinan konfigurasi | Membatasi kesimpulan hanya pada parameter yang diuji |
 
-Statistical Plan:
+Statistical Plan
 
-Uji statistik   :Perbandingan rata-rata accuracy dan F1-Score antar model.
+Analisis yang digunakan :
+Perbandingan nilai Accuracy, Precision, Recall, F1-Score, dan AUC pada setiap kombinasi ukuran input dan jumlah epoch.
 
-Justifikasi     :Digunakan untuk mengetahui apakah EfficientNet-B6 benar-benar lebih baik dibanding CNN standar.
+Justifikasi :
+Untuk mengetahui konfigurasi parameter EfficientNet-B6 yang memberikan performa klasifikasi terbaik.
 
-Alpha           :0.05
+Alpha :
+Tidak disebutkan pada artikel.
 
-Effect size min :Perbedaan accuracy minimal 3%.
+Effect Size :
+Tidak dianalisis pada artikel.
 ```
 
 ---
@@ -118,13 +133,16 @@ Effect size min :Perbedaan accuracy minimal 3%.
 
 Susun desain eksperimen berdasarkan RQ, variabel, dan sistem dari WS-04 sampai WS-06.
 
-**RQ:** Apakah metode EfficientNet-B6 menghasilkan accuracy dan F1-Score yang lebih tinggi dibandingkan CNN standar pada klasifikasi penyakit daun padi?
-**Tipe eksperimen:** [X] Comparison / [ ] Ablation / [ ] Parameter
+**RQ:** Bagaimana pengaruh variasi ukuran input citra dan jumlah epoch terhadap performa model EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi?
+**Tipe eksperimen:** [ ] Comparison / [ ] Ablation / [X] Parameter
 
-| Kondisi   | Deskripsi                               | IV Value        | CV Settings                  |
-| --------- | --------------------------------------- | --------------- | ---------------------------- |
-| Control   | Klasifikasi menggunakan CNN standar     | CNN Standar     | Dataset 3355 citra, epoch 50 |
-| Treatment | Klasifikasi menggunakan EfficientNet-B6 | EfficientNet-B6 | Dataset 3355 citra, epoch 50 |
+| Kondisi    | Deskripsi       | IV Value                | CV Settings                                 |
+| ---------- | --------------- | ----------------------- | ------------------------------------------- |
+| Skenario 1 | EfficientNet-B6 | Input 224×224, Epoch 25 | Dataset Rice Leafs, 5-Fold Cross Validation |
+| Skenario 2 | EfficientNet-B6 | Input 224×224, Epoch 50 | Dataset Rice Leafs, 5-Fold Cross Validation |
+| Skenario 3 | EfficientNet-B6 | Input 528×528, Epoch 25 | Dataset Rice Leafs, 5-Fold Cross Validation |
+| Skenario 4 | EfficientNet-B6 | Input 528×528, Epoch 50 | Dataset Rice Leafs, 5-Fold Cross Validation |
+
 
 
 ---
@@ -133,13 +151,13 @@ Susun desain eksperimen berdasarkan RQ, variabel, dan sistem dari WS-04 sampai W
 
 Evaluasi apakah desain eksperimen di Latihan 1 sudah fair.
 
-| Kriteria                 | Status   | Detail                                          |
-| ------------------------ | -------- | ----------------------------------------------- |
-| **Dataset identik**      | ✅ Setara | Menggunakan dataset citra daun padi yang sama   |
-| **Preprocessing setara** | ✅ Setara | Resize dan preprocessing citra sama             |
-| **Tuning effort setara** | ✅ Setara | Jumlah epoch dan parameter training dibuat sama |
-| **Environment identik**  | ✅ Setara | Training dilakukan pada perangkat yang sama     |
-| **Metrik evaluasi sama** | ✅ Setara | Accuracy, Recall, Precision, dan F1-Score       |
+| Kriteria             | Status   | Detail                                                                          |
+| -------------------- | -------- | ------------------------------------------------------------------------------- |
+| Dataset identik      | ✅ Setara | Menggunakan dataset Rice Leafs yang sama pada seluruh skenario.                 |
+| Preprocessing setara | ✅ Setara | Resize dan preprocessing dilakukan dengan prosedur yang sama.                   |
+| Tuning effort setara | ✅ Setara | Model dan parameter selain ukuran input serta epoch dibuat sama.                |
+| Environment identik  | ✅ Setara | Pelatihan dilakukan menggunakan environment Google Colab yang sama.             |
+| Metrik evaluasi sama | ✅ Setara | Accuracy, Precision, Recall, F1-Score, dan AUC digunakan pada seluruh skenario. |
 
 
 **Ada yang tidak fair?** [ ] Ya / [X] Tidak
@@ -151,17 +169,18 @@ Evaluasi apakah desain eksperimen di Latihan 1 sudah fair.
 
 Identifikasi ancaman validitas untuk desain eksperimen ini.
 
-| Threat Type | Ancaman Spesifik                             | Mitigasi                                            |
-| ----------- | -------------------------------------------- | --------------------------------------------------- |
-| Internal    | Performa model dipengaruhi spesifikasi GPU   | Menggunakan hardware yang sama                      |
-| External    | Dataset belum mewakili semua kondisi nyata   | Menambahkan variasi data jika memungkinkan          |
-| Construct   | Accuracy terlalu tinggi pada kelas mayoritas | Menggunakan F1-Score untuk evaluasi tambahan        |
-| Conclusion  | Hasil eksperimen hanya dilakukan satu kali   | Menggunakan cross-validation dan pengujian berulang |
+| Threat Type | Ancaman Spesifik                                  | Mitigasi                                                                        |
+| ----------- | ------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Internal    | Variasi hasil akibat proses training              | Menggunakan konfigurasi eksperimen yang sama pada setiap skenario               |
+| External    | Dataset hanya berasal dari satu sumber            | Menjelaskan keterbatasan penelitian dan menyarankan pengujian pada dataset lain |
+| Construct   | Accuracy belum cukup menggambarkan performa model | Menambahkan Precision, Recall, F1-Score, dan AUC                                |
+| Conclusion  | Parameter yang diuji masih terbatas               | Kesimpulan dibatasi hanya pada kombinasi parameter yang diuji                   |
+
 
 
 **Ancaman mana yang paling sulit dimitigasi?** External Validity
 **Mengapa?**
-> Karena dataset penelitian belum tentu mewakili semua kondisi penyakit daun padi di dunia nyata seperti perbedaan pencahayaan, kualitas kamera, dan kondisi lingkungan pertanian.
+> Karena penelitian hanya menggunakan satu dataset (Rice Leafs), sehingga kemampuan model untuk melakukan generalisasi pada dataset atau kondisi lapangan yang berbeda belum dapat dipastikan.
 
 ---
 
@@ -170,6 +189,6 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 > Sebuah paper melaporkan "metode kami mengalahkan semua baseline." Apa 3 pertanyaan pertama yang harus diajukan untuk mengevaluasi klaim ini?
 
 **Jawaban:**
-1. Apakah semua metode diuji menggunakan dataset dan kondisi yang sama?
-2. Apakah baseline menggunakan parameter terbaik atau hanya default?
-3. Apakah hasil perbedaannya signifikan secara statistik dan diuji lebih dari satu kali?
+1. Apakah seluruh skenario eksperimen menggunakan dataset dan preprocessing yang sama sehingga perbandingan berlangsung secara adil?
+2. Apakah konfigurasi parameter setiap eksperimen dijelaskan secara lengkap sehingga hasilnya dapat direproduksi?
+3. Apakah peningkatan performa terlihat secara konsisten pada seluruh metrik evaluasi (Accuracy, Precision, Recall, F1-Score, dan AUC), bukan hanya pada satu metrik saja?
