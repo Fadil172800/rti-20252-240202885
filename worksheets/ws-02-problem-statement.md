@@ -67,33 +67,34 @@ Masalah riset yang layak harus memenuhi 5 kriteria:
 PROBLEM STATEMENT BUILDER
 
 Domain & Konteks
-  Domain   : Visi Komputer (Computer Vision) / Deep Learning
-  Konteks  : Klasifikasi dan identifikasi otomatis penyakit pada daun tanaman padi menggunakan citra digital
+  Domain   : Computer Vision / Deep Learning
+  Konteks  : Klasifikasi otomatis penyakit daun padi menggunakan citra digital.
 
 System Context
-  Input       : Citra digital daun tanaman padi (RGB) berukuran 224x224 atau 528x528 piksel, terbagi menjadi 4 kelas: Healthy (1488 citra), LeafBlast (779 citra), Hispa (565 citra), dan BrownSpot (523 citra) dengan total 3.355 citra
-  Process     : Preprocessing (Resize ukuran citra input), pembagian dataset menggunakan metode 5-Fold Cross Validation dengan split dataset 80:20, dilanjutkan pemodelan/pelatihan menggunakan arsitektur CNN EfficientNet-B6 dengan variasi parameter size input dan jumlah epoch
-  Output      : Label prediksi kelas kondisi kesehatan daun padi (Healthy, Leaf Blast, Hispa, atau Brown Spot)
-  Outcome     : Kemudahan bagi penyuluh pertanian dan petani dalam mendeteksi serta mengidentifikasi jenis penyakit daun padi secara cepat dan akurat demi mencegah gagal panen
-  Constraints : Kompleksitas ekstraksi fitur visual akibat kemiripan karakteristik bercak pada daun dan keterbatasan jumlah data latih pada kelas penyakit tertentu (imbalance class)
-  Stakeholders: Petani padi, penyuluh pertanian, peneliti bidang agrikultur/botani, dan akademisi AI/Deep Learning
+  Input       : Dataset Rice Leafs yang terdiri dari 3.355 citra daun padi dalam empat kelas, yaitu Healthy, Leaf Blast, Hispa, dan Brown Spot.
+  Process     : Preprocessing citra, pelatihan model EfficientNet-B6 menggunakan pendekatan Transfer Learning, kemudian evaluasi performa model menggunakan metrik klasifikasi.
+  Output      : Prediksi kelas penyakit daun padi (Healthy, Leaf Blast, Hispa, atau Brown Spot).
+  Outcome     : Membantu petani dan penyuluh pertanian melakukan identifikasi penyakit daun padi secara lebih cepat dan objektif.
+  Constraints : Dataset berasal dari sumber publik, distribusi kelas tidak seimbang, serta kondisi citra belum sepenuhnya merepresentasikan kondisi nyata di lapangan.
+  Stakeholders: Petani, penyuluh pertanian, peneliti bidang Artificial Intelligence, dan akademisi.
 
 Fenomena → Problem
-  Fenomena yang diamati           : Sektor pertanian padi sering mengalami penurunan kualitas hingga gagal panen akibat keterlambatan diagnosis manual penyakit daun oleh petani dan penyuluh
-  Gejala (symptom) yang terukur   : Rendahnya akurasi dan tingginya subjektivitas identifikasi manual yang berdampak pada salah penanganan obat/metode pencegahan
-  Masalah yang didiagnosis        : Kurangnya alat bantu otomatis berbasis kecerdasan buatan yang mampu mengenali pola visual penyakit daun padi secara presisi dan efisien dalam volume besar
-  Masalah riset (researchable)    : Bagaimana pengaruh variasi parameter size input (224 vs 528) dan jumlah epoch (25 vs 50) terhadap performa arsitektur CNN EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi?
-  Variabel yang terukur           : Akurasi (%), Presisi (%), Recall (%), F1-Score (%), dan Area Under the Curve (AUC)
+  Fenomena yang diamati           : Identifikasi penyakit daun padi masih banyak dilakukan secara manual sehingga memerlukan waktu dan bergantung pada pengalaman pengamat.
+  Gejala (symptom) yang terukur   : Kesalahan identifikasi penyakit dapat menyebabkan keterlambatan penanganan sehingga menurunkan hasil panen.
+  Masalah yang didiagnosis        : Belum optimalnya pemanfaatan model Deep Learning sebagai alat bantu identifikasi penyakit daun padi.
+  Masalah riset (researchable)    : Bagaimana performa model EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi berdasarkan citra digital?
+  Variabel yang terukur           : Accuracy, Precision, Recall, F1-Score, AUC, dan Confusion Matrix.
 
 Problem Quality Check
-  [x] Clarity — Masalah deteksi penyakit daun padi dan pengujian arsitektur spesifik sangat jelas digambarkan
-  [x] Measurability — Menggunakan metrik evaluasi kuantitatif yang standar (akurasi, presisi, recall, F1-score, AUC)
-  [x] Relevance — Relevan dengan isu ketahanan pangan nasional dan penerapan AI di bidang agrikultur
-  [x] Testability — Dapat diuji dan dibuktikan secara empiris melalui 4 skenario eksperimen dengan 5-Fold Cross Validation
-  [x] Impact — Memberikan model klasifikasi dengan performa optimal (akurasi mencapai 77.05% dan AUC 0.90 - 0.93) sebagai acuan sistem deteksi dini
+  [x] Clarity
+  [x] Measurability
+  [x] Relevance
+  [x] Testability
+  [x] Impact
 
-Problem Statement (1 paragraf):
-  Keterlambatan dan ketidakakuratan dalam mendiagnosis penyakit pada daun padi sering kali memicu kegagalan panen akibat minimnya alat bantu identifikasi otomatis yang presisi bagi petani dan penyuluh lapangan. Penelitian ini mengusulkan penerapan model Deep Learning menggunakan arsitektur CNN EfficientNet-B6 untuk melakukan klasifikasi otomatis pada empat kondisi daun padi (Healthy, Leaf Blast, Hispa, dan Brown Spot). Melalui pengujian 4 skenario eksperimen dengan metode 5-Fold Cross Validation, penelitian ini membuktikan bahwa kombinasi parameter size input 224 dan 50 epoch mampu menghasilkan performa klasifikasi paling optimal dengan akurasi tertinggi sebesar 77.05% serta nilai AUC berkisar antara 0.90 hingga 0.93, sehingga layak dijadikan solusi teknologi pendeteksian dini penyakit tanaman pangan.
+Problem Statement (1 paragraf)
+
+Identifikasi penyakit daun padi secara manual masih memerlukan waktu, pengalaman, dan berpotensi menimbulkan kesalahan diagnosis sehingga dapat menghambat penanganan penyakit pada tanaman. Salah satu pendekatan yang banyak digunakan adalah pemanfaatan Deep Learning untuk melakukan klasifikasi citra penyakit tanaman secara otomatis. Artikel yang dianalisis mengusulkan penggunaan arsitektur EfficientNet-B6 sebagai model klasifikasi penyakit daun padi menggunakan dataset Rice Leafs. Penelitian tersebut menjadi dasar dalam menyusun proposal penelitian untuk mengevaluasi penerapan EfficientNet-B6 sebagai solusi klasifikasi penyakit daun padi menggunakan pendekatan Transfer Learning.
 ```
 
 ---
@@ -105,52 +106,55 @@ Pilih satu topik di bidang TI yang diminati. Transformasikan melalui 5 tahap Pro
 **Topik awal:** Klasifikasi Penyakit Daun Padi Menggunakan Deep Learning
 
 
-| Tahap | Hasil |
-|-------|-------|
-| Reality | Tanaman padi merupakan komoditas pangan utama di Indonesia yang sangat rentan terhadap penyakit daun, namun proses diagnosis oleh petani saat ini masih dilakukan secara manual |
-| Observed Issue (Symptom) | Proses diagnosis manual sering terlambat, subjektif, dan tidak akurat, sehingga petani kesulitan menentukan solusi penanganan yang tepat dan berujung pada penurunan hasil panen |
-| Diagnosed Problem (Root Cause) | Kurangnya pemanfaatan sistem visi komputer (computer vision) berbasis deep learning yang dievaluasi secara sistematis untuk mengenali karakteristik visual penyakit daun secara cepat dan akurat |
-| Researchable Problem | Sejauh mana efektivitas arsitektur Convolutional Neural Network (CNN) EfficientNet-B6 dengan variasi ukuran citra input (size input) dan jumlah epoch dalam mengklasifikasikan 4 jenis kondisi daun padi?|
-| Measurable Variable | Nilai Akurasi, Presisi, Recall, F1-Score, dan nilai AUC (Area Under the Curve) dari model yang dievaluasi menggunakan 5-Fold Cross Validation |
+| Tahap                          | Hasil                                                                                                                   |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| Reality                        | Penyakit daun padi masih banyak didiagnosis secara manual sehingga proses identifikasi memerlukan waktu dan pengalaman. |
+| Observed Issue (Symptom)       | Kesalahan identifikasi menyebabkan keterlambatan penanganan penyakit yang berdampak pada penurunan hasil panen.         |
+| Diagnosed Problem (Root Cause) | Belum optimalnya penerapan model Deep Learning untuk membantu identifikasi penyakit daun padi secara otomatis.          |
+| Researchable Problem           | Bagaimana kemampuan model EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi berdasarkan citra digital?        |
+| Measurable Variable            | Accuracy, Precision, Recall, F1-Score, AUC, dan Confusion Matrix.                                                       |
+
 
 Apakah terjebak solution-first thinking? [ ] Ya / [x] Tidak
 
-Justifikasi: Penelitian ini didasarkan pada masalah nyata di lapangan, yaitu keterlambatan dan rendahnya akurasi diagnosis manual penyakit daun padi oleh petani yang sering memicu gagal panen, sebelum akhirnya mengajukan solusi pemodelan menggunakan arsitektur EfficientNet-B6 dengan parameterisasi yang optimal.
+Justifikasi: Permasalahan penelitian diawali dari kebutuhan identifikasi penyakit daun padi yang masih dilakukan secara manual. Solusi berupa penggunaan EfficientNet-B6 dipilih setelah dilakukan kajian terhadap artikel yang menjadi referensi penelitian.
 ---
 
 ## Latihan 2 — System Context Decomposition
 
 Gambarkan konteks sistem dari masalah riset di Latihan 1.
 
-| Komponen | Deskripsi |
-|----------|----------|
-| Input | 3.355 citra digital daun padi yang terdiri dari 4 kelas: Healthy (1488), Leaf Blast (779), Hispa (565), dan Brown Spot (523)|
-| Process | Preprocessing berupa resize citra, pembagian dataset dengan rasio 80:20, penerapan teknik 5-Fold Cross Validation, dan pelatihan model klasifikasi menggunakan arsitektur EfficientNet-B6 dengan variasi ukuran input (224 / 528) dan epoch (25 / 50) |
-| Output | Hasil prediksi kelas kondisi daun padi (Healthy, Leaf Blast, Hispa, atau Brown Spot) beserta probabilitas klasifikasinya |
-| Outcome | Terwujudnya sistem diagnosis dini penyakit tanaman padi yang akurat untuk membantu meminimalkan risiko gagal panen dan mempermudah kerja penyuluh pertanian |
-| Constraints | Ketidakseimbangan jumlah data antar kelas (imbalance class) dan kemiripan visual pola bercak antar penyakit yang dapat memengaruhi sensitivitas ekstraksi fitur model |
-| Stakeholders |Petani padi, Penyuluh Pertanian, Peneliti AI di bidang Agrikultur, dan Dinas Pertanian |
+| Komponen     | Deskripsi                                                                                                                                                       |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Input        | Dataset Rice Leafs sebanyak 3.355 citra yang terdiri dari empat kelas penyakit daun padi.                                                                       |
+| Process      | Preprocessing citra, pelatihan model EfficientNet-B6 menggunakan pendekatan Transfer Learning, kemudian evaluasi performa model menggunakan metrik klasifikasi. |
+| Output       | Prediksi kelas penyakit daun padi beserta probabilitas hasil klasifikasi.                                                                                       |
+| Outcome      | Membantu proses identifikasi penyakit daun padi secara lebih cepat dan objektif.                                                                                |
+| Constraints  | Dataset publik, distribusi kelas tidak seimbang, serta kondisi citra belum sepenuhnya mewakili kondisi nyata di lapangan.                                       |
+| Stakeholders | Petani, penyuluh pertanian, peneliti Artificial Intelligence, dan akademisi.                                                                                    |
+
 
 **
-Komponen mana yang paling relevan dengan masalah riset? Komponen Process. Hal ini dikarenakan fokus utama dari eksperimen riset ini adalah menguji dan membandingkan skenario parameterisasi (kombinasi size input dan jumlah epoch) pada arsitektur pemodelan EfficientNet-B6 guna menemukan konfigurasi terbaik yang menghasilkan akurasi klasifikasi tertinggi.
+Komponen mana yang paling relevan dengan masalah riset? Komponen Process.Fokus utama artikel adalah mengevaluasi kemampuan model EfficientNet-B6 dalam melakukan klasifikasi penyakit daun padi melalui proses pelatihan dan evaluasi model.
 
 
 ## Latihan 3 — Problem Quality Check
 
 Evaluasi problem statement yang sudah dibuat menggunakan 5 kriteria.
 
-| Kriteria | Skor (1-5) | Justifikasi |
-|----------|-----------|-------------|
-| Clarity | 5 | Masalah yang diangkat sangat jelas, yaitu bagaimana meminimalkan kesalahan identifikasi penyakit daun padi melalui optimasi arsitektur EfficientNet-B6 |
-| Measurability | 5 | Kinerja model diukur menggunakan parameter evaluasi matematis yang baku seperti Akurasi, Presisi, Recall, F1-score, dan AUC |
-| Relevance | 5 | Sangat relevan dengan kebutuhan sektor pertanian di Indonesia yang mengandalkan padi sebagai makanan pokok utama |
-| Testability | 5 | Eksperimen dirancang dengan skenario kuantitatif yang jelas (4 skenario pengujian parameter) sehingga sangat mudah direplikasi oleh peneliti lain |
-| Impact | 4 | Memberikan kontribusi nyata berupa model dengan tingkat akurasi mencapai 77.05% dan AUC hingga 0.93 untuk diintegrasikan ke sistem aplikasi pertanian |
+| Kriteria      | Skor (1–5) | Justifikasi                                                                                         |
+| ------------- | ---------- | --------------------------------------------------------------------------------------------------- |
+| Clarity       | 5          | Permasalahan identifikasi penyakit daun padi dijelaskan secara jelas dan spesifik.                  |
+| Measurability | 5          | Performa model diukur menggunakan Accuracy, Precision, Recall, F1-Score, AUC, dan Confusion Matrix. |
+| Relevance     | 5          | Relevan dengan penerapan Artificial Intelligence pada bidang pertanian.                             |
+| Testability   | 5          | Permasalahan dapat diuji menggunakan model Deep Learning dan dataset citra daun padi.               |
+| Impact        | 5          | Berpotensi membantu proses identifikasi penyakit daun padi secara lebih cepat dan akurat.           |
 
-**Skor total:** 24 / 25
+
+**Skor total:** 25 / 25
 
 **Problem statement versi final (1 paragraf):**
-Identifikasi penyakit pada daun padi secara manual oleh petani sering kali mengalami keterlambatan dan ketidakakuratan karena keterbatasan pengetahuan taksonomi penyakit, yang pada akhirnya memicu risiko gagal panen dalam skala besar. Penelitian ini mengatasi permasalahan tersebut dengan merancang sistem klasifikasi otomatis menggunakan arsitektur Deep Learning EfficientNet-B6 yang diuji melalui 4 skenario kombinasi parameter size input (224 dan 528) serta jumlah epoch (25 dan 50) dengan validasi 5-Fold Cross Validation. Hasil eksperimen membuktikan bahwa konfigurasi size input 224 dan 50 epoch sukses memberikan kinerja terbaik dengan tingkat akurasi rata-rata tertinggi sebesar 77.05% dan nilai AUC 0.90 - 0.93. Hal ini membuktikan bahwa metode yang diusulkan sangat andal dan efisien untuk diimplementasikan sebagai sistem deteksi dini penyakit tanaman guna mendukung ketahanan pangan nasional.
+Identifikasi penyakit daun padi secara manual masih memiliki keterbatasan karena membutuhkan pengalaman, waktu, dan ketelitian pengamat sehingga berpotensi menyebabkan keterlambatan penanganan penyakit. Berdasarkan artikel yang dianalisis, model EfficientNet-B6 merupakan salah satu pendekatan Deep Learning yang dapat dimanfaatkan untuk melakukan klasifikasi penyakit daun padi secara otomatis menggunakan dataset Rice Leafs. Hasil analisis terhadap artikel tersebut menjadi dasar dalam penyusunan proposal penelitian yang selanjutnya akan mengimplementasikan dan mengevaluasi model EfficientNet-B6 menggunakan pendekatan Transfer Learning.
 ---
 
 ## Refleksi
@@ -158,4 +162,4 @@ Identifikasi penyakit pada daun padi secara manual oleh petani sering kali menga
 > Bandingkan "masalah" yang biasa ditemui saat coding (bug, error) dengan masalah riset. Apa perbedaan fundamental dalam cara mendefinisikan dan mendekati keduanya?
 
 **Jawaban:**
-Perbedaan fundamentalnya adalah masalah coding bersifat taktis dan deterministik, di mana tujuannya adalah memperbaiki kegagalan teknis sistem (debugging) agar kembali berfungsi sesuai spesifikasi baku; sementara masalah riset bersifat strategis dan terbuka, yang bertujuan mengisi celah pengetahuan (knowledge gap) dengan menguji metode atau parameter baru secara empiris lewat metode ilmiah guna menghasilkan kontribusi ilmiah yang dapat dibuktikan serta direplikasi.
+Masalah pada proses pemrograman umumnya bersifat teknis, seperti bug atau error yang dapat diselesaikan dengan memperbaiki kode agar sistem berjalan sesuai spesifikasi. Sebaliknya, masalah riset berfokus pada pencarian dan pembuktian pengetahuan baru melalui proses ilmiah. Dalam penelitian ini, masalah yang dikaji bukan hanya bagaimana membangun model klasifikasi, tetapi juga bagaimana membuktikan bahwa model tersebut layak digunakan berdasarkan hasil evaluasi yang objektif. Oleh karena itu, pendekatan penyelesaiannya memerlukan analisis literatur, penyusunan proposal, implementasi, dan evaluasi secara sistematis.
