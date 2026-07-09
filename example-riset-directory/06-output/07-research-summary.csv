@@ -1,0 +1,2 @@
+Model,Dataset,Total Images,Classes,Input Size,Epoch,Validation Accuracy,Validation Loss
+EfficientNet-B6,Rice Leafs,3355,4,224 x 224,25,0.6602086424827576,0.930475652217865
