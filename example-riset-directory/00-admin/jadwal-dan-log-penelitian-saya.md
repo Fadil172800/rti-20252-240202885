@@ -1,10 +1,12 @@
 # Jadwal & Log Pelaksanaan Penelitian
 
-Nama: Syukron Nur Fadillah
-NIM: 240202885
-Judul: Klasifikasi Penyakit Daun Padi Menggunakan EfficientNet-B6 dengan Pendekatan Transfer Learning
-Dataset: Rice Leafs (3.355 citra, 4 kelas)
-Platform: Google Colab Free (Python 3, TensorFlow 2.x)
+| Keterangan              | Informasi                                                                                      |
+| ----------------------- | ---------------------------------------------------------------------------------------------- |
+| **Nama Peneliti**       | Syukron Nur Fadillah                                                                           |
+| **NIM**                 | 240202885                                                                                      |
+| **Judul Penelitian**    | Klasifikasi Penyakit Daun Padi Menggunakan EfficientNet-B6 dengan Pendekatan Transfer Learning |
+| **Dataset**             | Rice Leafs (3.355 citra, 4 kelas: Healthy, Leaf Blast, Hispa, dan Brown Spot)                  |
+| **Platform Penelitian** | Google Colab Free (Python 3, TensorFlow 2.x)                                                   |
 
 Catatan kronologis pelaksanaan penelitian berdasarkan proposal, implementasi pada Google Colab, dan hasil eksperimen.
 
