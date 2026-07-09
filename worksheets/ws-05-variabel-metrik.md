@@ -64,25 +64,28 @@ Metrik harus ditentukan **sebelum** eksperimen. Memilih metrik setelah melihat d
 ## Template A.5 — Definisi Variabel, Metrik & Justifikasi
 
 ```
-**VARIABLE & METRIC DEFINITION**
+VARIABLE & METRIC DEFINITION
 
-**Research Question:**  
-Apakah metode EfficientNet-B6 menghasilkan accuracy dan F1-Score yang lebih tinggi dibandingkan CNN standar pada klasifikasi penyakit daun padi?
+Research Question
+
+Bagaimana performa model EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi berdasarkan metrik Accuracy, Precision, Recall, dan F1-Score?
 
 | Variabel | Tipe | Konsep | Metrik | Skala | Satuan | Cara Mengukur | Justifikasi |
 |----------|------|--------|--------|-------|--------|---------------|-------------|
-| **Jenis Model Deep Learning** | IV | Metode klasifikasi citra | EfficientNet-B6 vs CNN standar | Nominal | - | Menentukan model yang digunakan saat training | Digunakan untuk membandingkan performa dua metode |
-| **Accuracy** | DV | Ketepatan klasifikasi | Accuracy Score | Ratio | % | Menggunakan confusion matrix hasil pengujian model | Accuracy menunjukkan tingkat prediksi benar model |
-| **Precision** | DV | Ketepatan prediksi positif | Precision Score | Ratio | % | Perhitungan TP / (TP + FP) | Mengukur ketepatan model dalam prediksi kelas |
-| **Recall** | DV | Kemampuan menemukan data positif | Recall Score | Ratio | % | Perhitungan TP / (TP + FN) | Mengukur kemampuan model mendeteksi semua kelas |
-| **F1-Score** | DV | Keseimbangan precision dan recall | F1-Score | Ratio | % | Perhitungan harmonic mean precision dan recall | Digunakan pada data yang tidak seimbang |
-| **Jumlah Epoch** | CV | Intensitas training model | 25 dan 50 epoch | Ratio | epoch | Parameter training model | Menjaga konsistensi eksperimen |
-| **Ukuran Input Citra** | CV | Resolusi citra | 224 dan 528 | Ratio | pixel | Resize citra sebelum training | Memastikan perbandingan model adil |
+| Model EfficientNet-B6 | IV | Model Deep Learning untuk klasifikasi citra | EfficientNet-B6 | Nominal | - | Model yang digunakan pada proses pelatihan | Menjadi objek utama yang dievaluasi pada artikel |
+| Accuracy | DV | Tingkat ketepatan klasifikasi | Accuracy Score | Ratio | % | Perhitungan berdasarkan confusion matrix | Mengukur persentase prediksi yang benar |
+| Precision | DV | Ketepatan prediksi pada setiap kelas | Precision Score | Ratio | % | TP / (TP + FP) | Mengukur ketepatan prediksi positif |
+| Recall | DV | Kemampuan mendeteksi seluruh data positif | Recall Score | Ratio | % | TP / (TP + FN) | Mengukur sensitivitas model |
+| F1-Score | DV | Keseimbangan Precision dan Recall | F1-Score | Ratio | % | Harmonic Mean Precision dan Recall | Cocok digunakan pada dataset yang tidak seimbang |
+| AUC | DV | Kemampuan model membedakan setiap kelas | Area Under Curve | Ratio | - | Perhitungan ROC Curve | Mengukur kualitas klasifikasi secara keseluruhan |
 
-**Alignment Check:**
-* [x] Setiap langkah terdokumentasi
-* [x] Tidak ada lompatan logis
-* [x] Metrik mengukur apa yang dimaksud (construct validity)
+Alignment Check
+
+[x] Setiap langkah terdokumentasi
+
+[x] Tidak ada lompatan logis
+
+[x] Metrik mengukur variabel yang dimaksud (construct validity)
 ```
 
 ---
@@ -91,48 +94,52 @@ Apakah metode EfficientNet-B6 menghasilkan accuracy dan F1-Score yang lebih ting
 
 Gunakan RQ dari WS-04. Definisikan variabel dan metriknya.
 
-**RQ:** Apakah metode EfficientNet-B6 menghasilkan accuracy dan F1-Score yang lebih tinggi dibandingkan CNN standar pada klasifikasi penyakit daun padi?
+**RQ:** Bagaimana performa model EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi berdasarkan Accuracy, Precision, Recall, dan F1-Score?
 
-| Variabel         | Tipe | Konsep Abstrak                    | Metrik Konkret                 | Skala (NOIR) | Satuan |
-| ---------------- | ---- | --------------------------------- | ------------------------------ | ------------ | ------ |
-| **Jenis Model**  | IV   | Metode deep learning              | EfficientNet-B6 vs CNN standar | Nominal      | -      |
-| **Accuracy**     | DV   | Ketepatan klasifikasi             | Accuracy Score                 | Ratio        | %      |
-| **F1-Score**     | DV   | Keseimbangan precision dan recall | F1-Score                       | Ratio        | %      |
-| **Jumlah Epoch** | CV   | Intensitas training               | 25 dan 50 epoch                | Ratio        | epoch  |
+| Variabel              | Tipe | Konsep Abstrak                    | Metrik Konkret   | Skala (NOIR) | Satuan |
+| --------------------- | ---- | --------------------------------- | ---------------- | ------------ | ------ |
+| Model EfficientNet-B6 | IV   | Model Deep Learning               | EfficientNet-B6  | Nominal      | -      |
+| Accuracy              | DV   | Ketepatan klasifikasi             | Accuracy Score   | Ratio        | %      |
+| Precision             | DV   | Ketepatan prediksi                | Precision Score  | Ratio        | %      |
+| Recall                | DV   | Kemampuan menemukan data positif  | Recall Score     | Ratio        | %      |
+| F1-Score              | DV   | Keseimbangan Precision dan Recall | F1-Score         | Ratio        | %      |
+| AUC                   | DV   | Kemampuan klasifikasi             | Area Under Curve | Ratio        | -      |
+
 
 
 **Apakah ada lompatan logis dalam rantai?** [ ] Ya / [X] Tidak
 > Justifikasi:
-Accuracy dan F1-Score merupakan metrik standar pada klasifikasi citra sehingga valid digunakan untuk mengukur performa model deep learning.
+Accuracy, Precision, Recall, F1-Score, dan AUC merupakan metrik evaluasi yang umum digunakan pada penelitian klasifikasi citra sehingga sesuai untuk mengukur performa model EfficientNet-B6.
 ---
 
 ## Latihan 2 — Evaluasi Metrik
 
 Evaluasi metrik DV yang dipilih di Latihan 1 menggunakan 3 kriteria.
 
-| Kriteria           | Skor (1-5) | Justifikasi                                                       |
-| ------------------ | ---------- | ----------------------------------------------------------------- |
-| **Representative** | 5          | Accuracy secara langsung menunjukkan performa klasifikasi model   |
-| **Sensitive**      | 4          | Accuracy cukup sensitif dalam mendeteksi perubahan performa model |
-| **Feasible**       | 5          | Accuracy mudah dihitung menggunakan confusion matrix              |
+| Kriteria       | Skor (1–5) | Justifikasi                                                                                         |
+| -------------- | ---------- | --------------------------------------------------------------------------------------------------- |
+| Representative | **5**      | Accuracy, Precision, Recall, dan F1-Score secara langsung menggambarkan performa model klasifikasi. |
+| Sensitive      | **5**      | Perubahan performa model akan terlihat pada perubahan nilai setiap metrik evaluasi.                 |
+| Feasible       | **5**      | Seluruh metrik dapat dihitung secara otomatis menggunakan library Scikit-Learn.                     |
 
 **Apakah perlu secondary metric?** [x] Ya
-> **Apa dan mengapa?** **Resource Usage (CPU/RAM Usage)**. F1-Score diperlukan karena dataset memiliki beberapa kelas yang jumlah datanya tidak seimbang sehingga accuracy saja belum cukup.
-**Contoh kasus ceiling effect untuk metrik ini:**
-> Jika semua model memiliki accuracy yang hampir sama tinggi, maka perbedaan performa antar model menjadi sulit terlihat hanya menggunakan accuracy.
+> **Apa dan mengapa?**AUC digunakan sebagai metrik tambahan karena mampu menggambarkan kemampuan model dalam membedakan setiap kelas secara keseluruhan.
 
+**Contoh kasus ceiling effect untuk metrik ini:**
+> Jika dua model memiliki Accuracy yang hampir sama, maka Precision, Recall, F1-Score, dan AUC dapat memberikan informasi tambahan mengenai kualitas klasifikasi pada setiap kelas.
 ---
 
 ## Latihan 3 — Data Quality Check
 
 Bayangkan data yang akan dikumpulkan dari eksperimen. Evaluasi 4 dimensi kualitas data.
 
-| Dimensi                | Pertanyaan                          | Jawaban                                    | Strategi Mitigasi                           |
-| ---------------------- | ----------------------------------- | ------------------------------------------ | ------------------------------------------- |
-| **Completeness**       | Apakah semua data tersedia?         | Ya, semua citra digunakan dalam eksperimen | Memastikan tidak ada data rusak atau hilang |
-| **Consistency**        | Apakah data konsisten?              | Ya, semua citra memiliki format yang sama  | Melakukan preprocessing dan resize citra    |
-| **Validity**           | Apakah data mengukur yang dimaksud? | Ya, citra memang berisi penyakit daun padi | Menggunakan dataset terpercaya              |
-| **Representativeness** | Apakah data mewakili kondisi nyata? | Sebagian besar ya                          | Menggunakan beberapa kelas penyakit berbeda |
+| Dimensi            | Pertanyaan                                | Jawaban  | Strategi Mitigasi                                                                                    |
+| ------------------ | ----------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------- |
+| Completeness       | Apakah seluruh data tersedia?             | Ya       | Memastikan seluruh citra berhasil dimuat sebelum proses pelatihan.                                   |
+| Consistency        | Apakah format data seragam?               | Ya       | Seluruh citra diproses menggunakan ukuran dan format yang sama.                                      |
+| Validity           | Apakah data mengukur objek yang dimaksud? | Ya       | Menggunakan dataset Rice Leafs yang telah diberi label penyakit daun padi.                           |
+| Representativeness | Apakah data mewakili kondisi nyata?       | Sebagian | Mengakui bahwa dataset publik memiliki keterbatasan sehingga diperlukan pengujian pada dataset lain. |
+
 
 ---
 
@@ -141,4 +148,4 @@ Bayangkan data yang akan dikumpulkan dari eksperimen. Evaluasi 4 dimensi kualita
 > Mengapa memilih metrik setelah melihat data dianggap p-hacking? Apa bedanya dengan eksplorasi data yang sah?
 
 **Jawaban:**
-> Memilih metrik setelah melihat hasil eksperimen disebut p-hacking karena peneliti dapat memilih metrik yang hanya mendukung hasil yang diinginkan. Hal tersebut membuat penelitian menjadi tidak objektif. Sedangkan eksplorasi data yang sah dilakukan untuk menemukan pola baru tanpa memanipulasi hasil utama penelitian.
+> Memilih metrik setelah melihat hasil eksperimen dapat menyebabkan p-hacking, karena peneliti cenderung hanya memilih metrik yang mendukung hasil yang diinginkan sehingga mengurangi objektivitas penelitian. Sebaliknya, eksplorasi data yang sah dilakukan untuk memahami karakteristik data tanpa mengubah tujuan penelitian maupun metrik utama yang telah ditentukan sejak awal.
