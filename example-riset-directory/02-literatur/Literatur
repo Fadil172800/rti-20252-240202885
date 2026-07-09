@@ -1,184 +1,280 @@
 # 02-literatur
 
-Kumpulan referensi ilmiah yang digunakan sebagai dasar penyusunan tinjauan pustaka pada penelitian **Klasifikasi Penyakit Daun Padi Menggunakan Transfer Learning EfficientNet-B6**.
+Dokumen pada folder ini berisi kumpulan referensi ilmiah yang digunakan sebagai dasar penyusunan proposal, tinjauan pustaka, serta landasan teori penelitian berjudul:
+
+> **Klasifikasi Penyakit Daun Padi Menggunakan EfficientNet-B6 dengan Pendekatan Transfer Learning**
+
+Seluruh referensi diperoleh melalui Google Scholar, IEEE Xplore, ScienceDirect, SpringerLink, Kaggle Documentation, TensorFlow Documentation, dan sumber ilmiah lain yang relevan.
 
 ---
 
-## Topik Referensi yang Relevan
+# Topik Literatur
 
-Referensi yang dikumpulkan pada penelitian ini meliputi beberapa topik berikut.
+## 1. Artificial Intelligence (AI)
 
-### Artificial Intelligence
+Pembahasan mengenai konsep Artificial Intelligence sebagai dasar pengembangan sistem cerdas yang mampu melakukan proses pengambilan keputusan secara otomatis.
+
+Materi yang dikaji meliputi:
+
 - Konsep Artificial Intelligence
-- Perkembangan AI di bidang pertanian
+- Perkembangan AI
+- AI pada bidang pertanian (Smart Agriculture)
 
-### Machine Learning
-- Konsep Machine Learning
+---
+
+## 2. Machine Learning
+
+Literatur mengenai Machine Learning sebagai cabang Artificial Intelligence yang digunakan untuk membangun model prediksi berdasarkan data.
+
+Topik yang dipelajari:
+
+- Machine Learning
 - Supervised Learning
+- Classification
 - Image Classification
 
-### Deep Learning
-- Konsep Deep Learning
-- Neural Network
-- Transfer Learning
+---
 
-### Convolutional Neural Network (CNN)
-- Arsitektur CNN
+## 3. Deep Learning
+
+Kajian mengenai Deep Learning sebagai pendekatan utama penelitian.
+
+Topik meliputi:
+
+- Artificial Neural Network
+- Deep Neural Network
+- Transfer Learning
+- Fine Tuning
 - Feature Extraction
+
+---
+
+## 4. Convolutional Neural Network (CNN)
+
+Kajian mengenai arsitektur CNN sebagai dasar EfficientNet.
+
+Materi yang dipelajari:
+
+- Convolution Layer
 - Pooling Layer
+- Activation Function
 - Fully Connected Layer
 - Softmax Classifier
 
-### EfficientNet
+---
+
+## 5. EfficientNet
+
+Literatur utama mengenai arsitektur EfficientNet.
+
+Topik yang dikaji:
+
 - EfficientNet
 - Compound Scaling
-- EfficientNet-B0 sampai EfficientNet-B7
+- EfficientNet B0–B7
 - EfficientNet-B6
+- Transfer Learning pada EfficientNet
 
-### Computer Vision
-- Image Processing
+---
+
+## 6. Computer Vision
+
+Literatur mengenai pengolahan citra digital.
+
+Topik meliputi:
+
+- Digital Image Processing
+- Computer Vision
 - Image Classification
-- Object Recognition
+- Pattern Recognition
 
-### TensorFlow & Keras
-- TensorFlow Framework
+---
+
+## 7. TensorFlow dan Keras
+
+Kajian framework yang digunakan pada implementasi penelitian.
+
+Materi meliputi:
+
+- TensorFlow
 - Keras API
+- TensorFlow Dataset Pipeline
 - Model Training
 - Model Evaluation
 
-### Rice Leaf Disease
-- BrownSpot
-- Healthy
-- Hispa
-- LeafBlast
+---
 
-### Dataset
-- Rice Leaf Disease Dataset
-- Kaggle Rice Leafs Dataset
+## 8. Rice Leaf Disease
+
+Kajian mengenai penyakit daun padi yang menjadi objek penelitian.
+
+Kelas penyakit:
+
+- Healthy
+- Brown Spot
+- Hispa
+- Leaf Blast
+
+---
+
+## 9. Dataset
+
+Literatur mengenai dataset yang digunakan.
+
+Topik:
+
+- Rice Leafs Dataset
+- Kaggle Dataset
 - Data Preprocessing
 - Image Resizing
-- Normalization
+- Dataset Splitting (80:20)
 
-### Evaluasi Model
+---
+
+## 10. Evaluasi Model
+
+Kajian mengenai metrik evaluasi model klasifikasi.
+
+Metrik yang digunakan:
+
 - Accuracy
 - Precision
 - Recall
 - F1-Score
 - Confusion Matrix
 - Classification Report
-- ROC Curve (Referensi)
-- AUC (Referensi)
 
 ---
 
-## Referensi Utama
+# Referensi Utama
 
-1. Milano, A. C., Yasid, A., & Wahyuningrum, R. T.
-   **Klasifikasi Penyakit Daun Padi Menggunakan Model Deep Learning EfficientNet-B6.**
-   JITET (Jurnal Informatika dan Teknik Elektro Terapan), Vol.12 No.1, 2024.
+1. Milano, A. C., Yasid, A., & Wahyuningrum, R. T. (2024).
 
----
+**Klasifikasi Penyakit Daun Padi Menggunakan Model Deep Learning EfficientNet-B6.**
 
-## Referensi Pendukung yang Direkomendasikan
+JITET (Jurnal Informatika dan Teknik Elektro Terapan), Vol.12 No.1.
 
-### Dasar Artificial Intelligence
-
-1. Stuart Russell & Peter Norvig
-   Artificial Intelligence: A Modern Approach.
+→ Referensi utama penelitian ini karena menjadi dasar penyusunan proposal dan implementasi model EfficientNet-B6.
 
 ---
 
-### Machine Learning
+# Referensi Pendukung
 
-2. Tom M. Mitchell
-   Machine Learning.
+## Artificial Intelligence
 
-3. Aurélien Géron
-   Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow.
-
----
-
-### Deep Learning
-
-4. Ian Goodfellow, Yoshua Bengio, Aaron Courville
-   Deep Learning.
+- Russell, S., & Norvig, P.
+  *Artificial Intelligence: A Modern Approach.*
 
 ---
 
-### CNN
+## Machine Learning
 
-5. Yann LeCun et al.
-   Gradient-Based Learning Applied to Document Recognition.
+- Mitchell, T. M.
+  *Machine Learning.*
 
-6. Alex Krizhevsky et al.
-   ImageNet Classification with Deep Convolutional Neural Networks.
-
----
-
-### EfficientNet
-
-7. Mingxing Tan & Quoc V. Le
-   EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks.
-
-8. Plant Leaf Disease Classification using EfficientNet Deep Learning Model.
-
-9. Classification of Beans Leaf Diseases using Fine Tuned CNN Model.
-
-10. Evaluation of Diverse Convolutional Neural Networks and Training Strategies for Wheat Leaf Disease Identification.
-
-11. Deep Learning untuk Klasifikasi Glaukoma menggunakan EfficientNet.
+- Géron, A.
+  *Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow.*
 
 ---
 
-### Rice Leaf Disease
+## Deep Learning
 
-12. Implementasi Deep Learning pada Sistem Klasifikasi Hama Tanaman Padi Menggunakan CNN.
-
-13. Deteksi Penyakit Pada Daun Tanaman Padi Menggunakan Convolutional Neural Network.
-
-14. Klasifikasi Penyakit Daun Padi menggunakan Random Forest dan Color Histogram.
-
-15. Diagnosis Penyakit Tanaman Padi Menggunakan Metode PROMETHEE.
+- Goodfellow, I., Bengio, Y., & Courville, A.
+  *Deep Learning.*
 
 ---
 
-### TensorFlow
+## Convolutional Neural Network
 
-16. TensorFlow Official Documentation.
+- LeCun, Y., et al.
+  *Gradient-Based Learning Applied to Document Recognition.*
 
-17. Keras Official Documentation.
-
----
-
-### Computer Vision
-
-18. Digital Image Processing – Rafael C. Gonzalez.
-
-19. Computer Vision: Algorithms and Applications – Richard Szeliski.
+- Krizhevsky, A., et al.
+  *ImageNet Classification with Deep Convolutional Neural Networks.*
 
 ---
 
-## Isi yang Diharapkan
+## EfficientNet
 
-Folder ini diharapkan berisi:
+- Tan, M., & Le, Q. V.
+  *EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks.*
 
-- PDF jurnal utama
-- PDF jurnal pendukung
-- Buku elektronik (ebook)
-- Ringkasan setiap jurnal
-- Catatan hasil telaah pustaka
-- Matriks literatur
-- Daftar pustaka BibTeX (.bib)
-- Daftar pustaka RIS (.ris)
-- Sitasi Mendeley
+- Atila, Ü., Uçar, M., Akyol, K., & Uçar, E.
+  *Plant Leaf Disease Classification Using EfficientNet Deep Learning Model.*
+
+- Singh, V., Chug, A., & Singh, A. P.
+  *Classification of Beans Leaf Diseases Using Fine Tuned CNN Model.*
 
 ---
 
-## Berkas
+## Rice Leaf Disease
 
-- jurnal-utama.pdf
-- jurnal-pendukung/
-- matriks-literatur.md
-- ringkasan-jurnal.md
-- daftar-pustaka.bib
-- daftar-pustaka.ris
+- Yuliany, dkk.
+  *Implementasi Deep Learning pada Sistem Klasifikasi Hama Tanaman Padi Menggunakan CNN.*
+
+- Agustiani, dkk.
+  *Klasifikasi Penyakit Daun Padi Menggunakan Random Forest dan Color Histogram.*
+
+---
+
+## TensorFlow
+
+- TensorFlow Official Documentation
+
+- Keras Official Documentation
+
+---
+
+## Computer Vision
+
+- Gonzalez, R. C.
+  *Digital Image Processing.*
+
+- Szeliski, R.
+  *Computer Vision: Algorithms and Applications.*
+
+---
+
+# Dokumen yang Disimpan
+
+Folder **02-literatur** berisi dokumen pendukung penelitian sebagai berikut.
+
+| No | Dokumen | Status |
+|----|---------|:------:|
+| 1 | Jurnal utama penelitian | ✅ |
+| 2 | Jurnal pendukung | ✅ |
+| 3 | Ringkasan literatur | ✅ |
+| 4 | Matriks literatur | ✅ |
+| 5 | Daftar pustaka (.bib) | ✅ |
+| 6 | Daftar pustaka (.ris) | ✅ |
+| 7 | Sitasi Mendeley | ✅ |
+
+---
+
+# Struktur Folder
+
+```
+02-literatur/
+│
+├── jurnal-utama/
+│   └── Milano_2024_EfficientNetB6.pdf
+│
+├── jurnal-pendukung/
+│   ├── Tan_2019_EfficientNet.pdf
+│   ├── Atila_2021_EfficientNet.pdf
+│   ├── Singh_2023_BeansLeaf.pdf
+│   ├── Goodfellow_DeepLearning.pdf
+│   └── ...
+│
+├── matriks-literatur.md
+├── ringkasan-jurnal.md
+├── daftar-pustaka.bib
+├── daftar-pustaka.ris
+└── README.md
+```
+
+---
+
+# Catatan
+
+Seluruh referensi pada folder ini digunakan sebagai dasar penyusunan proposal penelitian, penyusunan landasan teori, identifikasi research gap, serta pembahasan hasil penelitian. Referensi dipilih berdasarkan relevansi terhadap topik **klasifikasi penyakit daun padi menggunakan EfficientNet-B6 dengan pendekatan Transfer Learning**.
