@@ -117,15 +117,16 @@ Proposal telah memiliki hubungan yang konsisten antara problem statement, resear
 
 Kumpulkan hasil dari WS-02 sampai WS-07 menjadi satu ringkasan proposal.
 
-| Komponen              | Sumber | Isi (1–2 kalimat)                                                                                                                                                                                                                                        |
-| --------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Problem Statement** | WS-02  | Identifikasi penyakit daun padi secara manual masih memerlukan waktu dan berpotensi menghasilkan kesalahan diagnosis sehingga diperlukan sistem klasifikasi otomatis berbasis Deep Learning.                                                             |
-| **Gap**               | WS-03  | Penelitian sebelumnya menunjukkan EfficientNet-B6 memiliki performa yang baik, namun implementasi menggunakan skema 5-Fold Cross Validation memerlukan sumber daya komputasi yang cukup besar sehingga kurang sesuai untuk lingkungan Google Colab Free. |
-| **Research Question** | WS-04  | Bagaimana performa model EfficientNet-B6 menggunakan pendekatan transfer learning dalam mengklasifikasikan penyakit daun padi berdasarkan metrik accuracy, precision, recall, F1-score, dan confusion matrix?                                            |
-| **Hipotesis**         | WS-04  | Model EfficientNet-B6 dengan pendekatan transfer learning mampu menghasilkan performa klasifikasi yang dapat dievaluasi menggunakan accuracy, precision, recall, F1-score, dan confusion matrix.                                                         |
-| **Variabel & Metrik** | WS-05  | Variabel bebas berupa penggunaan model EfficientNet-B6 dengan pendekatan transfer learning, sedangkan variabel terikat berupa accuracy, precision, recall, F1-score, dan confusion matrix sebagai metrik evaluasi.                                       |
-| **Sistem**            | WS-06  | Sistem klasifikasi dibangun menggunakan EfficientNet-B6 dengan bobot pretrained ImageNet yang dijalankan pada Google Colab menggunakan dataset Rice Leafs.                                                                                               |
-| **Desain Eksperimen** | WS-07  | Penelitian menggunakan satu konfigurasi model EfficientNet-B6 dengan pendekatan transfer learning menggunakan pembagian data 80% data latih dan 20% data validasi (single split) untuk mengevaluasi performa model.                                      |
+| Komponen              | Sumber | Isi (1–2 kalimat)                                                                                                                                                                                                                                           |
+| --------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Problem Statement** | WS-02  | Identifikasi penyakit daun padi secara manual masih memerlukan waktu dan berpotensi menghasilkan kesalahan diagnosis sehingga diperlukan sistem klasifikasi otomatis berbasis Deep Learning.                                                                |
+| **Gap**               | WS-03  | Penelitian sebelumnya menunjukkan bahwa EfficientNet-B6 memiliki performa yang baik, namun implementasinya masih memerlukan sumber daya komputasi yang cukup besar sehingga diperlukan penyesuaian agar dapat dijalankan pada lingkungan Google Colab Free. |
+| **Research Question** | WS-04  | Bagaimana performa model EfficientNet-B6 menggunakan pendekatan transfer learning dalam mengklasifikasikan penyakit daun padi berdasarkan Accuracy, Precision, Recall, F1-Score, dan Confusion Matrix?                                                      |
+| **Hipotesis**         | WS-04  | Model EfficientNet-B6 dengan pendekatan transfer learning mampu memberikan performa klasifikasi yang baik berdasarkan Accuracy, Precision, Recall, F1-Score, dan Confusion Matrix.                                                                          |
+| **Variabel & Metrik** | WS-05  | Variabel independen berupa penggunaan model EfficientNet-B6 dengan pendekatan transfer learning, sedangkan variabel dependen berupa Accuracy, Precision, Recall, F1-Score, Confusion Matrix, dan Classification Report.                                     |
+| **Sistem**            | WS-06  | Sistem klasifikasi dibangun menggunakan EfficientNet-B6 dengan bobot awal ImageNet dan dijalankan menggunakan Google Colab pada dataset Rice Leafs.                                                                                                         |
+| **Desain Eksperimen** | WS-07  | Penelitian menggunakan model EfficientNet-B6 dengan pendekatan transfer learning serta pembagian data 80% data latih dan 20% data validasi untuk mengevaluasi performa model.                                                                               |
+
 
 
 ---
@@ -134,24 +135,25 @@ Kumpulkan hasil dari WS-02 sampai WS-07 menjadi satu ringkasan proposal.
 
 Verifikasi 6 koneksi kritis berdasarkan proposal penelitian.
 
-| Koneksi             | Status | Bukti                                                                                                                                                                          |
-| ------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Problem → Gap       | ✅      | Research gap diperoleh dari penelitian sebelumnya yang menggunakan skema evaluasi dengan kebutuhan komputasi tinggi sehingga belum sesuai untuk lingkungan komputasi terbatas. |
-| Gap → RQ            | ✅      | Research Question disusun untuk mengevaluasi performa EfficientNet-B6 menggunakan pendekatan transfer learning pada skema single split yang lebih ringan.                      |
-| RQ → Hypothesis     | ✅      | Hipotesis memprediksi bahwa EfficientNet-B6 mampu menghasilkan performa klasifikasi yang dapat diukur menggunakan metrik evaluasi yang ditentukan.                             |
-| Hypothesis → Metric | ✅      | Hipotesis diuji menggunakan accuracy, precision, recall, F1-score, dan confusion matrix.                                                                                       |
-| Metric → System     | ✅      | Sistem menghasilkan seluruh metrik evaluasi setelah proses pelatihan dan pengujian model selesai.                                                                              |
-| System → Experiment | ✅      | Sistem digunakan sebagai instrumen utama pada eksperimen menggunakan EfficientNet-B6 dengan transfer learning dan pembagian data single split.                                 |
+| Koneksi             | Status | Bukti                                                                                                                                                                                                                                                        |
+| ------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Problem → Gap       | ✅      | Research gap diperoleh dari penelitian sebelumnya yang menunjukkan EfficientNet-B6 memiliki performa yang baik, namun implementasinya masih perlu disesuaikan dengan keterbatasan sumber daya komputasi agar dapat diterapkan menggunakan Google Colab Free. |
+| Gap → RQ            | ✅      | Research Question disusun untuk mengevaluasi performa EfficientNet-B6 menggunakan pendekatan transfer learning pada implementasi penelitian yang dilakukan.                                                                                                  |
+| RQ → Hypothesis     | ✅      | Hipotesis memprediksi bahwa EfficientNet-B6 mampu memberikan performa klasifikasi yang baik berdasarkan metrik evaluasi yang digunakan.                                                                                                                      |
+| Hypothesis → Metric | ✅      | Hipotesis diuji menggunakan Accuracy, Precision, Recall, F1-Score, Confusion Matrix, dan Classification Report.                                                                                                                                              |
+| Metric → System     | ✅      | Sistem menghasilkan seluruh metrik evaluasi secara otomatis setelah proses pelatihan dan pengujian selesai.                                                                                                                                                  |
+| System → Experiment | ✅      | Sistem digunakan sebagai instrumen utama pada eksperimen menggunakan EfficientNet-B6 dengan pembagian data 80% data latih dan 20% data validasi.                                                                                                             |
+
 
 
 **Koneksi mana yang paling lemah?**
 
-Hubungan antara research gap dan research question masih dapat diperkuat dengan menambahkan referensi yang membahas penerapan EfficientNet-B6 pada lingkungan komputasi terbatas sehingga alasan penggunaan skema single split menjadi lebih kuat.
+Hubungan antara research gap dan implementasi penelitian masih dapat diperkuat dengan menambahkan referensi mengenai penerapan transfer learning menggunakan EfficientNet-B6 pada lingkungan komputasi terbatas sehingga alasan pemilihan metode menjadi lebih kuat.
 
 **Bagaimana cara memperkuatnya?**
 
-> Menambahkan referensi penelitian terbaru mengenai implementasi transfer learning EfficientNet pada Google Colab atau lingkungan komputasi dengan sumber daya terbatas sehingga research gap memiliki dasar yang lebih kuat.
-
+> Menambahkan referensi penelitian terbaru yang membahas implementasi EfficientNet-B6 menggunakan transfer learning pada Google Colab atau lingkungan komputasi terbatas sehingga dasar pemilihan metode menjadi lebih kuat.
+> 
 **Konsistensi horizontal — apakah istilah dan scope konsisten?**
 
 **[X] Ya**
@@ -188,12 +190,12 @@ Proposal telah memiliki keterkaitan yang konsisten antara problem statement, res
 
 **Bagian termudah:**
 
-Menyusun latar belakang, problem statement, dan research question karena didukung oleh jurnal acuan serta hasil implementasi yang telah selesai sehingga hubungan antarbagian lebih mudah dibangun.
+Menyusun problem statement, research gap, dan research question karena didukung oleh hasil analisis artikel acuan sehingga hubungan antarbagian dapat disusun secara sistematis.
 
 **Bagian tersulit:**
 
-Menjaga konsistensi antara proposal dan implementasi penelitian. Pada awal penyusunan, rancangan penelitian masih mengacu pada beberapa skenario eksperimen, sedangkan implementasi akhir menggunakan satu konfigurasi EfficientNet-B6 dengan pendekatan transfer learning. Oleh karena itu, proposal perlu disesuaikan agar seluruh komponen tetap konsisten dengan penelitian yang benar-benar dilakukan.
+Menyesuaikan proposal dengan implementasi penelitian. Pada awal perencanaan terdapat beberapa skenario eksperimen, sedangkan implementasi akhir menggunakan satu konfigurasi EfficientNet-B6 dengan pendekatan transfer learning. Oleh karena itu, proposal perlu disesuaikan agar seluruh komponen tetap konsisten dengan penelitian yang benar-benar dilakukan.
 
 **Yang akan dilakukan berbeda:**
 
-> Jika mengulang penelitian dari awal, saya akan menetapkan rancangan eksperimen yang benar-benar sesuai dengan kemampuan komputasi yang tersedia sebelum menyusun proposal. Dengan demikian, proposal, implementasi, dan hasil penelitian akan tetap konsisten sejak awal hingga akhir penelitian tanpa memerlukan banyak revisi.
+> Jika mengulang penelitian dari awal, saya akan menyusun proposal berdasarkan kemampuan komputasi yang tersedia sehingga rancangan eksperimen, implementasi, dan hasil penelitian tetap konsisten sejak awal hingga akhir penelitian.
