@@ -16,3 +16,10 @@ Confusion Matrix yang diperoleh dari pengujian model EfficientNet-B6 adalah seba
 - Model mampu mengklasifikasikan kelas **Healthy** dengan paling baik.
 - Kesalahan klasifikasi masih cukup tinggi pada kelas **Hispa** dan **LeafBlast**.
 - Confusion Matrix digunakan untuk mengetahui distribusi prediksi benar dan salah pada setiap kelas.
+
+## File Pendukung
+
+```
+03-04-confusion-matrix-classification-report.png
+
+```
