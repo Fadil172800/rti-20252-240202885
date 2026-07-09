@@ -1,50 +1,15 @@
 # Classification Report
 
-## Deskripsi
+```
+              precision    recall  f1-score   support
 
-Classification Report merupakan hasil evaluasi model EfficientNet-B6 pada data validasi menggunakan metrik Precision, Recall, F1-Score, dan Accuracy.
+   BrownSpot     0.7889    0.6827    0.7320       104
+     Healthy     0.6532    0.8658    0.7446       298
+       Hispa     0.3871    0.2124    0.2743       113
+   LeafBlast     0.7258    0.5769    0.6429       156
 
----
-
-## Hasil Evaluasi
-
-| Kelas | Precision | Recall | F1-Score | Support |
-|-------|----------:|-------:|---------:|--------:|
-| BrownSpot | 0.6667 | 0.6731 | 0.6699 | 104 |
-| Healthy | 0.6439 | 0.9161 | 0.7562 | 298 |
-| Hispa | 0.3250 | 0.1150 | 0.1699 | 113 |
-| LeafBlast | 0.6569 | 0.4295 | 0.5194 | 156 |
-
----
-
-## Ringkasan Performa
-
-| Metrik | Nilai |
-|--------|-------:|
-| Accuracy | 0.6304 |
-| Macro Average Precision | 0.5731 |
-| Macro Average Recall | 0.5334 |
-| Macro Average F1-Score | 0.5289 |
-| Weighted Average Precision | 0.5967 |
-| Weighted Average Recall | 0.6304 |
-| Weighted Average F1-Score | 0.5890 |
-
----
-
-## Interpretasi
-
-- Model memperoleh **accuracy sebesar 63,04%** pada data validasi.
-- Kelas **Healthy** memiliki nilai recall tertinggi (0.9161), menunjukkan bahwa sebagian besar citra daun sehat berhasil dikenali dengan baik.
-- Kinerja model pada kelas **Hispa** masih rendah dengan F1-Score sebesar 0.1699, sehingga masih terdapat kesalahan klasifikasi pada kelas tersebut.
-- Hasil Classification Report digunakan bersama Confusion Matrix untuk mengevaluasi performa model pada setiap kelas penyakit daun padi.
-
----
-
-## File Pendukung
+    accuracy                         0.6602       671
+   macro avg     0.6387    0.5844    0.5984       671
+weighted avg     0.6463    0.6602    0.6398       671
 
 ```
-03-04-confusion-matrix-classification-report.png
-
-```
-
-File tersebut merupakan screenshot hasil Classification Report yang dihasilkan langsung dari Google Colab setelah proses evaluasi model selesai.
