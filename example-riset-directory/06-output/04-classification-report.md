@@ -43,7 +43,8 @@ Classification Report merupakan hasil evaluasi model EfficientNet-B6 pada data v
 ## File Pendukung
 
 ```
-05-classification-report.png
+03-04-confusion-matrix-classification-report.png
+
 ```
 
 File tersebut merupakan screenshot hasil Classification Report yang dihasilkan langsung dari Google Colab setelah proses evaluasi model selesai.
