@@ -45,18 +45,20 @@ Hasil Utama Penelitian
 
 ## Status Ringkas
 
-Status Ringkas
-✅ Tahap 1 — Proposal & Revisi
-✅ Tahap 2 — Studi Literatur
-✅ Tahap 3 — Persiapan Dataset
-✅ Tahap 4 — Preprocessing
-✅ Tahap 5 — Implementasi Model
-✅ Tahap 6 — Pelatihan Model
-✅ Tahap 7 — Evaluasi Model
-✅ Tahap 8 — Analisis Hasil
-✅ Tahap 9 — Penyusunan Laporan
-✅ Tahap 10 — Finalisasi
-✅ Tahap 11 — Dokumentasi Penelitian
+| Tahap                                            |   Status  |
+| ------------------------------------------------ | :-------: |
+| **Tahap 1 — Proposal & Revisi**                  | ✅ Selesai |
+| **Tahap 2 — Studi Literatur**                    | ✅ Selesai |
+| **Tahap 3 — Persiapan Dataset & Environment**    | ✅ Selesai |
+| **Tahap 4 — Preprocessing Data**                 | ✅ Selesai |
+| **Tahap 5 — Implementasi Model EfficientNet-B6** | ✅ Selesai |
+| **Tahap 6 — Pelatihan Model**                    | ✅ Selesai |
+| **Tahap 7 — Evaluasi Model**                     | ✅ Selesai |
+| **Tahap 8 — Analisis Hasil Penelitian**          | ✅ Selesai |
+| **Tahap 9 — Penyusunan Laporan Penelitian**      | ✅ Selesai |
+| **Tahap 10 — Finalisasi Dokumen**                | ✅ Selesai |
+| **Tahap 11 — Dokumentasi Penelitian**            | ✅ Selesai |
+
 
 ## Checklist Sebelum Pengumpulan
 
