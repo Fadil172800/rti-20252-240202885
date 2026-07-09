@@ -64,22 +64,43 @@ Dalam DSR, artefak **bukan tujuan akhir** — ia adalah instrumen untuk menghasi
 Nama Peneliti    : Syukron Nur Fadillah
 Tanggal          : 23 April 2026
 
-1. Ketika membaca klaim "EfficientNet-B6 meningkatkan akurasi terbaik hingga 77.05%":
-   - Pertanyaan pertama saya: Apakah performa 77.05% ini konsisten di setiap fold pengujian, atau hanya lonjakan acak (cherry-picked) akibat bias pembagian dataset yang tidak seimbang?
-   - Data yang dibutuhkan untuk verifikasi: Laporan performa rata-rata dari seluruh 5-Fold Cross Validation, nilai standar deviasi akurasi, serta confusion matrix untuk melihat sebaran salah klasifikasi.
+1. Ketika membaca klaim bahwa EfficientNet-B6 meningkatkan akurasi klasifikasi penyakit daun padi hingga 77,05%:
 
-2. Posisi paradigma:
-   - Pendekatan: [✓] Positivis  [ ] Interpretivis  [✓] Design Science  [ ] Mixed
-   - Alasan: Penelitian ini membangun artefak teknologi berupa model klasifikasi deep learning (Design Science) dan menguji kinerjanya secara objektif melalui metrik matematis kuantitatif (Positivis).
+- Pertanyaan pertama saya:
+Apakah performa model EfficientNet-B6 tersebut konsisten pada seluruh proses evaluasi, atau hanya diperoleh pada kondisi tertentu sehingga belum tentu dapat digeneralisasikan?
 
-3. Identifikasi distorsi:
-   - Asumsi tersembunyi: Dataset sekunder (Kaggle) dengan latar belakang seragam dianggap mewakili variasi visual riil daun padi di area persawahan terbuka.
-   - Sumber bias potensial: Ketidakseimbangan data (imbalanced class) di mana jumlah citra daun sehat jauh mendominasi dibanding citra daun sakit.
-   - Langkah mitigasi: Melakukan evaluasi menggunakan Accuracy, Precision, Recall, F1-Score, dan AUC sehingga performa model pada setiap kelas dapat dianalisis         secara lebih menyeluruh dibanding hanya menggunakan nilai akurasi.
+- Data yang dibutuhkan untuk verifikasi:
+Nilai Accuracy, Precision, Recall, F1-Score, AUC, Confusion Matrix, serta metode evaluasi yang digunakan pada penelitian sehingga hasilnya dapat dianalisis secara menyeluruh.
 
-4. Komitmen etika:
-   - Data yang tidak akan dimanipulasi: Seluruh hasil pengujian pada setiap fold Cross Validation akan dilaporkan secara lengkap, termasuk fold yang menghasilkan performa lebih rendah. Tidak ada hasil yang dihapus atau hanya menampilkan nilai akurasi terbaik.
-   - Batasan yang diakui sejak awal: Ketergantungan penuh pada dataset sekunder terkurasi dan keterbatasan fungsional model yang hanya mendeteksi 3 jenis penyakit spesifik.
+2. Posisi paradigma
+
+Pendekatan:
+[✓] Positivis
+[ ] Interpretivis
+[✓] Design Science
+[ ] Mixed
+
+Alasan:
+Artikel membangun artefak berupa model klasifikasi penyakit daun padi menggunakan EfficientNet-B6, kemudian mengevaluasi performanya secara objektif menggunakan metrik kuantitatif sehingga sesuai dengan paradigma Positivis dan Design Science Research.
+
+3. Identifikasi distorsi
+
+Asumsi tersembunyi:
+Dataset Rice Leafs dianggap mampu merepresentasikan karakteristik penyakit daun padi pada kondisi nyata.
+
+Sumber bias potensial:
+Distribusi jumlah citra pada setiap kelas tidak seimbang sehingga model berpotensi lebih baik mengenali kelas mayoritas dibandingkan kelas minoritas.
+
+Langkah mitigasi:
+Performa model dianalisis menggunakan Accuracy, Precision, Recall, F1-Score, AUC, dan Confusion Matrix sehingga kemampuan model pada setiap kelas dapat dievaluasi secara lebih komprehensif.
+
+4. Komitmen etika
+
+Data yang tidak akan dimanipulasi:
+Seluruh hasil analisis terhadap artikel maupun hasil penelitian yang akan dilakukan nantinya dilaporkan secara jujur tanpa mengubah atau menghilangkan data yang tidak sesuai harapan.
+
+Batasan yang diakui sejak awal:
+Artikel menggunakan dataset publik Rice Leafs sehingga hasil penelitian masih perlu divalidasi menggunakan dataset lain agar kemampuan generalisasi model dapat diketahui.
 ```
 
 ---
@@ -94,44 +115,42 @@ Pilih satu paper riset di bidang TI yang mengklaim "metode X meningkatkan perfor
 
 **Paper yang dipilih:**
 > Judul: Klasifikasi Penyakit Daun Padi Menggunakan Model Deep Learning EfficientNet-B6
-> Penulis (Tahun): Amanda Caecilia Milano, Achmad Yasid, Rima Tri Wahyuningrum (2024)
-> Sumber/Link DOI: JITET (Jurnal Informatika dan Teknik Elektro Terapan) / http://dx.doi.org/10.23960/jitet.v12i1.3855
+> Penulis: Amanda Caecilia Milano, Achmad Yasid, Rima Tri Wahyuningrum (2024)
+> Sumber: JITET (Jurnal Informatika dan Teknik Elektro Terapan)
+> DOI: http://dx.doi.org/10.23960/jitet.v12i1.3855
 
-| Tahap                 | Apa yang Dilakukan                                                       | Potensi Distorsi                                                                            |
-| --------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
-| Reality → Data        | Mengambil dataset sekunder "Rice Leafs" dari Kaggle dengan total 3.355 citra (1.488 Healthy, 779 LeafBlast, 565 Hispa, dan 523 BrownSpot) | Distorsi Seleksi & Representasi: Dataset tidak seimbang secara alami (imbalanced). Distribusi kelas sehat terlalu mendominasi. Foto di Kaggle cenderung bersih dengan background seragam, sehingga kurang merepresentasikan realitas di sawah terbuka (masalah pencahayaan, debu, bayangan) |
-| Data → Processing     | Melakukan penyamaan ukuran (resize) citra input menjadi 224 X 224 piksel dan 528 X 528 piksel, serta memisahkan data dengan stratified 5-Fold Cross Validation           | Distorsi Resolusi Informasi: Proses resizing ekstrem dari gambar asli beresolusi tinggi ke ukuran sekecil 224 X 224 berpotensi menghilangkan detail bercak penyakit yang sangat halus (misalnya titik-titik kecil Brown Spot)                      |
-| Processing → Analysis | Melatih model EfficientNet-B6 menggunakan variasi parameter size input (224 vs 528) dan jumlah epoch (25 vs 50).              | Distorsi Komparasi/Parameter Bias: Paper ini langsung menggunakan EfficientNet-B6 tanpa melakukan komparasi langsung secara eksperimental dengan arsitektur lain (seperti ResNet atau MobileNet) pada dataset yang sama untuk membuktikan klaim "keunggulan efisiensinya" di kasus ini.                         |
-| Analysis → Inference  | Menyajikan hasil uji coba di mana skenario ukuran input 224 dengan 50 epoch pada fold ke-5 memberikan akurasi tertinggi sebesar 77.05%                  | Distorsi Cherry-Picking: Menyoroti salah satu hasil dengan akurasi tertinggi sebesar 77,05% sebagai hasil utama, padahal kesimpulan penelitian sebaiknya didasarkan pada rata-rata performa seluruh fold agar mencerminkan stabilitas model.                    |
-| Inference → Knowledge | Menyimpulkan bahwa metode Deep Learning dengan arsitektur EfficientNet-B6 menunjukkan performa yang baik dalam klasifikasi penyakit daun padi berdasarkan dataset yang digunakan   | Over-generalization: Klaim bahwa model memiliki performa yang baik tidak dapat langsung digeneralisasikan ke kondisi nyata karena pengujian hanya dilakukan pada satu dataset. Diperlukan validasi menggunakan dataset eksternal agar kemampuan generalisasi model dapat dibuktikan.                              |
+| Tahap                 | Apa yang Dilakukan                                                                                                        | Potensi Distorsi                                                                                                                 |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Reality → Data        | Peneliti menggunakan dataset Rice Leafs dari Kaggle yang terdiri dari 3.355 citra empat kelas penyakit daun padi.         | Dataset publik memiliki kondisi citra yang relatif bersih sehingga belum sepenuhnya merepresentasikan kondisi nyata di lapangan. |
+| Data → Processing     | Seluruh citra diubah menjadi ukuran tertentu sesuai kebutuhan model dan dilakukan preprocessing sebelum proses pelatihan. | Proses resize dapat menghilangkan sebagian detail tekstur penyakit pada daun.                                                    |
+| Processing → Analysis | Model EfficientNet-B6 dilatih menggunakan beberapa konfigurasi ukuran input dan jumlah epoch.                             | Hasil model dapat dipengaruhi oleh pemilihan parameter pelatihan sehingga performa belum tentu sama pada konfigurasi lain.       |
+| Analysis → Inference  | Model dievaluasi menggunakan Accuracy, Precision, Recall, F1-Score, AUC, dan Confusion Matrix.                            | Nilai akurasi tertinggi belum tentu mencerminkan performa keseluruhan apabila tidak dianalisis bersama metrik lain.              |
+| Inference → Knowledge | Peneliti menyimpulkan bahwa EfficientNet-B6 memiliki performa yang baik pada dataset Rice Leafs.                          | Generalisasi hasil penelitian masih terbatas karena hanya diuji menggunakan satu dataset.                                        |
 
 
-Distorsi paling besar terjadi di tahap: Reality → Data (External Validity)
+Distorsi paling besar terjadi pada tahap: Reality → Data (External Validity)
 
-Justifikasi: Dataset yang digunakan berasal dari Kaggle yang dikondisikan (controlled environment). Di dunia nyata, daun padi bergoyang karena angin, memiliki bayangan dari daun lain, terkena pantulan sinar matahari terik, atau tertutup lumpur kering. Model yang mencapai akurasi ~77% pada data Kaggle ini kemungkinan besar akan mengalami penurunan performa drastis jika digunakan oleh petani di sawah secara langsung menggunakan kamera smartphone kelas menengah.
+Justifikasi: Dataset Rice Leafs berasal dari Kaggle dengan kondisi citra yang telah dikurasi sehingga berbeda dengan kondisi nyata di lahan pertanian yang memiliki variasi pencahayaan, latar belakang, kualitas kamera, dan kondisi daun yang lebih kompleks. Perbedaan tersebut dapat memengaruhi kemampuan model ketika diterapkan pada lingkungan nyata.
 
 Dua distorsi spesifik yang teridentifikasi:
 
-1.Class Imbalance Bias: Kelas daun sehat (Healthy) jauh lebih banyak daripada kelas berpenyakit. Metrik akurasi tinggi bisa terdistorsi akibat model sangat mahir menebak daun sehat, namun buruk dalam mendeteksi bercak penyakit yang krusial.
-
-2.Resolution Downscaling Distortion: Pengurangan ukuran resolusi gambar secara drastis demi menghemat komputasi berisiko melenyapkan tekstur tepi bercak Leaf Blast atau pola garis halus Hispa yang merupakan fitur pembeda utama.
-
+1.Class Imbalance Bias, karena jumlah citra pada setiap kelas tidak seimbang sehingga model berpotensi lebih baik mengenali kelas mayoritas dibandingkan kelas minoritas.
+2.Resolution Downscaling Distortion, karena perubahan ukuran citra dapat menyebabkan hilangnya sebagian informasi tekstur yang penting untuk membedakan jenis penyakit daun.
 
 ## Latihan 2 — Analisis Kasus Etika
 
 Skenario: Seorang peneliti menemukan bahwa jika 3 data point outlier dihapus, hasil eksperimennya menjadi signifikan. Dengan outlier, hasilnya tidak signifikan.
 
 
-| Perspektif       | Analisis                                                                                                 |
-| ---------------- | -------------------------------------------------------------------------------------------------------- |
-| Kejujuran ilmiah | Peneliti wajib melaporkan seluruh metrik kinerja apa adanya. Misalnya, dalam paper ini, meskipun akurasi tertingginya 77.05% pada fold ke-5, peneliti secara jujur menyajikan tabel fold lain yang memiliki performa lebih rendah (misalnya fold ke-2 yang hanya mendapat akurasi 71.39%). Peneliti tidak menyembunyikan variabilitas performa model tersebut             |
-| Transparansi     | Peneliti harus membeberkan batasan sistem, seperti kenyataan bahwa model ini dilatih menggunakan skenario parameter tertentu, dan mengakui keterbatasan fungsionalitas model yang kinerjanya sangat bergantung pada variasi ukuran input dan epoch                              |
-| Peer review      | Penilai (reviewer) akan mengevaluasi kejujuran metodologi. Jika peneliti menghapus citra daun tertentu hanya karena model salah mengklasifikasikannya (agar akurasi terlihat naik dari 77% ke 85%), tindakan manipulasi ini akan merusak reproduksibilitas riset dan menyesatkan komunitas ilmiah pertanian |
+| Perspektif           | Analisis                                                                                                                                                                                                             |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Kejujuran ilmiah** | Peneliti wajib melaporkan seluruh hasil evaluasi secara apa adanya tanpa hanya menampilkan hasil terbaik. Seluruh metrik evaluasi harus disajikan agar pembaca memperoleh gambaran performa model secara menyeluruh. |
+| **Transparansi**     | Peneliti harus menjelaskan dataset, metode preprocessing, konfigurasi model, parameter pelatihan, serta keterbatasan penelitian sehingga eksperimen dapat dipahami dan direproduksi oleh peneliti lain.              |
+| **Peer Review**      | Reviewer akan mengevaluasi apakah metode penelitian dilakukan secara benar, apakah hasil yang disajikan konsisten dengan metodologi, serta apakah terdapat indikasi manipulasi data atau cherry-picking.             |
 
 
 *Keputusan akhir dan justifikasi:*
-> Outlier atau data "sulit" (seperti citra daun padi dengan bercak ganda atau pencahayaan buruk) tidak boleh dihapus tanpa landasan ilmiah yang valid dan terdokumentasi (misalnya gambar tersebut memang rusak secara fisik/korup). Justifikasi penghapusan harus tertulis secara transparan di bagian metodologi. Jika tidak, hasil riset tersebut menjadi semu dan gagal ketika diimplementasikan pada aplikasi nyata petani di lapangan.
-
+>Outlier atau data yang sulit diklasifikasikan tidak boleh dihapus tanpa alasan ilmiah yang jelas. Jika terdapat data yang memang rusak atau tidak valid, alasan penghapusannya harus dijelaskan secara transparan pada bagian metodologi sehingga integritas penelitian tetap terjaga.
 ---
 
 ## Latihan 3 — Posisi Paradigma
@@ -140,17 +159,16 @@ Skenario: Seorang peneliti menemukan bahwa jika 3 data point outlier dihapus, ha
 
 > *Skala 1–5:* 1 = tidak sesuai sama sekali dengan topik ini, 5 = sangat sesuai dan dominan digunakan pada riset bertopik serupa.
 
-| Kriteria                      | Positivis                                   | Interpretivis                            | Design Science                          |
-| ----------------------------- | ------------------------------------------- | ---------------------------------------- | --------------------------------------- |
-| Kesesuaian dengan topik (1–5) | 5 (Sangat Sesuai)     | 1 (Tidak Sesuai) | 5 (Sangat Sesuai) |
-| Jenis data yang dikumpulkan   | Data numerik kuantitatif berupa akurasi (%), presisi, recall, F1-score, dan luas kurva AUC | Tidak digunakan                          | Artefak berupa arsitektur model klasifikasi dan parameter konfigurasi pelatihan       |
-| Limitasi paradigma            | Sangat bergantung pada data historis numerik; gagal menangani faktor kualitatif di lapangan          | TTidak menghasilkan solusi teknis operasional yang presisi untuk klasifikasi citra       | Terlalu fokus pada optimasi fungsional artefak (kecepatan/akurasi), kadang mengabaikan kepraktisan penggunaannya oleh pengguna akhir                |
+| Kriteria                      | Positivis                                                                                 | Interpretivis                                                    | Design Science                                                                              |
+| ----------------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Kesesuaian dengan topik (1–5) | **5**                                                                                     | **1**                                                            | **5**                                                                                       |
+| Jenis data yang dikumpulkan   | Data kuantitatif berupa Accuracy, Precision, Recall, F1-Score, AUC, dan Confusion Matrix. | Tidak digunakan.                                                 | Artefak berupa model klasifikasi EfficientNet-B6 beserta konfigurasi pelatihannya.          |
+| Limitasi paradigma            | Bergantung pada kualitas dataset dan metrik evaluasi.                                     | Tidak menghasilkan evaluasi kuantitatif terhadap performa model. | Fokus pada pembangunan artefak sehingga evaluasi tetap bergantung pada kualitas eksperimen. |
 
 
 Paradigma yang dipilih: Positivis + Design Science Research (DSR)
 
-Alasan: Penelitian ini mengikuti kerangka kerja DSR dengan menciptakan solusi berupa artefak teknologi (model klasifikasi penyakit tanaman berbasis EfficientNet-B6) untuk memecahkan masalah praktis pertanian. Kinerja dari artefak tersebut kemudian diuji dan divalidasi secara ketat menggunakan paradigma Positivis melalui metode eksperimen kuantitatif (K-Fold Cross Validation dan matriks evaluasi statistik) untuk mendapatkan kebenaran objektif yang terukur.https://journal.eng.unila.ac.id/index.php/jitet/article/view/3855
-
+Alasan: Artikel membangun sebuah artefak berupa model klasifikasi penyakit daun padi menggunakan EfficientNet-B6 untuk menyelesaikan permasalahan klasifikasi citra. Kinerja model kemudian dievaluasi secara objektif menggunakan metrik kuantitatif sehingga penelitian sesuai dengan paradigma Positivis dan Design Science Research.
 ---
 
 ## Refleksi
@@ -158,7 +176,6 @@ Alasan: Penelitian ini mengikuti kerangka kerja DSR dengan menciptakan solusi be
 > Pertanyaan Refleksi: Sebelum membaca materi ini, apakah Anda pernah mempertanyakan klaim "akurasi tinggi"? Setelah memahami rantai distorsi, pertanyaan apa yang sekarang akan Anda ajukan saat membaca paper klasifikasi citra berbasis deep learning?
 
 **Jawaban:**
-Sebelum memahami metodologi penelitian IT secara mendalam, saya sering kali terpukau dengan klaim akurasi tinggi tanpa melihat proses di baliknya. Kini, setelah memahami Research Trust Model dan rantai distorsinya, saya menyadari bahwa angka akurasi (bahkan yang setinggi 77% atau lebih) dapat dengan mudah bias.
+Sebelum mempelajari materi ini, saya cenderung menerima klaim akurasi tinggi sebagai indikator utama keberhasilan suatu model. Setelah memahami konsep Research Trust Model, saya menyadari bahwa nilai akurasi saja belum cukup untuk menilai kualitas penelitian.
 
-Saat membaca paper bertopik sejenis di masa depan, pertanyaan kritis pertama saya adalah: "Apakah pembagian data pelatihan dan pengujian benar-benar bersih?" (mencegah data leakage akibat augmentasi sebelum pemisahan data). Pertanyaan kedua adalah: "Bagaimana performa model pada kelas minoritas?" (memastikan model tidak mengalami bias akibat kelas mayoritas). Dan yang terpenting: "Apakah model ini pernah diuji pada dataset yang sepenuhnya berbeda dari dataset pelatihannya untuk membuktikan validitas eksternalnya?"
-Selain itu, saya juga akan memperhatikan apakah proses preprocessing dilakukan setelah pembagian data (data splitting) sehingga tidak terjadi data leakage antara data pelatihan dan data pengujian. Hal ini penting agar hasil evaluasi benar-benar mencerminkan kemampuan model dalam melakukan generalisasi terhadap data baru.
+Ketika membaca paper klasifikasi citra berbasis deep learning, saya akan mempertanyakan bagaimana dataset diperoleh, bagaimana proses preprocessing dilakukan, apakah terdapat ketidakseimbangan data, metode evaluasi yang digunakan, serta apakah hasil penelitian telah diuji menggunakan dataset lain untuk membuktikan kemampuan generalisasi model. Selain itu, saya juga akan memperhatikan apakah seluruh proses penelitian dijelaskan secara transparan sehingga hasilnya dapat direproduksi oleh peneliti lain.
