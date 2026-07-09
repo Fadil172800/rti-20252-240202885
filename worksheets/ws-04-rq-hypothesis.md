@@ -67,55 +67,82 @@ Jika rantai ini tidak lengkap, RQ belum mature. Bi-directional: RQ yang tidak bi
 ```
 RQ-CONTRIBUTION-HYPOTHESIS
 
-Gap Statement  : Akurasi klasifikasi penyakit daun padi masih belum optimal dan sebagian besar penelitian masih menggunakan metode CNN standar sehingga performa klasifikasi pada beberapa kelas penyakit masih rendah.
+Gap Statement :
+Performa klasifikasi penyakit daun padi menggunakan EfficientNet-B6 masih memiliki keterbatasan pada beberapa kelas penyakit sehingga masih diperlukan evaluasi lebih lanjut terhadap penerapan model tersebut.
 
-Research Question:
-  Tipe         : [x] Comparison  [ ] Improvement  [ ] Exploratory
-  
-  Formulasi    :
-  Apakah metode EfficientNet-B6 menghasilkan nilai accuracy dan F1-Score yang lebih tinggi dibandingkan CNN standar pada klasifikasi penyakit daun padi?
+Research Question
 
-  - Variabel IV  : Jenis metode deep learning (EfficientNet-B6 vs CNN standar)
-  
-  - Variabel DV  : Nilai accuracy dan F1-Score klasifikasi penyakit daun padi
-  
-  - Metrik       : Accuracy, Precision, Recall, dan F1-Score
-  
-  - Dataset      : 3355 citra daun padi dengan 4 kelas penyakit (Healthy, LeafBlast, Hispa, BrownSpot)
-  
-  - Baseline     : CNN standar
+Tipe :
+[ ] Comparison
+[X] Improvement
+[ ] Exploratory
 
-Quality Check RQ:
-  [x] Variabel spesifik
-  [x] Metrik jelas
-  [x] Baseline ada
-  [x] Konteks disebutkan
-  [x] Memerlukan eksperimen (bukan hanya survei literatur)
+Formulasi :
 
-Contribution Statement:
+Bagaimana performa model EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi berdasarkan metrik Accuracy, Precision, Recall, dan F1-Score?
 
-  Apa yang baru diketahui :
-  Perbandingan performa EfficientNet-B6 dan CNN standar pada klasifikasi penyakit daun padi berdasarkan accuracy dan F1-Score.
+Variabel IV :
+Model Deep Learning EfficientNet-B6.
 
-  Jenis kontribusi :
-  [ ] Improvement  [x] Comparison  [ ] Novel approach
+Variabel DV :
+Performa klasifikasi penyakit daun padi.
 
-  Gap yang diisi :
-  Memberikan bukti empiris mengenai efektivitas EfficientNet-B6 dalam meningkatkan performa klasifikasi penyakit daun padi dibanding CNN standar.
+Metrik :
+Accuracy, Precision, Recall, F1-Score, AUC, dan Confusion Matrix.
 
-Hypothesis Pair:
+Dataset :
+Rice Leafs sebanyak 3.355 citra yang terdiri dari empat kelas penyakit daun padi.
 
-  H₀ :
-  Tidak ada perbedaan signifikan accuracy dan F1-Score antara EfficientNet-B6 dan CNN standar pada klasifikasi penyakit daun padi.
+Baseline :
+Penelitian klasifikasi penyakit daun padi menggunakan arsitektur CNN pada penelitian sebelumnya.
 
-  H₁ :
-  EfficientNet-B6 menghasilkan accuracy dan F1-Score lebih tinggi dibanding CNN standar pada klasifikasi penyakit daun padi.
+Quality Check RQ
 
-  Threshold              :
-  Accuracy > 77% dan p-value < 0.05
+[X] Variabel spesifik
 
-  Justifikasi threshold  :
-  Nilai accuracy 77% diambil dari hasil penelitian sebelumnya sebagai baseline performa terbaik, sedangkan p-value < 0.05 digunakan sebagai standar signifikansi statistik.
+[X] Metrik jelas
+
+[X] Baseline ada
+
+[X] Konteks disebutkan
+
+[X] Memerlukan eksperimen
+
+Contribution Statement
+
+Apa yang baru diketahui :
+
+Mengetahui kemampuan model EfficientNet-B6 dalam melakukan klasifikasi penyakit daun padi berdasarkan metrik evaluasi standar.
+
+Jenis kontribusi
+
+[X] Improvement
+
+[ ] Comparison
+
+[ ] Novel Approach
+
+Gap yang diisi
+
+Memberikan evaluasi terhadap performa EfficientNet-B6 pada klasifikasi penyakit daun padi sebagai dasar penelitian lanjutan.
+
+Hypothesis Pair
+
+H₀ :
+
+Model EfficientNet-B6 belum mampu memberikan performa klasifikasi penyakit daun padi yang lebih baik dibandingkan penelitian sebelumnya.
+
+H₁ :
+
+Model EfficientNet-B6 mampu memberikan performa klasifikasi penyakit daun padi yang baik berdasarkan metrik Accuracy, Precision, Recall, dan F1-Score.
+
+Threshold :
+
+Mengacu pada hasil evaluasi model yang diperoleh dari proses eksperimen.
+
+Justifikasi Threshold :
+
+Penelitian berfokus pada evaluasi performa model berdasarkan metrik klasifikasi, bukan pada pengujian signifikansi statistik.
 ```
 
 ---
@@ -124,57 +151,59 @@ Hypothesis Pair:
 
 Gunakan gap yang ditemukan di WS-03. Transformasikan menjadi Research Question.
 
-**Gap dari WS-03:** Akurasi klasifikasi penyakit daun padi masih rendah dan metode modern belum banyak diterapkan pada klasifikasi daun padi.
+**Gap dari WS-03:** Performa klasifikasi penyakit daun padi masih belum optimal sehingga diperlukan evaluasi lebih lanjut terhadap penerapan EfficientNet-B6.
 
 **RQ versi pertama (tulis bebas):**
-> Apakah EfficientNet-B6 lebih baik dibanding CNN standar untuk klasifikasi penyakit daun padi?
-
+> Bagaimana performa EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi?
+> 
 **Evaluasi RQ:**
 
-| Komponen        | Ada? | Isi                            |
-| --------------- | ---- | ------------------------------ |
-| Metode spesifik | ya   | EfficientNet-B6 vs CNN standar |
-| Metrik terukur  | ya   | Accuracy dan F1-Score          |
-| Baseline        | ya   | CNN standar                    |
-| Dataset/konteks | ya   | Dataset citra daun padi        |
+| Komponen        | Ada? | Isi                                   |
+| --------------- | ---- | ------------------------------------- |
+| Metode spesifik | Ya   | EfficientNet-B6                       |
+| Metrik terukur  | Ya   | Accuracy, Precision, Recall, F1-Score |
+| Baseline        | Ya   | Penelitian CNN sebelumnya             |
+| Dataset/Konteks | Ya   | Dataset Rice Leafs                    |
 
-**Tipe RQ:** [X] Comparison / [ ] Improvement / [ ] Exploratory
+
+**Tipe RQ:** [ ] Comparison / [X] Improvement / [ ] Exploratory
 
 **RQ versi revisi (setelah evaluasi):**
-> Apakah metode EfficientNet-B6 menghasilkan accuracy dan F1-Score yang lebih tinggi dibanding CNN standar pada klasifikasi penyakit daun padi menggunakan dataset 3355 citra daun padi?
-
+> Bagaimana performa model EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi berdasarkan metrik Accuracy, Precision, Recall, dan F1-Score menggunakan dataset Rice Leafs?
 ---
 
 ## Latihan 2 — Hypothesis Pair
 
 Rumuskan pasangan hipotesis dari RQ di Latihan 1.
 
-| Komponen              | Isi                                                                                                  |
-| --------------------- | ---------------------------------------------------------------------------------------------------- |
-| H₀                    | Tidak ada perbedaan signifikan accuracy dan F1-Score antara EfficientNet-B6 dan CNN standar          |
-| H₁                    | EfficientNet-B6 menghasilkan accuracy dan F1-Score lebih tinggi dibanding CNN standar                |
-| Metrik                | Accuracy dan F1-Score                                                                                |
-| Threshold             | Accuracy > 77% dan p-value < 0.05                                                                    |
-| Justifikasi threshold | Accuracy 77% berasal dari penelitian sebelumnya dan p-value 0.05 adalah standar statistik penelitian |
+| Komponen              | Isi                                                                                                                                             |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| H₀                    | Model EfficientNet-B6 belum mampu memberikan performa klasifikasi penyakit daun padi yang lebih baik dibandingkan penelitian sebelumnya.        |
+| H₁                    | Model EfficientNet-B6 mampu memberikan performa klasifikasi penyakit daun padi yang baik berdasarkan Accuracy, Precision, Recall, dan F1-Score. |
+| Metrik                | Accuracy, Precision, Recall, F1-Score                                                                                                           |
+| Threshold             | Mengacu pada hasil evaluasi model                                                                                                               |
+| Justifikasi Threshold | Penelitian bertujuan mengevaluasi performa model berdasarkan metrik klasifikasi tanpa melakukan pengujian statistik inferensial.                |
+
 
 
 **Apakah hipotesis ini falsifiable?** [X] Ya / [ ] Tidak
 > Bagaimana cara membuktikannya salah?
-Melakukan eksperimen klasifikasi menggunakan kedua metode. Jika hasil EfficientNet-B6 tidak lebih tinggi dibanding CNN standar atau p-value > 0.05, maka H₁ ditolak.
+Melakukan implementasi EfficientNet-B6 pada dataset Rice Leafs kemudian mengevaluasi performanya menggunakan Accuracy, Precision, Recall, F1-Score, dan Confusion Matrix. Jika hasil evaluasi menunjukkan performa yang rendah, maka hipotesis tidak didukung.
 ---
 
 ## Latihan 3 — Rantai Operasionalisasi
 
 Lengkapi rantai dari RQ hingga metode analisis.
 
-| Tahap           | Isi                                                                              |
-| --------------- | -------------------------------------------------------------------------------- |
-| RQ              | Apakah EfficientNet-B6 menghasilkan accuracy lebih tinggi dibanding CNN standar? |
-| Variable (IV)   | Jenis algoritma deep learning                                                    |
-| Variable (DV)   | Nilai accuracy dan F1-Score                                                      |
-| Metric          | Accuracy, Precision, Recall, F1-Score                                            |
-| Data source     | Dataset citra daun padi sebanyak 3355 gambar                                     |
-| Analysis method | Perbandingan hasil evaluasi model dan pengujian statistik                        |
+| Tahap           | Isi                                                                             |
+| --------------- | ------------------------------------------------------------------------------- |
+| RQ              | Bagaimana performa EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi? |
+| Variable (IV)   | Model EfficientNet-B6                                                           |
+| Variable (DV)   | Performa klasifikasi                                                            |
+| Metric          | Accuracy, Precision, Recall, F1-Score                                           |
+| Data Source     | Dataset Rice Leafs sebanyak 3.355 citra                                         |
+| Analysis Method | Analisis metrik evaluasi model dan Confusion Matrix                             |
+
 
 
 **Apakah rantai lengkap?** [X] Ya / [ ] Tidak
@@ -186,6 +215,6 @@ Lengkapi rantai dari RQ hingga metode analisis.
 
 > Ambil satu judul skripsi/paper yang pernah dibaca. Coba ekstrak RQ-nya. Apakah RQ tersebut memenuhi semua komponen (metode, metrik, baseline, konteks)? Jika tidak, apa yang hilang?
 
-**Judul:** "Klasifikasi Penyakit Daun Padi Menggunakan Model Deep Learning EfficientNet-B6"
-**RQ yang diekstrak:** Apakah EfficientNet-B6 mampu meningkatkan performa klasifikasi penyakit daun padi?
-**Komponen yang hilang:** Paper tersebut belum menjelaskan baseline pembanding secara rinci sehingga perbandingan performa dengan metode lain belum terlalu jelas.
+**Judul:** Klasifikasi Penyakit Daun Padi Menggunakan Model Deep Learning EfficientNet-B6
+**RQ yang diekstrak:** Bagaimana performa model EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi berdasarkan metrik evaluasi klasifikasi?
+**Komponen yang hilang:** Sebagian besar sudah terpenuhi karena artikel menjelaskan metode, dataset, dan metrik evaluasi yang digunakan. Namun, artikel belum menjelaskan secara rinci pembandingan dengan metode lain sehingga baseline penelitian masih dapat dikembangkan pada penelitian lanjutan.
