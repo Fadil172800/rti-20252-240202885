@@ -78,33 +78,48 @@ Jika variabel tidak bisa di-map ke komponen apapun → arsitektur perlu didesain
 ## Template A.6 — Mapping RQ ke Arsitektur Sistem
 
 ```
-**SYSTEM-EXPERIMENT MAPPING**
+SYSTEM-EXPERIMENT MAPPING
 
-**Research Question:**  
-Apakah metode EfficientNet-B6 menghasilkan accuracy dan F1-Score yang lebih tinggi dibandingkan CNN standar pada klasifikasi penyakit daun padi?
+Research Question
 
-**Variable → Component Mapping:**
+Bagaimana performa model EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi berdasarkan metrik Accuracy, Precision, Recall, F1-Score, dan AUC?
+
+Variable → Component Mapping
 
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi/Pengukuran |
-|----------|------|-----------------|---------------------------|
-| **Jenis Model Deep Learning** | IV | Modul Training Model | Mengganti model CNN standar menjadi EfficientNet-B6 pada script training |
-| **Accuracy & F1-Score** | DV | Modul Evaluasi Model | Menggunakan confusion matrix untuk menghitung accuracy dan F1-Score |
-| **Jumlah Epoch** | CV | Parameter Training | Menentukan jumlah epoch tetap (25 dan 50) |
-| **Ukuran Input Citra** | CV | Modul Preprocessing | Resize citra menjadi ukuran 224 dan 528 pixel |
-| **Dataset Daun Padi** | CV | Dataset Loader | Menggunakan dataset tetap sebanyak 3355 citra |
+|----------|------|-----------------|----------------------------|
+| Model EfficientNet-B6 | IV | Modul Training Model | Menggunakan arsitektur EfficientNet-B6 sebagai model klasifikasi |
+| Accuracy | DV | Modul Evaluasi | Dihitung dari confusion matrix |
+| Precision | DV | Modul Evaluasi | Dihitung menggunakan classification report |
+| Recall | DV | Modul Evaluasi | Dihitung menggunakan classification report |
+| F1-Score | DV | Modul Evaluasi | Dihitung menggunakan classification report |
+| AUC | DV | Modul Evaluasi | Dihitung dari ROC Curve |
+| Ukuran Input Citra | CV | Modul Preprocessing | Resize citra menjadi 224×224 dan 528×528 piksel |
+| Jumlah Epoch | CV | Parameter Training | Menggunakan 25 dan 50 epoch |
+| Dataset Rice Leafs | CV | Dataset Loader | Dataset tetap sebanyak 3.355 citra |
 
-**4 Prinsip Desain:**
+4 Prinsip Desain
 
-* [x] **Traceability** — Setiap komponen berhubungan langsung dengan variabel penelitian.
-* [x] **Variable Isolation** — Pergantian model dapat dilakukan tanpa mengubah dataset dan preprocessing.
-* [x] **Measurement Integration** — Accuracy dan F1-Score dihitung otomatis setelah training selesai.
-* [x] **Reproducibility** — Eksperimen dapat diulang dengan parameter yang sama.
+[x] Traceability — Seluruh variabel penelitian dipetakan ke komponen sistem.
 
-**Experimental Setup:**
+[x] Variable Isolation — Variasi ukuran input dan epoch diuji tanpa mengubah dataset.
 
-* **Input data:** 3355 citra daun padi dengan 4 kelas penyakit.
-* **Parameter:** Epoch 25 dan 50, input size 224 dan 528.
-* **Output format:** Nilai accuracy, precision, recall, F1-Score, dan confusion matrix.
+[x] Measurement Integration — Seluruh metrik dihitung secara otomatis setelah proses pengujian.
+
+[x] Reproducibility — Eksperimen dapat diulang menggunakan konfigurasi yang sama.
+
+Experimental Setup
+
+Input:
+Dataset Rice Leafs sebanyak 3.355 citra dengan empat kelas (Healthy, Leaf Blast, Hispa, dan Brown Spot).
+
+Parameter:
+- Model : EfficientNet-B6
+- Input Size : 224×224 dan 528×528
+- Epoch : 25 dan 50
+
+Output:
+Accuracy, Precision, Recall, F1-Score, AUC, Confusion Matrix, dan Classification Report.
 ```
 
 ---
@@ -113,14 +128,18 @@ Apakah metode EfficientNet-B6 menghasilkan accuracy dan F1-Score yang lebih ting
 
 Gunakan RQ dan variabel dari WS-05. Petakan ke komponen sistem.
 
-**RQ:**Apakah metode EfficientNet-B6 menghasilkan accuracy dan F1-Score yang lebih tinggi dibandingkan CNN standar pada klasifikasi penyakit daun padi?
+**RQ:**Bagaimana performa model EfficientNet-B6 dalam mengklasifikasikan penyakit daun padi berdasarkan Accuracy, Precision, Recall, F1-Score, dan AUC?
 
-| Variabel         | Tipe | Komponen Sistem       | Cara Manipulasi / Pengukuran                       |
-| ---------------- | ---- | --------------------- | -------------------------------------------------- |
-| **Jenis Model**  | IV   | Script Training Model | Mengubah model dari CNN standar ke EfficientNet-B6 |
-| **Accuracy**     | DV   | Modul Evaluasi        | Menghitung accuracy dari confusion matrix          |
-| **F1-Score**     | DV   | Modul Evaluasi        | Menghitung F1-Score otomatis                       |
-| **Jumlah Epoch** | CV   | Parameter Training    | Menentukan jumlah epoch tetap                      |
+| Variabel              | Tipe | Komponen Sistem      | Cara Manipulasi / Pengukuran                          |
+| --------------------- | ---- | -------------------- | ----------------------------------------------------- |
+| Model EfficientNet-B6 | IV   | Modul Training Model | Menggunakan EfficientNet-B6 sebagai model klasifikasi |
+| Accuracy              | DV   | Modul Evaluasi       | Dihitung dari confusion matrix                        |
+| Precision             | DV   | Modul Evaluasi       | Dihitung menggunakan classification report            |
+| Recall                | DV   | Modul Evaluasi       | Dihitung menggunakan classification report            |
+| F1-Score              | DV   | Modul Evaluasi       | Dihitung menggunakan classification report            |
+| AUC                   | DV   | Modul Evaluasi       | Dihitung menggunakan ROC Curve                        |
+| Ukuran Input Citra    | CV   | Modul Preprocessing  | Resize menjadi 224×224 dan 528×528 piksel             |
+| Jumlah Epoch          | CV   | Parameter Training   | Menggunakan 25 dan 50 epoch                           |
 
 
 **Apakah semua variabel bisa di-map?** [X] Ya / [ ] Tidak
@@ -131,17 +150,17 @@ Gunakan RQ dan variabel dari WS-05. Petakan ke komponen sistem.
 
 Evaluasi desain sistem terhadap 4 prinsip.
 
-| Prinsip             | Status      | Bukti / Penjelasan                                                                    |
-| ------------------- | ----------- | ------------------------------------------------------------------------------------- |
-| **Traceability**    | ✅ Terpenuhi | Semua variabel memiliki komponen sistem masing-masing                                 |
-| **Modularity**      | ✅ Terpenuhi | Model dapat diganti tanpa mengubah preprocessing dan dataset                          |
-| **Controllability** | ⚠️ Sebagian | Parameter training dapat dikontrol, tetapi performa hardware masih mempengaruhi hasil |
-| **Measurability**   | ✅ Terpenuhi | Sistem otomatis menghasilkan accuracy dan F1-Score                                    |
+| Prinsip             | Status      | Bukti / Penjelasan                                                           |
+| ------------------- | ----------- | ---------------------------------------------------------------------------- |
+| **Traceability**    | ✅ Terpenuhi | Semua variabel penelitian memiliki komponen sistem yang sesuai.              |
+| **Modularity**      | ✅ Terpenuhi | Modul preprocessing, training, dan evaluasi dipisahkan sehingga mudah diuji. |
+| **Controllability** | ✅ Terpenuhi | Ukuran input dan jumlah epoch dikontrol selama eksperimen.                   |
+| **Measurability**   | ✅ Terpenuhi | Accuracy, Precision, Recall, F1-Score, dan AUC dihitung secara otomatis.     |
 
 
 **Prinsip mana yang paling sulit dipenuhi?** Controllability
 **Strategi untuk mengatasinya:**
-> Menggunakan hardware dan environment yang sama selama eksperimen agar hasil pengujian tetap konsisten.
+> Menjaga dataset, konfigurasi perangkat lunak, dan parameter eksperimen tetap sama pada setiap skenario sehingga hasil pengujian dapat dibandingkan secara objektif.
 
 ---
 
@@ -150,22 +169,23 @@ Evaluasi desain sistem terhadap 4 prinsip.
 Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 
 > **Panduan jumlah kondisi:** Untuk 3 komponen (A, B, C), kondisi minimal yang direkomendasikan:
-> Full + (-A) + (-B) + (-C) = **4 kondisi dasar**. Jika waktu memungkinkan, tambahkan kombinasi ganda: (-A,-B), (-A,-C), (-B,-C) = **7 kondisi**. Sesuaikan dengan *computational cost* dan tenggat waktu penelitian.
+> Full + (-A) + (-B) + (-C) = 4 kondisi dasar. Jika waktu memungkinkan, tambahkan kombinasi ganda: (-A,-B), (-A,-C), (-B,-C) = 7 kondisi. Sesuaikan dengan computational cost dan tenggat waktu penelitian.
 
-| Kondisi  | Komponen A (Jenis Model) | Komponen B (Ukuran Input) | Komponen C (Jumlah Epoch) | Hasil yang Diharapkan                                     |
-| -------- | ------------------------ | ------------------------- | ------------------------- | --------------------------------------------------------- |
-| **Full** | ✅ EfficientNet-B6        | ✅ 224 Pixel               | ✅ 50 Epoch                | Hasil akurasi terbaik                                     |
-| **– A**  | ❌ CNN Standar            | ✅ 224 Pixel               | ✅ 50 Epoch                | Akurasi lebih rendah dibanding EfficientNet-B6            |
-| **– B**  | ✅ EfficientNet-B6        | ❌ 528 Pixel               | ✅ 50 Epoch                | Performa dapat berubah karena ukuran input berbeda        |
-| **– C**  | ✅ EfficientNet-B6        | ✅ 224 Pixel               | ❌ 25 Epoch                | Akurasi kemungkinan menurun karena training lebih singkat |
+| Kondisi  | Komponen A (Model)      | Komponen B (Ukuran Input) | Komponen C (Jumlah Epoch) | Hasil yang Diharapkan                                                           |
+| -------- | ----------------------- | ------------------------- | ------------------------- | ------------------------------------------------------------------------------- |
+| **Full** | ✅ EfficientNet-B6       | ✅ 224×224                 | ✅ 50 Epoch                | Memberikan performa terbaik sesuai hasil penelitian.                            |
+| **– A**  | ❌ Tanpa EfficientNet-B6 | ✅ 224×224                 | ✅ 50 Epoch                | Eksperimen tidak dapat dijalankan karena model merupakan komponen utama sistem. |
+| **– B**  | ✅ EfficientNet-B6       | ❌ 528×528                 | ✅ 50 Epoch                | Menguji pengaruh perubahan ukuran input terhadap performa model.                |
+| **– C**  | ✅ EfficientNet-B6       | ✅ 224×224                 | ❌ 25 Epoch                | Menguji pengaruh jumlah epoch terhadap hasil klasifikasi.                       |
 
-**Komponen mana yang diprediksi paling berkontribusi?** Komponen A (Jenis Model Deep Learning)
+
+**Komponen mana yang diprediksi paling berkontribusi?** Komponen A (Model EfficientNet-B6).
 **Mengapa?**
-> Karena arsitektur EfficientNet-B6 memiliki kemampuan ekstraksi fitur yang lebih baik dibanding CNN standar sehingga dapat meningkatkan performa klasifikasi citra daun padi.
+> Karena EfficientNet-B6 merupakan komponen utama yang melakukan proses ekstraksi fitur dan klasifikasi citra. Tanpa model tersebut, proses klasifikasi tidak dapat dilakukan. Sementara ukuran input dan jumlah epoch merupakan parameter pelatihan yang memengaruhi performa model.
 ---
 
 ## Refleksi
 
 > Apa risiko jika sistem dibangun seperti produk (monolitik, fitur lengkap) lalu baru dilakukan eksperimen? Mengapa arsitektur modular penting untuk riset?
 **Jawaban:**
-> Jika sistem dibuat terlalu kompleks seperti produk nyata, maka akan muncul banyak faktor lain yang mempengaruhi hasil eksperimen sehingga sulit mengetahui penyebab utama perubahan performa. Arsitektur modular penting agar peneliti dapat mengubah satu variabel tanpa mempengaruhi bagian lain sehingga hasil eksperimen lebih valid dan mudah dianalisis.
+> Jika sistem dibangun seperti produk yang kompleks sebelum eksperimen dilakukan, maka akan muncul banyak faktor yang dapat memengaruhi hasil penelitian sehingga sulit mengetahui penyebab utama perubahan performa model. Arsitektur modular memudahkan peneliti mengontrol setiap komponen eksperimen, sehingga hubungan antara variabel penelitian dan hasil yang diperoleh menjadi lebih jelas, valid, serta mudah direproduksi.
