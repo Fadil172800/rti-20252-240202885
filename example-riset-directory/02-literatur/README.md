@@ -1,6 +1,8 @@
 # 02 - Studi Literatur
 
-Folder ini berisi referensi ilmiah yang digunakan sebagai dasar penyusunan penelitian **"Klasifikasi Penyakit Daun Padi Menggunakan EfficientNet-B6 dengan Pendekatan Transfer Learning"**. Studi literatur dilakukan untuk memahami penelitian terdahulu, mengidentifikasi research gap, serta menentukan metode yang digunakan dalam penelitian.
+Folder ini berisi referensi ilmiah yang digunakan sebagai dasar penyusunan penelitian **"Klasifikasi Penyakit Daun Padi Menggunakan EfficientNet-B6 dengan Pendekatan Transfer Learning"**.
+
+Studi literatur dilakukan untuk memahami penelitian terdahulu, mengidentifikasi *research gap*, serta menentukan metode yang digunakan dalam penelitian.
 
 ---
 
@@ -10,8 +12,8 @@ Studi literatur dilakukan untuk:
 
 - Memahami perkembangan penelitian mengenai klasifikasi penyakit daun padi menggunakan Deep Learning.
 - Mengidentifikasi kelebihan dan keterbatasan penelitian terdahulu.
-- Menentukan metode yang sesuai untuk penelitian.
-- Menemukan research gap sebagai dasar pelaksanaan penelitian.
+- Menentukan metode yang sesuai dengan penelitian.
+- Menemukan *research gap* sebagai dasar pelaksanaan penelitian.
 
 ---
 
@@ -44,23 +46,13 @@ Selain jurnal utama tersebut, penelitian juga didukung oleh berbagai referensi l
 
 ## Isi Folder
 
-Folder ini dapat berisi beberapa dokumen pendukung, antara lain:
-
-- Jurnal acuan utama penelitian.
-- Jurnal pendukung mengenai EfficientNet, CNN, dan Transfer Learning.
-- Matriks literatur penelitian.
-- Daftar pustaka dalam format BibTeX (.bib).
-- Ringkasan hasil studi literatur.
-
----
-
-## Berkas
+Folder ini berisi dokumen referensi yang digunakan selama penelitian.
 
 | Dokumen | Deskripsi |
 |----------|-----------|
-| [matriks-literatur.md](matriks-literatur.md) | Ringkasan dan analisis penelitian terdahulu. |
-| [Milano_et_al_2024.pdf](Milano_et_al_2024.pdf) | Jurnal acuan utama penelitian. |
-| [daftar-pustaka.bib](daftar-pustaka.bib) | Daftar pustaka dalam format BibTeX untuk Mendeley atau Zotero. |
+| [Literatur](Literatur) | Ringkasan studi literatur dan referensi pendukung penelitian. |
+| [Milano_et_al_2024_EfficientNetB6.pdf](Milano_et_al_2024_EfficientNetB6.pdf) | Jurnal acuan utama penelitian yang menjadi dasar implementasi EfficientNet-B6. |
+| [README.md](README.md) | Dokumentasi folder studi literatur. |
 
 ---
 
@@ -70,13 +62,13 @@ Hasil studi literatur digunakan sebagai dasar dalam:
 
 - Penyusunan proposal penelitian.
 - Penentuan metode EfficientNet-B6.
-- Penentuan teknik Transfer Learning.
+- Penentuan pendekatan Transfer Learning.
 - Penyusunan metodologi penelitian.
 - Analisis dan pembahasan hasil penelitian.
 
 ---
 
-## Navigasi Repository
+## Keterkaitan dengan Repository
 
 | Folder | Deskripsi |
 |---------|-----------|
@@ -84,8 +76,14 @@ Hasil studi literatur digunakan sebagai dasar dalam:
 | [01-proposal](../01-proposal/) | Proposal penelitian |
 | [03-teori](../03-teori/) | Landasan teori |
 | [04-data](../04-data/) | Dataset penelitian |
-| [05-kode](../05-kode/) | Implementasi model |
-| [06-output](../06-output/) | Hasil pelatihan dan evaluasi |
+| [05-kode](../05-kode/) | Implementasi model EfficientNet-B6 |
+| [06-output](../06-output/) | Hasil pelatihan dan evaluasi model |
 | [07-manuskrip](../07-manuskrip/) | Manuskrip penelitian |
 | [08-laporan](../08-laporan/) | Laporan penelitian |
 | [09-docs](../09-docs/) | Dokumentasi penelitian |
+
+---
+
+## Ringkasan
+
+Folder **02-literatur** menjadi dasar akademik penelitian ini. Seluruh referensi yang terdapat pada folder ini digunakan untuk menyusun proposal, landasan teori, metodologi penelitian, serta pembahasan hasil eksperimen sehingga penelitian memiliki dasar ilmiah yang kuat dan dapat dipertanggungjawabkan.
