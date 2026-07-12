@@ -124,14 +124,14 @@ Ringkasan metadata ditampilkan pada tabel berikut.
 ## Isi Folder
 
 | Berkas | Deskripsi |
-|--------|-----------|
-| `01-distribusi-dataset.png` | Visualisasi distribusi jumlah citra setiap kelas. |
-| `02-contoh-dataset.png` | Contoh citra dari masing-masing kelas. |
-| `03-distribusi-resolusi.png` | Visualisasi distribusi resolusi citra. |
-| `04-pembagian-data.md` | Dokumentasi proses pembagian dataset. |
-| `dataset-info.md` | Informasi umum dataset. |
-| `dataset-statistik.md` | Statistik dataset penelitian. |
-| `README.md` | Dokumentasi folder dataset. |
+|---------|-----------|
+| [01-distribusi-dataset.png](01-distribusi-dataset.png) | Visualisasi distribusi jumlah citra setiap kelas. |
+| [02-contoh-dataset.png](02-contoh-dataset.png) | Contoh citra dari masing-masing kelas penyakit daun padi. |
+| [03-distribusi-resolusi.png](03-distribusi-resolusi.png) | Visualisasi distribusi resolusi citra. |
+| [04-pembagian-data.md](04-pembagian-data.md) | Dokumentasi proses pembagian dataset training dan validation. |
+| [dataset-info.md](dataset-info.md) | Informasi umum mengenai dataset Rice Leafs. |
+| [dataset-statistik.md](dataset-statistik.md) | Statistik dataset yang digunakan pada penelitian. |
+| [README.md](README.md) | Dokumentasi folder dataset penelitian. |
 
 ---
 
