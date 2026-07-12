@@ -120,12 +120,12 @@ Seluruh hasil visualisasi disimpan pada folder **06-output**.
 
 ---
 
-# Isi Folder
+## Isi Folder
 
 | Berkas | Deskripsi |
 |---------|-----------|
-| `PRAKTIKUMB6.ipynb` | Notebook utama penelitian yang berisi seluruh proses implementasi model EfficientNet-B6 mulai dari persiapan dataset hingga evaluasi model. |
-| `README.md` | Dokumentasi implementasi program penelitian. |
+| [PRAKTIKUMB6.ipynb](PRAKTIKUMB6.ipynb) | Notebook utama penelitian yang berisi seluruh proses implementasi model **EfficientNet-B6**, mulai dari persiapan dataset, preprocessing, pembangunan model, pelatihan, evaluasi, hingga visualisasi hasil penelitian. |
+| [README.md](README.md) | Dokumentasi folder implementasi program yang menjelaskan lingkungan pengembangan, tahapan implementasi, struktur kode, serta hubungan implementasi dengan keseluruhan penelitian. |
 
 ---
 
