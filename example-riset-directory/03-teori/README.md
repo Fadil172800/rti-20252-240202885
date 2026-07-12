@@ -43,7 +43,7 @@ Folder ini berisi dokumentasi mengenai:
 
 | Dokumen | Deskripsi |
 |----------|-----------|
-| [landasan-teori.md](landasan-teori.md) | Arsitektur penelitian, desain sistem, landasan teori, variabel penelitian, alur implementasi, serta evaluasi model. |
+| [teori_arsitektur-dan-skema.md](teori_arsitektur-dan-skema.md) | Arsitektur penelitian, desain sistem, landasan teori, variabel penelitian, alur implementasi, serta evaluasi model. |
 
 ---
 
