@@ -1,27 +1,55 @@
-# Rencana Penelitian: Mitigasi JWKS Endpoint Flooding dengan Redis-PostgreSQL Hybrid Caching
+# Rencana Penelitian: Klasifikasi Penyakit Daun Padi Menggunakan EfficientNet-B6 dengan Pendekatan Transfer Learning
 
 ## 1. Ringkasan
 
 | Item | Keterangan |
-|---|---|
-| Judul | Performance and Security Evaluation of Mitigating JWKS Endpoint Flooding on Microservices Gateway Using Redis-PostgreSQL Hybrid Caching |
-| Target Publikasi | Sinta 2 (Jurnal RESTI/Telematika) atau Scopus Q3-Q4 |
-| Stack | Docker, PostgreSQL, Redis, API Gateway (Go), k6 |
-| Masalah | JWKS Endpoint Flooding via `kid` acak → kueri tak terbatas ke Identity Service/DB → resource exhaustion |
-| Solusi | Hybrid cache (Redis L1 + PostgreSQL L2) + negative caching + rate-limiting pada lookup kunci |
-
-## 2. Alur Kerja (Roadmap)
-
-Setiap tahap memiliki file rencana detail tersendiri agar lebih rapi:
-
-- [x] **Tahap 1** — [Perancangan Arsitektur & Skema Database](tahap-1-arsitektur-dan-skema-database.md) — *Selesai*
-- [x] **Tahap 2** — [Implementasi API Gateway (Go)](tahap-2-implementasi-gateway.md) — *Selesai*
-- [x] **Tahap 3** — [Skrip Pengujian k6 (Legitimate vs Attack Traffic)](tahap-3-pengujian-k6.md) — *Selesai*
-- [x] **Tahap 4** — [Ekstraksi Data & Visualisasi](tahap-4-analisis-data.md) — *Selesai*
-- [ ] **Tahap 5** — [Draf Paper Jurnal](tahap-5-draf-paper.md) — *Berikutnya*
+|------|------------|
+| **Judul** | Klasifikasi Penyakit Daun Padi Menggunakan EfficientNet-B6 dengan Pendekatan Transfer Learning |
+| **Peneliti** | Syukron Nur Fadillah |
+| **NIM** | 240202885 |
+| **Target Luaran** | Laporan Penelitian, Manuskrip Ilmiah, dan Repository GitHub |
+| **Platform** | Google Colab Free |
+| **Framework** | TensorFlow 2.x, Keras |
+| **Dataset** | Rice Leafs Dataset (3.355 citra, 4 kelas) |
+| **Model** | EfficientNet-B6 |
+| **Permasalahan** | Proses identifikasi penyakit daun padi secara manual memerlukan waktu, keahlian, dan berpotensi menghasilkan kesalahan identifikasi. |
+| **Solusi** | Mengimplementasikan EfficientNet-B6 dengan pendekatan Transfer Learning untuk melakukan klasifikasi otomatis terhadap empat kelas penyakit daun padi. |
 
 ---
 
-## 3. Catatan
+## 2. Alur Kerja (Roadmap)
 
-Dokumen ini adalah indeks utama. Detail teknis, skema, dan keputusan masing-masing tahap dicatat pada file `tahap-N-*.md` terkait dan diperbarui seiring progres pengerjaan.
+Setiap tahapan penelitian didokumentasikan pada file tersendiri agar proses penelitian dapat ditelusuri dengan mudah.
+
+- [x] **Tahap 1** — [Persiapan Penelitian](tahap-1-persiapan-penelitian.md) — *Selesai*
+- [x] **Tahap 2** — [Persiapan Dataset](tahap-2-persiapan-dataset.md) — *Selesai*
+- [x] **Tahap 3** — [Implementasi Model EfficientNet-B6](tahap-3-implementasi-model.md) — *Selesai*
+- [x] **Tahap 4** — [Pelatihan dan Evaluasi Model](tahap-4-pelatihan-dan-evaluasi.md) — *Selesai*
+- [x] **Tahap 5** — [Penyusunan Manuskrip Penelitian](tahap-5-penyusunan-manuskrip.md) — *Selesai*
+
+---
+
+## 3. Luaran Penelitian
+
+Penelitian ini menghasilkan beberapa luaran sebagai berikut.
+
+- Proposal penelitian.
+- Studi literatur.
+- Dokumentasi landasan teori.
+- Dataset beserta hasil Exploratory Data Analysis (EDA).
+- Implementasi model EfficientNet-B6 menggunakan TensorFlow.
+- Model hasil pelatihan (.keras).
+- Hasil evaluasi model (Accuracy, Precision, Recall, F1-Score, Classification Report, dan Confusion Matrix).
+- Laporan penelitian.
+- Manuskrip ilmiah.
+- Repository GitHub penelitian.
+
+---
+
+## 4. Catatan
+
+Dokumen ini merupakan indeks utama dokumentasi penelitian.
+
+Seluruh rincian setiap tahapan penelitian didokumentasikan pada file `tahap-1` sampai `tahap-5` yang terdapat pada folder **09-docs**. Setiap dokumen menjelaskan proses pelaksanaan penelitian mulai dari persiapan, pengolahan dataset, implementasi model, evaluasi hasil, hingga penyusunan manuskrip ilmiah.
+
+Seluruh tahapan penelitian telah diselesaikan dan terdokumentasi sebagai bagian dari repository penelitian.
