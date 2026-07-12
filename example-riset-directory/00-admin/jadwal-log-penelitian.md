@@ -98,11 +98,11 @@ Dokumen ini berisi kronologi pelaksanaan penelitian mulai dari tahap penyusunan 
 
 ## Korespondensi
 
-| Tanggal | Pihak | Topik | Catatan | Status |
-|---------|-------|-------|---------|:------:|
-| 20 Juni 2026 | Dosen Pengampu | Penyusunan dan revisi proposal penelitian | Perbaikan Research Question dan metode eksperimen | ✅ Selesai |
-| 5 Juli 2026 | Dosen Pengampu | Konsultasi hasil implementasi dan evaluasi model | Pembahasan mengenai akurasi model dan perbandingan dengan jurnal acuan | ✅ Selesai |
-| 10 Juli 2026 | Dosen Pengampu | Finalisasi laporan penelitian | Pemeriksaan akhir laporan dan persiapan unggah repository | ✅ Selesai |
+| Pihak | Topik | Catatan | Status |
+|-------|-------|---------|:------:|
+| Dosen Pengampu | Penyusunan dan revisi proposal penelitian | Perbaikan Research Question dan metode eksperimen | ✅ Selesai |
+| Dosen Pengampu | Konsultasi hasil implementasi dan evaluasi model | Pembahasan mengenai akurasi model dan perbandingan dengan jurnal acuan | ✅ Selesai |
+| Dosen Pengampu | Finalisasi laporan penelitian | Pemeriksaan akhir laporan dan persiapan unggah repository | ✅ Selesai |
 
 ---
 
