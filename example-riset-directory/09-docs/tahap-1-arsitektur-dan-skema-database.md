@@ -1,99 +1,176 @@
-# Tahap 1 — Perancangan Arsitektur & Skema Database
+# Tahap 1 — Persiapan Penelitian
 
 **Status:** Selesai
 
 ---
 
-## 1. Komponen Sistem
+# 1. Perumusan Masalah
 
-1. **API Gateway (Go, Echo)** — menerima request, mem-parsing header JWT untuk mengambil `kid`, lalu meresolusi JWK terkait sebelum verifikasi signature.
-2. **Redis (L1 Cache, murni cache JWKS)**
-   - *Positive cache*: `jwks:kid:<kid>` → JWK (TTL pendek, mis. 5 menit) untuk kunci valid.
-   - *Negative cache*: `jwks:negative:<kid>` → marker (TTL pendek, mis. 60 detik) untuk `kid` yang tidak ditemukan — inti mitigasi flooding.
-   - Tidak menyimpan state rate-limit (lihat poin 3).
-3. **PostgreSQL (L2 / Source of Truth + Rate Limit Counter Permanen)** — menyimpan metadata kunci signing (`signing_keys`) dan counter rate-limit permanen (`rate_limit_counters`).
+Tahap awal penelitian dilakukan dengan mengidentifikasi permasalahan pada proses klasifikasi penyakit daun padi. Identifikasi penyakit secara manual membutuhkan waktu, pengalaman, dan pengetahuan dari pakar sehingga berpotensi menimbulkan kesalahan klasifikasi apabila dilakukan oleh pengguna umum.
 
-## 2. Alur Resolusi Kunci (Mitigasi)
+Berdasarkan permasalahan tersebut, penelitian ini mengusulkan penggunaan metode **Deep Learning** menggunakan model **EfficientNet-B6** dengan pendekatan **Transfer Learning** untuk membantu proses klasifikasi penyakit daun padi secara otomatis berdasarkan citra digital.
+
+---
+
+# 2. Studi Literatur
+
+Studi literatur dilakukan untuk memperoleh dasar teori serta menentukan metode yang digunakan dalam penelitian.
+
+Literatur yang dipelajari meliputi:
+
+- Artificial Intelligence
+- Machine Learning
+- Deep Learning
+- Convolutional Neural Network (CNN)
+- EfficientNet
+- Transfer Learning
+- TensorFlow dan Keras
+- Computer Vision
+- Rice Leaf Disease
+- Evaluasi model klasifikasi citra
+
+Referensi utama penelitian adalah jurnal Milano et al. (2024) mengenai klasifikasi penyakit daun padi menggunakan EfficientNet-B6.
+
+---
+
+# 3. Penentuan Dataset
+
+Dataset yang digunakan adalah **Rice Leafs Dataset** yang diperoleh dari Kaggle.
+
+Spesifikasi dataset:
+
+| Komponen | Keterangan |
+|-----------|------------|
+| Dataset | Rice Leafs |
+| Total Citra | 3.355 |
+| Jumlah Kelas | 4 |
+| Format | JPG / PNG |
+| Sumber | Kaggle |
+
+Empat kelas yang digunakan terdiri dari:
+
+- Healthy
+- Brown Spot
+- Hispa
+- Leaf Blast
+
+---
+
+# 4. Perancangan Arsitektur Penelitian
+
+Arsitektur penelitian dirancang agar seluruh proses eksperimen berjalan secara sistematis.
+
+Alur penelitian terdiri dari:
 
 ```
-Request masuk → Gateway parsing header JWT → ambil `kid`
-  │
-  ├─ Cek Redis positive cache (jwks:kid:<kid>)
-  │     ├─ HIT  → verifikasi signature → lanjut
-  │     └─ MISS ↓
-  │
-  ├─ Cek Redis negative cache (jwks:negative:<kid>)
-  │     ├─ HIT  → tolak langsung (401), tanpa query DB
-  │     └─ MISS ↓
-  │
-  ├─ UPSERT & cek rate_limit_counters di PostgreSQL (atomic, per client_ip + window)
-  │     ├─ EXCEEDED → tolak (429) + set Redis negative cache
-  │     └─ OK ↓
-  │
-  └─ Query PostgreSQL (signing_keys WHERE kid = ? AND is_active)
-        ├─ FOUND     → isi Redis positive cache → verifikasi signature
-        └─ NOT FOUND → set Redis negative cache → tolak (401)
+Dataset
+      │
+      ▼
+Preprocessing
+      │
+      ▼
+Resize Image (224×224)
+      │
+      ▼
+Split Dataset (80:20)
+      │
+      ▼
+Transfer Learning
+(EfficientNet-B6)
+      │
+      ▼
+Training Model
+      │
+      ▼
+Evaluasi Model
+      │
+      ▼
+Accuracy
+Precision
+Recall
+F1-Score
+Classification Report
+Confusion Matrix
 ```
 
-Catatan: pada mode `CACHE_MODE=none` (baseline), langkah cek Redis dan rate-limit dilewati — setiap request langsung query `signing_keys` di PostgreSQL, mensimulasikan gateway tanpa mitigasi.
+---
 
-Mekanisme **fail-closed**: jika Redis tidak dapat diakses, gateway tetap melanjutkan ke PostgreSQL (rate-limit counter tetap berfungsi karena bersumber dari PostgreSQL); jika PostgreSQL tidak dapat diakses, request ditolak (bukan diloloskan tanpa verifikasi).
+# 5. Perancangan Variabel Penelitian
 
-## 3. Skema Database (PostgreSQL)
+## Variabel Independen
 
-```sql
-CREATE TABLE signing_keys (
-    kid             VARCHAR(255) PRIMARY KEY,
-    kty             VARCHAR(10)  NOT NULL DEFAULT 'RSA',
-    alg             VARCHAR(10)  NOT NULL DEFAULT 'RS256',
-    use_type        VARCHAR(10)  NOT NULL DEFAULT 'sig',
-    n               TEXT         NOT NULL,   -- modulus, base64url
-    e               TEXT         NOT NULL,   -- exponent, base64url
-    is_active       BOOLEAN      NOT NULL DEFAULT TRUE,
-    created_at      TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    expires_at      TIMESTAMPTZ,
-    revoked_at      TIMESTAMPTZ
-);
+Model yang digunakan pada penelitian.
 
-CREATE INDEX idx_signing_keys_active ON signing_keys (kid) WHERE is_active = TRUE;
+| Variabel | Keterangan |
+|-----------|------------|
+| EfficientNet-B6 | Model Deep Learning berbasis CNN dengan Transfer Learning |
 
--- Counter rate-limit permanen (source of truth di PostgreSQL)
-CREATE TABLE rate_limit_counters (
-    client_ip       INET        NOT NULL,
-    window_start    TIMESTAMPTZ NOT NULL,
-    request_count   INTEGER     NOT NULL DEFAULT 0,
-    blocked_count   INTEGER     NOT NULL DEFAULT 0,
-    PRIMARY KEY (client_ip, window_start)
-);
-```
+---
 
-Upsert atomik untuk increment counter per request (window tetap, mis. 1 detik):
+## Variabel Dependen
 
-```sql
-INSERT INTO rate_limit_counters (client_ip, window_start, request_count)
-VALUES ($1, $2, 1)
-ON CONFLICT (client_ip, window_start)
-DO UPDATE SET request_count = rate_limit_counters.request_count + 1
-RETURNING request_count;
-```
+Performa model klasifikasi.
 
-Jika `request_count` melebihi ambang batas, request ditolak dan `blocked_count` di-increment pada baris yang sama. Data ini bersifat permanen (tidak di-TTL) sehingga dapat dipakai langsung untuk analisis pola serangan pada Tahap 4.
+| Variabel | Keterangan |
+|-----------|------------|
+| Accuracy | Tingkat ketepatan klasifikasi |
+| Precision | Ketepatan prediksi |
+| Recall | Kemampuan menemukan kelas sebenarnya |
+| F1-Score | Rata-rata harmonik Precision dan Recall |
 
-Tabel log lookup tambahan (untuk cache hit/miss ratio) akan ditentukan pada Tahap 2 setelah skenario k6 lebih jelas.
+---
 
-## 4. Skema Redis (Murni L1 Cache JWKS)
+## Variabel Kontrol
 
-| Key Pattern | Tipe | TTL | Tujuan |
-|---|---|---|---|
-| `jwks:kid:<kid>` | STRING (JSON JWK) | ~300s | Cache positif untuk kunci valid |
-| `jwks:negative:<kid>` | STRING (`"1"`) | ~60s | Cache negatif untuk `kid` tak dikenal |
+| Variabel | Nilai |
+|-----------|--------|
+| Dataset | Rice Leafs |
+| Image Size | 224 × 224 piksel |
+| Batch Size | 2 |
+| Optimizer | Adam |
+| Epoch Maksimum | 25 |
 
-## 5. Keputusan Teknis (Final)
+---
 
-1. **Mode eksperimen**: satu binary gateway dengan toggle `CACHE_MODE=none|hybrid` — `none` = baseline tanpa cache/rate-limit, `hybrid` = arsitektur mitigasi penuh. Memastikan perbandingan baseline vs mitigated apple-to-apple untuk perhitungan $D_{perf}$.
-2. **Framework Gateway**: **Echo** (Go web framework).
-3. **Rate limiting**: counter permanen di **PostgreSQL** (`rate_limit_counters`, atomic UPSERT per `client_ip` + window). **Redis murni sebagai L1 cache JWKS** (positive & negative cache), tidak menyimpan state rate-limit.
-4. **Identity Service**: **PostgreSQL `signing_keys` langsung sebagai backing store** — tidak ada microservice tambahan; fokus eksperimen pada lapisan caching/rate-limit di Gateway.
-5. **Redis client**: `go-redis/redis/v9` (default standar Go ekosistem).
-6. **PostgreSQL driver**: `pgx` (native driver, performa baik, mendukung connection pooling via `pgxpool`).
-7. **Skenario issuer**: single issuer (disederhanakan) — dapat diperluas ke multi-issuer di penelitian lanjutan jika diperlukan.
+# 6. Lingkungan Penelitian
+
+Implementasi penelitian dilakukan menggunakan Google Colab Free.
+
+| Komponen | Spesifikasi |
+|-----------|-------------|
+| Platform | Google Colab Free |
+| Bahasa Pemrograman | Python 3 |
+| Framework | TensorFlow 2.x |
+| Library | TensorFlow Keras |
+| Hardware | Google Colab Runtime |
+
+---
+
+# 7. Keputusan Penelitian
+
+Beberapa keputusan yang ditetapkan sebelum implementasi adalah sebagai berikut.
+
+1. Menggunakan dataset Rice Leafs sebagai sumber data penelitian.
+2. Menggunakan model EfficientNet-B6 sesuai dengan jurnal acuan.
+3. Menggunakan pendekatan Transfer Learning dengan bobot awal ImageNet.
+4. Ukuran citra ditetapkan sebesar **224 × 224 piksel**.
+5. Dataset dibagi menjadi **80% data training** dan **20% data validation**.
+6. Optimizer yang digunakan adalah **Adam**.
+7. Evaluasi model dilakukan menggunakan Accuracy, Precision, Recall, F1-Score, Classification Report, dan Confusion Matrix.
+
+---
+
+# 8. Hasil Tahap 1
+
+Tahap persiapan penelitian telah menghasilkan beberapa dokumen penting sebagai dasar pelaksanaan penelitian berikutnya.
+
+- Proposal penelitian.
+- Rumusan masalah dan tujuan penelitian.
+- Studi literatur.
+- Penentuan dataset.
+- Perancangan metodologi penelitian.
+- Penentuan model EfficientNet-B6.
+- Penentuan parameter penelitian.
+- Rencana implementasi penelitian.
+
+Tahap ini menjadi dasar pelaksanaan proses preprocessing data, implementasi model, pelatihan, dan evaluasi pada tahap selanjutnya.
