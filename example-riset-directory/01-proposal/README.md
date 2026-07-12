@@ -63,7 +63,7 @@ Tahapan penelitian terdiri dari:
 | Dokumen | Keterangan |
 |----------|------------|
 | [proposal-penelitian.docx](proposal-penelitian.docx) | Dokumen proposal penelitian lengkap |
-
+| [proposal-penelitian.pdf](proposal-penelitian.pdf) | Dokumen proposal penelitian lengkap |
 ---
 
 ## Keterkaitan dengan Repository
