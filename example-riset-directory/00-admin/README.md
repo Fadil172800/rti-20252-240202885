@@ -1,13 +1,27 @@
-# 00-admin
+# 00 - Administrasi Penelitian
 
-Berkas administratif penelitian: jadwal bimbingan, korespondensi dengan pembimbing/editor jurnal, surat-menyurat, dan catatan administratif lainnya yang tidak masuk ke kategori ilmiah/teknis.
+Folder ini berisi dokumen administrasi selama pelaksanaan penelitian, mulai dari jadwal kegiatan, log penelitian, checklist penyelesaian, hingga riwayat revisi.
 
-## Isi yang diharapkan
+## Isi Folder
 
-- Jadwal bimbingan & catatan rapat
-- Korespondensi (email, surat pengantar, dsb.)
-- Dokumen administratif lain (timeline, checklist submission jurnal)
+| Dokumen | Deskripsi |
+|---------|-----------|
+| [jadwal-log-penelitian.md](jadwal-log-penelitian.md) | Jadwal dan log pelaksanaan penelitian |
 
-## Berkas
+## Navigasi
 
-- [jadwal-dan-log-penelitian.md](jadwal-dan-log-penelitian.md) — log kronologis pelaksanaan Tahap 1-5 dan checklist tindak lanjut sebelum submission
+| Folder | Keterangan |
+|---------|------------|
+| [01-proposal](../01-proposal/) | Proposal penelitian |
+| [02-literatur](../02-literatur/) | Studi literatur |
+| [03-teori](../03-teori/) | Landasan teori |
+| [04-data](../04-data/) | Dataset penelitian |
+| [05-kode](../05-kode/) | Implementasi model |
+| [06-output](../06-output/) | Hasil eksperimen |
+| [07-manuskrip](../07-manuskrip/) | Manuskrip penelitian |
+| [08-laporan](../08-laporan/) | Laporan penelitian |
+| [09-docs](../09-docs/) | Dokumentasi penelitian |
+
+---
+
+**Status:** ✅ Selesai
