@@ -1,25 +1,97 @@
-# 07-manuskrip
+# 07 - Manuskrip Penelitian
 
-Draf naskah ilmiah — **Tahap 5**, target publikasi Sinta 2 (Jurnal RESTI/Telematika) atau Scopus Q3-Q4.
+Folder ini berisi manuskrip ilmiah yang disusun berdasarkan hasil penelitian berjudul **"Klasifikasi Penyakit Daun Padi Menggunakan EfficientNet-B6 dengan Pendekatan Transfer Learning"**.
 
-## Naskah konsolidasi
+Manuskrip merupakan ringkasan ilmiah dari laporan penelitian yang telah disusun mengikuti struktur artikel ilmiah, sehingga siap disesuaikan dengan template jurnal yang dituju.
 
-- [naskah-jurnal.md](naskah-jurnal.md) — naskah lengkap dalam template jurnal standar (Judul/Penulis, Abstrak ID+EN, §1 Pendahuluan – §5 Kesimpulan, Daftar Pustaka)
-- [naskah-jurnal.docx](naskah-jurnal.docx) — hasil konversi ke .docx (dibangun via `python build_docx.py`, lihat [build_docx.py](build_docx.py); tidak memerlukan pandoc)
+---
 
-## Struktur naskah per bagian (sumber/draf kerja)
+## Tujuan Manuskrip
 
-- [00-outline.md](00-outline.md) — outline, peta sumber, dan daftar klaim kunci yang harus konsisten
-- [01-abstrak.md](01-abstrak.md) — Abstrak (ID & EN)
-- [02-pendahuluan.md](02-pendahuluan.md) — Pendahuluan (latar belakang, rumusan masalah, tujuan, kontribusi)
-- [03-tinjauan-pustaka.md](03-tinjauan-pustaka.md) — Tinjauan Pustaka (JWT/JWKS, mitigasi, *related work*; lihat [../02-literatur/](../02-literatur/))
-- [04-metodologi.md](04-metodologi.md) — Metodologi (arsitektur eksperimen, skema hybrid caching, skenario k6)
-- [05-hasil-analisis.md](05-hasil-analisis.md) — Hasil & Analisis (mengacu pada [../06-output/](../06-output/))
-- [06-kesimpulan.md](06-kesimpulan.md) — Kesimpulan & Saran Penelitian Lanjutan
-- [07-daftar-pustaka.md](07-daftar-pustaka.md) — Daftar Pustaka (18 referensi, format IEEE; BibTeX di [../02-literatur/daftar-pustaka.bib](../02-literatur/daftar-pustaka.bib))
+Penyusunan manuskrip bertujuan untuk:
 
-> `naskah-jurnal.md`/`.docx` adalah gabungan final dari bagian-bagian di atas. Pemindahan ke template jurnal tujuan (margin, sitasi, kolom spesifik) dilakukan oleh peneliti.
+- Mendokumentasikan hasil penelitian dalam bentuk artikel ilmiah.
+- Menyusun naskah yang siap dipublikasikan pada jurnal ilmiah.
+- Menjadi dasar penyusunan artikel sesuai template jurnal nasional maupun internasional.
+- Menyajikan hasil penelitian secara ringkas, sistematis, dan sesuai kaidah penulisan ilmiah.
 
-## Acuan
+---
 
-[../09-docs/tahap-5-draf-paper.md](../09-docs/tahap-5-draf-paper.md)
+## Isi Manuskrip
+
+Manuskrip memuat beberapa bagian utama, yaitu:
+
+1. Judul Penelitian
+2. Abstrak
+3. Pendahuluan
+4. Metodologi Penelitian
+5. Hasil dan Pembahasan
+6. Kesimpulan
+7. Daftar Pustaka
+
+Seluruh isi manuskrip disusun berdasarkan hasil eksperimen yang telah dilakukan menggunakan model **EfficientNet-B6** dengan pendekatan **Transfer Learning** pada dataset **Rice Leafs**.
+
+---
+
+## Berkas
+
+| Berkas | Deskripsi |
+|---------|-----------|
+| [Manuskrip_EfficientNetB6.docx](Manuskrip_EfficientNetB6.docx) | Manuskrip penelitian dalam format Microsoft Word yang siap disesuaikan dengan template jurnal tujuan. |
+| [Manuskrip_EfficientNetB6.pdf](Manuskrip_EfficientNetB6.pdf) | Manuskrip penelitian dalam format PDF untuk proses review dan dokumentasi. |
+| [README.md](README.md) | Dokumentasi folder manuskrip penelitian. |
+
+---
+
+## Hubungan dengan Penelitian
+
+Manuskrip ini disusun berdasarkan hasil penelitian yang terdokumentasi pada folder lain dalam repository.
+
+| Folder | Deskripsi |
+|---------|-----------|
+| [00-admin](../00-admin/) | Administrasi penelitian |
+| [01-proposal](../01-proposal/) | Proposal penelitian |
+| [02-literatur](../02-literatur/) | Studi literatur |
+| [03-teori](../03-teori/) | Landasan teori penelitian |
+| [04-data](../04-data/) | Dataset dan Exploratory Data Analysis (EDA) |
+| [05-kode](../05-kode/) | Implementasi model EfficientNet-B6 |
+| [06-output](../06-output/) | Hasil pelatihan dan evaluasi model |
+| [08-laporan](../08-laporan/) | Laporan penelitian lengkap |
+| [09-docs](../09-docs/) | Dokumentasi tahapan penelitian |
+
+---
+
+## Status Manuskrip
+
+| Informasi | Status |
+|------------|:------:|
+| Proposal Penelitian | ✅ Selesai |
+| Implementasi Penelitian | ✅ Selesai |
+| Evaluasi Model | ✅ Selesai |
+| Penyusunan Manuskrip | ✅ Selesai |
+| Siap Disesuaikan dengan Template Jurnal | ✅ Ya |
+
+---
+
+## Target Publikasi
+
+Manuskrip ini disusun sebagai dasar publikasi ilmiah pada jurnal yang memiliki ruang lingkup di bidang:
+
+- Artificial Intelligence
+- Machine Learning
+- Deep Learning
+- Computer Vision
+- Image Classification
+- Smart Agriculture
+
+Target publikasi dapat disesuaikan dengan jurnal nasional terakreditasi SINTA maupun jurnal internasional yang relevan.
+
+---
+
+## Catatan
+
+Manuskrip ini merupakan ringkasan ilmiah dari laporan penelitian yang terdapat pada folder **08-laporan**.
+
+Seluruh data, metode, hasil eksperimen, tabel, gambar, dan pembahasan yang terdapat pada manuskrip berasal dari hasil penelitian yang telah didokumentasikan pada repository ini.
+
+Apabila manuskrip akan dikirim ke jurnal tertentu, peneliti hanya perlu menyesuaikan format penulisan, gaya sitasi, serta template sesuai ketentuan jurnal tujuan tanpa mengubah substansi penelitian.
