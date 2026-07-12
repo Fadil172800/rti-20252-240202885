@@ -92,7 +92,7 @@ Dokumen ini berisi kronologi pelaksanaan penelitian mulai dari tahap penyusunan 
 | 6 | Evaluasi Model | ☑ Selesai |
 | 7 | Laporan Penelitian | ☑ Selesai |
 | 8 | Manuskrip Ilmiah | ☑ Selesai |
-| 9 | Upload ke GitHub Repository | ☐ Dalam Proses |
+| 9 | Upload ke GitHub Repository |  ☑ Selesai |
 
 ---
 
