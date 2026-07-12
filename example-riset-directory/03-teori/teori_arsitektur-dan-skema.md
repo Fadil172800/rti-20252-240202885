@@ -1,4 +1,6 @@
-# Arsitektur, Desain, dan Landasan Teori
+# Arsitektur Sistem dan Landasan Teori
+
+Dokumen ini menjelaskan arsitektur sistem, desain penelitian, variabel penelitian, serta landasan teori yang digunakan sebagai dasar implementasi model EfficientNet-B6 pada penelitian klasifikasi penyakit daun padi.
 
 **Judul Penelitian:** Klasifikasi Penyakit Daun Padi Menggunakan EfficientNet-B6 dengan Pendekatan Transfer Learning
 
@@ -8,7 +10,7 @@
 
 ---
 
-# 1. Arsitektur Komponen Sistem
+## 1. Arsitektur Komponen Sistem
 
 Penelitian ini merupakan penelitian eksperimen berbasis klasifikasi citra menggunakan model **EfficientNet-B6** dengan pendekatan **Transfer Learning**. Seluruh proses dilakukan secara offline menggunakan dataset **Rice Leafs** pada lingkungan **Google Colab Free**. Dataset diproses melalui tahapan preprocessing, pelatihan model, evaluasi performa, hingga menghasilkan model klasifikasi penyakit daun padi.
 
@@ -48,11 +50,14 @@ H3 --> I
 H4 --> I
 H5 --> I
 H6 --> I
+
+F --> J["Save Model (.keras)"]
+J --> K["Prediction"]
 ```
 
 ---
 
-# 2. Alur Preprocessing Data
+## 2. Alur Preprocessing Data
 
 Tahap preprocessing dilakukan sebelum proses pelatihan model. Seluruh citra diperiksa, diubah ukurannya menjadi **224 × 224 piksel**, kemudian dibagi menjadi **80% data training** dan **20% data validation**.
 
@@ -79,7 +84,7 @@ E --> F["Dataset Siap Digunakan"]
 
 ---
 
-# 3. Alur Pelatihan dan Evaluasi Model
+## 3. Alur Pelatihan dan Evaluasi Model
 
 Model EfficientNet-B6 menggunakan bobot awal dari **ImageNet** kemudian dilakukan **Transfer Learning**. Setelah proses pelatihan selesai, model dievaluasi menggunakan beberapa metrik evaluasi.
 
@@ -95,42 +100,47 @@ B --> C["Transfer Learning"]
 
 C --> D["Training Model"]
 
-D --> E["EarlyStopping"]
+D --> E["Callback
+- EarlyStopping
+- ReduceLROnPlateau
+- ModelCheckpoint"]
 
 E --> F["Model Terbaik"]
 
-F --> G["Evaluasi Validation Set"]
+F --> G["Save Model (.keras)"]
 
-G --> H["Accuracy"]
+G --> H["Evaluasi Validation Set"]
 
-G --> I["Precision"]
+H --> I["Accuracy"]
 
-G --> J["Recall"]
+H --> J["Precision"]
 
-G --> K["F1-Score"]
+H --> K["Recall"]
 
-G --> L["Classification Report"]
+H --> L["F1-Score"]
 
-G --> M["Confusion Matrix"]
+H --> M["Classification Report"]
 
-H --> N["Kesimpulan"]
+H --> N["Confusion Matrix"]
 
-I --> N
+I --> O["Kesimpulan"]
 
-J --> N
+J --> O
 
-K --> N
+K --> O
 
-L --> N
+L --> O
 
-M --> N
+M --> O
+
+N --> O
 ```
 
 ---
 
-# 4. Desain Variabel Penelitian
+## 4. Desain Variabel Penelitian
 
-## 4.1 Variabel Independen (Independent Variable)
+### 4.1 Variabel Independen (Independent Variable)
 
 Variabel independen merupakan model deep learning yang digunakan pada penelitian.
 
@@ -140,7 +150,7 @@ Variabel independen merupakan model deep learning yang digunakan pada penelitian
 
 ---
 
-## 4.2 Variabel Dependen (Dependent Variable)
+### 4.2 Variabel Dependen (Dependent Variable)
 
 Variabel dependen merupakan performa model klasifikasi.
 
@@ -155,7 +165,7 @@ Variabel dependen merupakan performa model klasifikasi.
 
 ---
 
-## 4.3 Variabel Kontrol
+### 4.3 Variabel Kontrol
 
 | Variabel | Nilai |
 |----------|-------|
@@ -169,24 +179,21 @@ Variabel dependen merupakan performa model klasifikasi.
 
 ---
 
-# 5. Struktur Dataset
+## 5. Struktur Dataset
 
 Dataset yang digunakan merupakan **Rice Leafs Dataset** yang terdiri dari empat kelas.
 
 ```mermaid
-erDiagram
-
-RICE_LEAFS{
-
-Healthy
-
-BrownSpot
-
-Hispa
-
-LeafBlast
-
-}
+graph LR
+    A["Dataset Rice Leafs
+    3.355 Citra"] --> B["Healthy
+    1.488 Citra"]
+    A --> C["Brown Spot
+    523 Citra"]
+    A --> D["Hispa
+    565 Citra"]
+    A --> E["Leaf Blast
+    779 Citra"]
 ```
 
 | Kelas | Jumlah Citra |
@@ -199,108 +206,111 @@ LeafBlast
 
 ---
 
-# 6. Landasan Teori
+## 6. Landasan Teori
 
-## 6.1 Artificial Intelligence
+### 6.1 Artificial Intelligence
 
-Artificial Intelligence (AI) merupakan cabang ilmu komputer yang bertujuan mengembangkan sistem yang mampu meniru kemampuan berpikir manusia untuk menyelesaikan suatu permasalahan secara otomatis.
+Artificial Intelligence (AI) merupakan cabang ilmu komputer yang bertujuan mengembangkan sistem yang mampu meniru kemampuan berpikir manusia untuk menyelesaikan suatu permasalahan secara otomatis. Konsep AI mulai dikenal sejak tahun 1950-an dan terus berkembang hingga saat ini.
 
----
-
-## 6.2 Machine Learning
-
-Machine Learning merupakan bagian dari Artificial Intelligence yang memungkinkan komputer mempelajari pola dari data sehingga mampu melakukan prediksi tanpa diprogram secara eksplisit.
+Dalam bidang pertanian, AI diterapkan pada berbagai aspek seperti identifikasi hama dan penyakit tanaman, prediksi hasil panen, serta sistem irigasi otomatis. Penelitian ini menggunakan AI sebagai fondasi dasar dalam pengembangan sistem klasifikasi penyakit daun padi.
 
 ---
 
-## 6.3 Deep Learning
+### 6.2 Machine Learning
 
-Deep Learning merupakan pengembangan Machine Learning yang menggunakan jaringan saraf tiruan berlapis (Artificial Neural Network) sehingga mampu mempelajari fitur secara otomatis dari data citra.
+Machine Learning merupakan bagian dari Artificial Intelligence yang memungkinkan komputer mempelajari pola dari data sehingga mampu melakukan prediksi tanpa diprogram secara eksplisit. Metode ini bekerja dengan membangun model matematis berdasarkan data latih yang diberikan.
 
----
-
-## 6.4 Convolutional Neural Network (CNN)
-
-CNN merupakan arsitektur Deep Learning yang dirancang khusus untuk pengolahan citra digital melalui proses convolution, pooling, dan fully connected layer.
+Dalam penelitian ini, Machine Learning digunakan untuk membangun model klasifikasi yang mampu membedakan daun padi sehat dan daun yang terinfeksi penyakit berdasarkan citra yang diberikan. Pendekatan yang digunakan termasuk dalam kategori Supervised Learning karena data latih telah memiliki label kelas.
 
 ---
 
-## 6.5 EfficientNet-B6
+### 6.3 Deep Learning
 
-EfficientNet-B6 merupakan salah satu varian EfficientNet yang menggunakan metode **Compound Scaling** sehingga mampu meningkatkan performa klasifikasi citra dengan penggunaan parameter yang lebih efisien dibanding arsitektur CNN konvensional.
+Deep Learning merupakan pengembangan Machine Learning yang menggunakan jaringan saraf tiruan berlapis (Artificial Neural Network) sehingga mampu mempelajari fitur secara otomatis dari data citra. Jaringan ini terdiri dari beberapa lapisan tersembunyi yang memungkinkan model menangkap representasi data secara hierarkis.
 
----
-
-## 6.6 Transfer Learning
-
-Transfer Learning merupakan teknik pembelajaran yang memanfaatkan bobot model yang telah dilatih pada dataset ImageNet sehingga proses pelatihan menjadi lebih cepat serta mampu meningkatkan performa klasifikasi pada dataset baru.
+Keunggulan Deep Learning dibandingkan metode Machine Learning konvensional adalah kemampuannya dalam mengekstraksi fitur secara otomatis tanpa memerlukan ekstraksi fitur manual. Hal ini sangat berguna dalam klasifikasi citra karena pola penyakit pada daun seringkali sulit didefinisikan secara manual.
 
 ---
 
-# 7. Landasan Teori Evaluasi
+### 6.4 Convolutional Neural Network (CNN)
+
+CNN merupakan arsitektur Deep Learning yang dirancang khusus untuk pengolahan citra digital melalui proses convolution, pooling, dan fully connected layer. Lapisan convolution berfungsi untuk mendeteksi fitur-fitur penting seperti tepi, tekstur, dan pola pada citra. Lapisan pooling berfungsi untuk mengurangi dimensi data sehingga komputasi menjadi lebih efisien.
+
+Arsitektur CNN telah terbukti sangat efektif dalam berbagai tugas klasifikasi citra, termasuk identifikasi penyakit pada tanaman. Penelitian ini menggunakan EfficientNet-B6 yang merupakan salah satu varian dari arsitektur CNN dengan performa tinggi.
+
+---
+
+### 6.5 EfficientNet-B6
+
+EfficientNet-B6 merupakan salah satu varian EfficientNet yang menggunakan metode **Compound Scaling** sehingga mampu meningkatkan performa klasifikasi citra dengan penggunaan parameter yang lebih efisien dibanding arsitektur CNN konvensional. Metode Compound Scaling mengombinasikan peningkatan kedalaman, lebar, dan resolusi secara bersamaan.
+
+EfficientNet memiliki delapan varian (B0 hingga B7) dengan tingkat kompleksitas yang berbeda. Varian B6 dipilih dalam penelitian ini karena memiliki keseimbangan antara performa tinggi dan kebutuhan komputasi yang masih dapat diakomodasi oleh lingkungan Google Colab Free.
+
+---
+
+### 6.6 Transfer Learning
+
+Transfer Learning merupakan teknik pembelajaran yang memanfaatkan bobot model yang telah dilatih pada dataset ImageNet sehingga proses pelatihan menjadi lebih cepat serta mampu meningkatkan performa klasifikasi pada dataset baru. Teknik ini sangat bermanfaat ketika dataset yang tersedia relatif kecil.
+
+Dalam penelitian ini, EfficientNet-B6 menggunakan bobot pretrained ImageNet. Lapisan konvolusi tetap dipertahankan (feature extraction) dan hanya lapisan fully connected yang dimodifikasi sesuai dengan jumlah kelas pada dataset. Pendekatan ini memungkinkan model untuk memanfaatkan pengetahuan dari dataset besar dan mengadaptasikannya untuk tugas klasifikasi penyakit daun padi.
+
+---
+
+### 6.7 Evaluasi Model
 
 Performa model dievaluasi menggunakan beberapa metrik berikut.
 
-### Accuracy
-
-```
-Accuracy =
-(TP + TN)
-/ (TP + TN + FP + FN)
-```
+#### Accuracy
 
 Accuracy menunjukkan persentase prediksi yang benar terhadap seluruh data.
 
+$$
+Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
+$$
+
 ---
 
-### Precision
-
-```
-Precision =
-TP / (TP + FP)
-```
+#### Precision
 
 Precision menunjukkan tingkat ketepatan model dalam melakukan prediksi positif.
 
+$$
+Precision = \frac{TP}{TP + FP}
+$$
+
 ---
 
-### Recall
-
-```
-Recall =
-TP / (TP + FN)
-```
+#### Recall
 
 Recall menunjukkan kemampuan model dalam menemukan seluruh data positif.
 
+$$
+Recall = \frac{TP}{TP + FN}
+$$
+
 ---
 
-### F1-Score
-
-```
-F1 =
-2 × Precision × Recall
-------------------------
-Precision + Recall
-```
+#### F1-Score
 
 F1-Score digunakan untuk mengukur keseimbangan antara Precision dan Recall.
 
+$$
+F1 = \frac{2 \times Precision \times Recall}{Precision + Recall}
+$$
+
 ---
 
-### Confusion Matrix
+#### Confusion Matrix
 
 Confusion Matrix digunakan untuk melihat jumlah prediksi benar maupun salah pada setiap kelas klasifikasi.
 
----
-
-### Classification Report
+#### Classification Report
 
 Classification Report menyajikan Accuracy, Precision, Recall, dan F1-Score setiap kelas sehingga performa model dapat dianalisis secara lebih rinci.
 
 ---
 
-# 8. Keputusan Desain Penelitian
+## 7. Keputusan Desain Penelitian
 
 | Aspek | Keputusan | Justifikasi |
 |-------|-----------|-------------|
@@ -312,10 +322,12 @@ Classification Report menyajikan Accuracy, Precision, Recall, dan F1-Score setia
 | Epoch | 25 | Sesuai rancangan penelitian |
 | Optimizer | Adam | Stabil untuk proses training |
 | EarlyStopping | Digunakan | Mengurangi risiko overfitting |
+| ReduceLROnPlateau | Digunakan | Mengurangi learning rate ketika loss stagnan |
+| ModelCheckpoint | Digunakan | Menyimpan model terbaik selama training |
 
 ---
 
-# 9. Mapping Implementasi Kode
+## 8. Mapping Implementasi Kode
 
 | Komponen | Implementasi |
 |----------|--------------|
@@ -324,13 +336,48 @@ Classification Report menyajikan Accuracy, Precision, Recall, dan F1-Score setia
 | Split Dataset | 80% Training, 20% Validation |
 | Model | EfficientNetB6 |
 | Transfer Learning | weights="imagenet" |
+| Callback | EarlyStopping, ReduceLROnPlateau, ModelCheckpoint |
 | Optimizer | Adam |
 | Loss Function | SparseCategoricalCrossentropy |
 | Evaluasi | Accuracy, Precision, Recall, F1-Score, Classification Report, Confusion Matrix |
 | Visualisasi | Matplotlib |
+| Save Model | model.save() |
+
+---
+
+## 9. Referensi
+
+- Milano, A. C., Yasid, A., & Wahyuningrum, R. T. (2024). Klasifikasi Penyakit Daun Padi Menggunakan Model Deep Learning EfficientNet-B6. JITET (Jurnal Informatika dan Teknik Elektro Terapan), Vol.12 No.1.
+
+- Tan, M., & Le, Q. V. (2019). EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks. Proceedings of the 36th International Conference on Machine Learning.
+
+- Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep Learning. MIT Press.
+
+- TensorFlow Official Documentation. https://www.tensorflow.org/
+
+- Keras API Documentation. https://keras.io/
+
+---
+
+## 10. Navigasi Repository
+
+| Folder | Keterangan |
+|--------|------------|
+| [00-admin](../00-admin/) | Administrasi Penelitian |
+| [01-proposal](../01-proposal/) | Proposal Penelitian |
+| [02-literatur](../02-literatur/) | Studi Literatur |
+| [04-data](../04-data/) | Dataset Penelitian |
+| [05-kode](../05-kode/) | Implementasi Model |
+| [06-output](../06-output/) | Hasil Pelatihan |
+| [07-manuskrip](../07-manuskrip/) | Manuskrip |
+| [08-laporan](../08-laporan/) | Laporan |
+| [09-docs](../09-docs/) | Dokumentasi |
 
 ---
 
 ## Ringkasan
 
 Penelitian ini menggunakan model **EfficientNet-B6** dengan pendekatan **Transfer Learning** untuk melakukan klasifikasi penyakit daun padi menggunakan dataset **Rice Leafs**. Seluruh implementasi dilakukan pada **Google Colab Free** dengan pembagian data **80% training** dan **20% validation**. Performa model dievaluasi menggunakan **Accuracy, Precision, Recall, F1-Score, Classification Report**, dan **Confusion Matrix** sehingga hasil penelitian dapat dianalisis secara komprehensif.
+
+---
+
