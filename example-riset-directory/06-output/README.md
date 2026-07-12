@@ -219,13 +219,3 @@ Untuk memahami implementasi model secara lengkap, pengguna dapat melihat noteboo
 
 ---
 
-Dengan perubahan tersebut, struktur dokumentasi **06-output** menjadi lebih lengkap dan konsisten:
-
-**01** → Model Summary  
-**02** → Training History  
-**03** → Confusion Matrix  
-**04** → Classification Report  
-**05** → Evaluation Result  
-**06** → Sample Prediction  
-**07** → Research Summary  
-**08** → Trained Model (dokumentasi + link Google Drive)
