@@ -1,39 +1,135 @@
-# Tahap 2 — Implementasi API Gateway (Go)
+# Tahap 2 — Persiapan Dataset
 
 **Status:** Selesai
-**Acuan arsitektur:** [tahap-1-arsitektur-dan-skema-database.md](tahap-1-arsitektur-dan-skema-database.md)
-**Lokasi kode:** [../05-kode/gateway/](../05-kode/gateway/)
+
+**Acuan:** [../04-data/README.md](../04-data/README.md)
+
+**Lokasi Dataset:** [../04-data/](../04-data/)
 
 ---
 
-## Tujuan
+# Tujuan
 
-Mengimplementasikan API Gateway (Go + Echo) yang mendukung dua mode operasi melalui `CACHE_MODE`:
+Tahap ini bertujuan untuk mempersiapkan dataset yang akan digunakan pada proses pelatihan model **EfficientNet-B6**. Persiapan meliputi pengumpulan dataset, eksplorasi data (Exploratory Data Analysis/EDA), preprocessing citra, serta pembagian dataset menjadi data training dan validation.
 
-- `none` — baseline, setiap request langsung query `signing_keys` di PostgreSQL.
-- `hybrid` — mitigasi penuh: Redis L1 cache (positive/negative) + rate-limit counter permanen di PostgreSQL.
+---
 
-## Deliverable
+# Deliverable
 
-- [x] Struktur project Go (`cmd/gateway`, `internal/...`) — DDD-lite per bounded-context (`jwks`, `ratelimit`, `jwtauth`, `httpapi`, `platform`, `metrics`)
-- [x] `docker-compose.yml` (gateway, postgres, redis) dengan healthcheck & `depends_on: condition: service_healthy`
-- [x] Migration SQL via Sqitch (`signing_keys`, `rate_limit_counters`, `upsert_rate_limit_counter` function)
-- [x] Skrip seed (`scripts/seed`): generate RSA-2048 keypair, insert ke `signing_keys`, cetak contoh JWT valid (exp +24h)
-- [x] Middleware verifikasi JWT (RS256) + resolusi `kid` (mode `none` dan `hybrid`, fail-closed pada Postgres down, fail-open pada Redis down)
-- [x] Endpoint `/metrics` (Prometheus, prefix `jwksgw_`): cache hit/miss, db query count, rate-limit blocked count, auth outcome, request duration
-- [x] Konfigurasi via environment variable (`.env.example`)
-- [x] `/healthz` (dipakai healthcheck compose & runner Tahap 3)
-- [x] `README.md` dengan command mentah (sqitch deploy, seed, run, docker compose, switch `CACHE_MODE`)
+- [x] Dataset **Rice Leafs** berhasil diperoleh dari Kaggle.
+- [x] Dataset terdiri dari **3.355 citra** dengan **4 kelas**.
+- [x] Eksplorasi dataset (EDA) telah dilakukan.
+- [x] Distribusi jumlah citra setiap kelas berhasil dianalisis.
+- [x] Contoh citra setiap kelas berhasil didokumentasikan.
+- [x] Distribusi resolusi gambar berhasil dianalisis.
+- [x] Seluruh citra diubah menjadi ukuran **224 × 224 piksel**.
+- [x] Dataset dibagi menjadi **80% data training** dan **20% data validation**.
+- [x] Pipeline dataset menggunakan **TensorFlow image_dataset_from_directory()** berhasil dibuat.
+- [x] Dataset siap digunakan pada proses pelatihan model.
 
-## Hasil Verifikasi End-to-End
+---
 
-Diverifikasi manual via `docker compose` + curl (lihat [../05-kode/gateway/README.md](../05-kode/gateway/README.md) bagian "Verifikasi end-to-end"):
+# Dataset Penelitian
 
-- **Hybrid**: valid kid → 200 (cache miss → DB → fill cache) → 200 (cache hit); unknown kid → 401 `invalid_kid` (negative cache) tanpa query DB berulang; flood concurrent dengan `kid` unik → sebagian `429 rate_limited` setelah >20 req/s per `client_ip`.
-- **None**: valid kid selalu 200 dengan `jwksgw_db_queries_total{resolve_key}` naik 1:1 per request; tidak pernah `429`.
-- **Fail-closed**: Postgres down → `503 service_unavailable` (kedua mode). Redis down (hybrid) → kid yang sudah ter-cache tetap `200` (fallback Postgres), `/healthz` melaporkan `redis:false`.
+Dataset yang digunakan adalah **Rice Leafs Dataset** yang diperoleh dari Kaggle.
 
-## Catatan Lingkungan
+| Informasi | Keterangan |
+|-----------|------------|
+| Nama Dataset | Rice Leafs |
+| Sumber | Kaggle |
+| Total Dataset | 3.355 citra |
+| Jumlah Kelas | 4 |
+| Format | JPG / PNG |
 
-- PostgreSQL container di-expose ke host pada port **5433** (bukan 5432) untuk menghindari konflik dengan instance PostgreSQL lokal di mesin development. Di dalam jaringan Docker, gateway tetap mengakses `postgres:5432`.
-- Sqitch project (`migrations/`) adalah dokumentasi migrasi resmi (deploy/revert/verify), namun di mesin development saat ini `sqitch` CLI tidak punya driver `DBD::Pg` — migrasi diverifikasi dengan menjalankan file `deploy/*.sql` langsung via `psql`. Pastikan environment dengan `DBD::Pg` terpasang untuk `sqitch deploy` penuh.
+Empat kelas yang digunakan terdiri dari:
+
+- Healthy
+- Brown Spot
+- Hispa
+- Leaf Blast
+
+---
+
+# Exploratory Data Analysis (EDA)
+
+Sebelum proses pelatihan model dilakukan, dataset dianalisis untuk mengetahui karakteristik data.
+
+EDA meliputi:
+
+- Analisis distribusi jumlah citra.
+- Analisis contoh citra setiap kelas.
+- Analisis distribusi resolusi gambar.
+- Pemeriksaan kualitas dataset.
+
+Dokumentasi hasil EDA tersedia pada:
+
+- [01-distribusi-dataset.png](../04-data/01-distribusi-dataset.png)
+- [02-contoh-dataset.png](../04-data/02-contoh-dataset.png)
+- [03-distribusi-resolusi.png](../04-data/03-distribusi-resolusi.png)
+
+---
+
+# Preprocessing Dataset
+
+Tahap preprocessing dilakukan agar seluruh citra memiliki format yang seragam sebelum digunakan pada proses pelatihan model.
+
+Tahapan preprocessing meliputi:
+
+- Resize citra menjadi **224 × 224 piksel**.
+- Konversi citra ke format RGB.
+- Batch processing menggunakan TensorFlow Dataset.
+- Prefetch dataset untuk meningkatkan efisiensi pelatihan.
+- Preprocessing menggunakan fungsi `preprocess_input()` milik EfficientNet.
+
+---
+
+# Pembagian Dataset
+
+Dataset dibagi menggunakan fungsi `image_dataset_from_directory()` dengan parameter `validation_split`.
+
+| Dataset | Persentase |
+|----------|-----------:|
+| Training | 80% |
+| Validation | 20% |
+
+Pembagian dilakukan secara otomatis sehingga data training dan validation berasal dari dataset yang sama tanpa menyebabkan **data leakage**.
+
+---
+
+# Hasil Verifikasi
+
+Tahap persiapan dataset berhasil dilakukan dengan hasil sebagai berikut.
+
+- Dataset berhasil dibaca oleh TensorFlow.
+- Seluruh kelas berhasil dikenali.
+- Jumlah citra sesuai dengan dataset asli.
+- Ukuran citra telah sesuai dengan input EfficientNet-B6.
+- Dataset training dan validation berhasil dibuat.
+- Pipeline dataset berhasil dijalankan tanpa error.
+
+---
+
+# Catatan Implementasi
+
+Implementasi persiapan dataset dilakukan menggunakan notebook penelitian pada folder berikut.
+
+- [PRAKTIKUMB6 (1).ipynb](../05-kode/PRAKTIKUMB6%20(1).ipynb)
+
+Sedangkan dokumentasi dataset tersedia pada folder:
+
+- [../04-data/](../04-data/)
+
+---
+
+# Hasil Tahap 2
+
+Tahap persiapan dataset telah menghasilkan beberapa luaran penting sebagai dasar pelaksanaan penelitian, yaitu:
+
+- Dataset Rice Leafs siap digunakan.
+- Dokumentasi Exploratory Data Analysis (EDA).
+- Hasil distribusi dataset.
+- Dokumentasi contoh citra.
+- Distribusi resolusi gambar.
+- Dataset training dan validation.
+- Pipeline TensorFlow Dataset.
+- Dataset siap digunakan pada proses implementasi model EfficientNet-B6.
