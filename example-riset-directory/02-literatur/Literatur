@@ -8,9 +8,27 @@ Seluruh referensi diperoleh melalui Google Scholar, IEEE Xplore, ScienceDirect, 
 
 ---
 
-# Topik Literatur
+## Ringkasan Studi Literatur
 
-## 1. Artificial Intelligence (AI)
+Berdasarkan hasil studi literatur, EfficientNet merupakan salah satu arsitektur CNN yang memiliki performa tinggi pada berbagai tugas klasifikasi citra. Penelitian Milano et al. (2024) menunjukkan bahwa EfficientNet-B6 mampu mencapai akurasi 77,05% pada dataset Rice Leafs menggunakan skema 5-Fold Cross Validation.
+
+Penelitian ini menggunakan jurnal tersebut sebagai acuan utama, namun menerapkan pendekatan yang berbeda, yaitu menggunakan Transfer Learning dengan skema single split (80:20) pada lingkungan Google Colab Free. Pendekatan tersebut dipilih agar implementasi penelitian lebih ringan dari sisi kebutuhan komputasi namun tetap mampu menghasilkan model klasifikasi yang baik.
+
+---
+
+## Research Gap
+
+Penelitian Milano et al. (2024) menggunakan EfficientNet-B6 dengan skema 5-Fold Cross Validation dan memperoleh akurasi terbaik sebesar 77,05%.
+
+Namun implementasi tersebut memerlukan proses pelatihan yang lebih lama karena model harus dilatih sebanyak lima kali.
+
+Pada penelitian ini digunakan pendekatan Transfer Learning dengan skema single split (80:20) menggunakan Google Colab Free sehingga kebutuhan komputasi menjadi lebih ringan. Penelitian ini bertujuan mengevaluasi apakah pendekatan tersebut masih mampu memberikan performa klasifikasi yang baik pada dataset Rice Leafs.
+
+---
+
+## Topik Literatur
+
+### 1. Artificial Intelligence (Pengantar Singkat)
 
 Pembahasan mengenai konsep Artificial Intelligence sebagai dasar pengembangan sistem cerdas yang mampu melakukan proses pengambilan keputusan secara otomatis.
 
@@ -22,7 +40,7 @@ Materi yang dikaji meliputi:
 
 ---
 
-## 2. Machine Learning
+### 2. Machine Learning
 
 Literatur mengenai Machine Learning sebagai cabang Artificial Intelligence yang digunakan untuk membangun model prediksi berdasarkan data.
 
@@ -35,7 +53,7 @@ Topik yang dipelajari:
 
 ---
 
-## 3. Deep Learning
+### 3. Deep Learning
 
 Kajian mengenai Deep Learning sebagai pendekatan utama penelitian.
 
@@ -49,7 +67,7 @@ Topik meliputi:
 
 ---
 
-## 4. Convolutional Neural Network (CNN)
+### 4. Convolutional Neural Network (CNN)
 
 Kajian mengenai arsitektur CNN sebagai dasar EfficientNet.
 
@@ -63,7 +81,7 @@ Materi yang dipelajari:
 
 ---
 
-## 5. EfficientNet
+### 5. EfficientNet
 
 Literatur utama mengenai arsitektur EfficientNet.
 
@@ -71,26 +89,29 @@ Topik yang dikaji:
 
 - EfficientNet
 - Compound Scaling
+- ImageNet Pretrained
 - EfficientNet B0–B7
 - EfficientNet-B6
 - Transfer Learning pada EfficientNet
+- Feature Extraction
+- Fine Tuning
 
 ---
 
-## 6. Computer Vision
+### 6. Image Processing dan Computer Vision
 
-Literatur mengenai pengolahan citra digital.
+Literatur mengenai pengolahan citra digital dan computer vision yang berkaitan dengan klasifikasi citra.
 
 Topik meliputi:
 
 - Digital Image Processing
-- Computer Vision
 - Image Classification
+- Feature Extraction
 - Pattern Recognition
 
 ---
 
-## 7. TensorFlow dan Keras
+### 7. TensorFlow dan Keras
 
 Kajian framework yang digunakan pada implementasi penelitian.
 
@@ -104,7 +125,7 @@ Materi meliputi:
 
 ---
 
-## 8. Rice Leaf Disease
+### 8. Rice Leaf Disease
 
 Kajian mengenai penyakit daun padi yang menjadi objek penelitian.
 
@@ -117,21 +138,23 @@ Kelas penyakit:
 
 ---
 
-## 9. Dataset
+### 9. Dataset Rice Leafs
 
 Literatur mengenai dataset yang digunakan.
 
 Topik:
 
 - Rice Leafs Dataset
-- Kaggle Dataset
+- Distribusi Dataset
+- Ketidakseimbangan Kelas
+- Image Resolution
 - Data Preprocessing
 - Image Resizing
 - Dataset Splitting (80:20)
 
 ---
 
-## 10. Evaluasi Model
+### 10. Evaluasi Model
 
 Kajian mengenai metrik evaluasi model klasifikasi.
 
@@ -143,10 +166,12 @@ Metrik yang digunakan:
 - F1-Score
 - Confusion Matrix
 - Classification Report
+- Macro Average
+- Weighted Average
 
 ---
 
-# Referensi Utama
+## Referensi Utama
 
 1. Milano, A. C., Yasid, A., & Wahyuningrum, R. T. (2024).
 
@@ -158,16 +183,16 @@ JITET (Jurnal Informatika dan Teknik Elektro Terapan), Vol.12 No.1.
 
 ---
 
-# Referensi Pendukung
+## Referensi Pendukung
 
-## Artificial Intelligence
+### Artificial Intelligence
 
 - Russell, S., & Norvig, P.
   *Artificial Intelligence: A Modern Approach.*
 
 ---
 
-## Machine Learning
+### Machine Learning
 
 - Mitchell, T. M.
   *Machine Learning.*
@@ -177,14 +202,14 @@ JITET (Jurnal Informatika dan Teknik Elektro Terapan), Vol.12 No.1.
 
 ---
 
-## Deep Learning
+### Deep Learning
 
 - Goodfellow, I., Bengio, Y., & Courville, A.
   *Deep Learning.*
 
 ---
 
-## Convolutional Neural Network
+### Convolutional Neural Network
 
 - LeCun, Y., et al.
   *Gradient-Based Learning Applied to Document Recognition.*
@@ -194,7 +219,7 @@ JITET (Jurnal Informatika dan Teknik Elektro Terapan), Vol.12 No.1.
 
 ---
 
-## EfficientNet
+### EfficientNet
 
 - Tan, M., & Le, Q. V.
   *EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks.*
@@ -207,7 +232,7 @@ JITET (Jurnal Informatika dan Teknik Elektro Terapan), Vol.12 No.1.
 
 ---
 
-## Rice Leaf Disease
+### Rice Leaf Disease
 
 - Yuliany, dkk.
   *Implementasi Deep Learning pada Sistem Klasifikasi Hama Tanaman Padi Menggunakan CNN.*
@@ -217,15 +242,17 @@ JITET (Jurnal Informatika dan Teknik Elektro Terapan), Vol.12 No.1.
 
 ---
 
-## TensorFlow
+### TensorFlow
 
 - TensorFlow Official Documentation
+  https://www.tensorflow.org/
 
-- Keras Official Documentation
+- Keras API Documentation
+  https://keras.io/
 
 ---
 
-## Computer Vision
+### Computer Vision
 
 - Gonzalez, R. C.
   *Digital Image Processing.*
@@ -235,7 +262,7 @@ JITET (Jurnal Informatika dan Teknik Elektro Terapan), Vol.12 No.1.
 
 ---
 
-# Dokumen yang Disimpan
+## Dokumen yang Disimpan
 
 Folder **02-literatur** berisi dokumen pendukung penelitian sebagai berikut.
 
@@ -251,30 +278,4 @@ Folder **02-literatur** berisi dokumen pendukung penelitian sebagai berikut.
 
 ---
 
-# Struktur Folder
-
-```
-02-literatur/
-│
-├── jurnal-utama/
-│   └── Milano_2024_EfficientNetB6.pdf
-│
-├── jurnal-pendukung/
-│   ├── Tan_2019_EfficientNet.pdf
-│   ├── Atila_2021_EfficientNet.pdf
-│   ├── Singh_2023_BeansLeaf.pdf
-│   ├── Goodfellow_DeepLearning.pdf
-│   └── ...
-│
-├── matriks-literatur.md
-├── ringkasan-jurnal.md
-├── daftar-pustaka.bib
-├── daftar-pustaka.ris
-└── README.md
-```
-
----
-
-# Catatan
-
-Seluruh referensi pada folder ini digunakan sebagai dasar penyusunan proposal penelitian, penyusunan landasan teori, identifikasi research gap, serta pembahasan hasil penelitian. Referensi dipilih berdasarkan relevansi terhadap topik **klasifikasi penyakit daun padi menggunakan EfficientNet-B6 dengan pendekatan Transfer Learning**.
+## Struktur Folder
