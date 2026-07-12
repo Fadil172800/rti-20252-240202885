@@ -279,3 +279,47 @@ Folder **02-literatur** berisi dokumen pendukung penelitian sebagai berikut.
 ---
 
 ## Struktur Folder
+
+```
+02-literatur/
+│
+├── jurnal-utama/
+│   └── Milano_2024_EfficientNetB6.pdf
+│
+├── jurnal-pendukung/
+│   ├── Tan_2019_EfficientNet.pdf
+│   ├── Atila_2021_EfficientNet.pdf
+│   ├── Singh_2023_BeansLeaf.pdf
+│   ├── Goodfellow_DeepLearning.pdf
+│   └── ...
+│
+├── matriks-literatur.md
+├── ringkasan-jurnal.md
+├── daftar-pustaka.bib
+├── daftar-pustaka.ris
+└── README.md
+```
+
+---
+
+## Navigasi Repository
+
+| Folder | Keterangan |
+|--------|------------|
+| [00-admin](../00-admin/) | Administrasi Penelitian |
+| [01-proposal](../01-proposal/) | Proposal Penelitian |
+| [03-teori](../03-teori/) | Landasan Teori |
+| [04-data](../04-data/) | Dataset Penelitian |
+| [05-kode](../05-kode/) | Implementasi Model |
+| [06-output](../06-output/) | Hasil Pelatihan |
+| [07-manuskrip](../07-manuskrip/) | Manuskrip |
+| [08-laporan](../08-laporan/) | Laporan |
+| [09-docs](../09-docs/) | Dokumentasi |
+
+---
+
+## Catatan
+
+Seluruh referensi pada folder ini digunakan sebagai dasar penyusunan proposal penelitian, penyusunan landasan teori, identifikasi research gap, serta pembahasan hasil penelitian. Referensi dipilih berdasarkan relevansi terhadap topik **klasifikasi penyakit daun padi menggunakan EfficientNet-B6 dengan pendekatan Transfer Learning**.
+
+---
