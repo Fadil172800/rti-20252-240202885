@@ -28,8 +28,8 @@ Dokumen berikut berisi ringkasan arsitektur model EfficientNet-B6 yang digunakan
 
 | File | Deskripsi |
 |------|-----------|
-| `01-model-summary.md` | Dokumentasi arsitektur model. |
-| `01-model-summary.png` | Visualisasi struktur model EfficientNet-B6. |
+| [01-model-summary.md](01-model-summary.md) | Dokumentasi arsitektur model. |
+| [01-model-summary.png](01-model-summary.png) | Visualisasi struktur model EfficientNet-B6. |
 
 ---
 
@@ -39,10 +39,10 @@ Dokumen berikut berisi hasil proses pelatihan model.
 
 | File | Deskripsi |
 |------|-----------|
-| `02-training-history.csv` | Riwayat nilai accuracy dan loss setiap epoch. |
-| `02-training-history.md` | Dokumentasi hasil pelatihan model. |
-| `02-training-history.png` | Grafik perkembangan accuracy dan loss selama proses training. |
-| `02-training-log.txt` | Log lengkap proses pelatihan model. |
+| [02-training-history.csv](02-training-history.csv) | Riwayat nilai accuracy dan loss setiap epoch. |
+| [02-training-history.md](02-training-history.md) | Dokumentasi hasil pelatihan model. |
+| [02-training-history.png](02-training-history.png) | Grafik perkembangan accuracy dan loss selama proses training. |
+| [02-training-log.txt](02-training-log.txt) | Log lengkap proses pelatihan model. |
 
 ---
 
@@ -61,20 +61,20 @@ Dokumen evaluasi terdiri dari:
 
 | File | Deskripsi |
 |------|-----------|
-| `03-evaluation-metrics.csv` | Ringkasan metrik evaluasi model. |
-| `05-evaluation-result.md` | Dokumentasi hasil evaluasi model. |
-| `05-evaluation-result.png` | Visualisasi hasil evaluasi model. |
+| [03-evaluation-metrics.csv](03-evaluation-metrics.csv) | Ringkasan metrik evaluasi model. |
+| [05-evaluation-result.md](05-evaluation-result.md) | Dokumentasi hasil evaluasi model. |
+| [05-evaluation-result.png](05-evaluation-result.png) | Visualisasi hasil evaluasi model. |
 
 ---
 
 # Confusion Matrix
 
-Dokumen berikut menyajikan hasil Confusion Matrix yang digunakan untuk mengevaluasi kemampuan model dalam mengklasifikasikan empat kelas penyakit daun padi.
+Dokumen berikut menyajikan hasil **Confusion Matrix** yang digunakan untuk mengevaluasi kemampuan model dalam mengklasifikasikan empat kelas penyakit daun padi.
 
 | File | Deskripsi |
 |------|-----------|
-| `03-confusion-matrix.md` | Dokumentasi Confusion Matrix. |
-| `03-04-confusion-matrix-classification-report.png` | Visualisasi Confusion Matrix beserta Classification Report. |
+| [03-confusion-matrix.md](03-confusion-matrix.md) | Dokumentasi Confusion Matrix. |
+| [03-04-confusion-matrix-classification-report.png](03-04-confusion-matrix-classification-report.png) | Visualisasi Confusion Matrix beserta Classification Report. |
 
 Empat kelas yang dievaluasi meliputi:
 
@@ -100,8 +100,8 @@ Dokumen yang tersedia:
 
 | File | Deskripsi |
 |------|-----------|
-| `04-classification-report.md` | Dokumentasi Classification Report. |
-| `04-classification-report.txt` | Hasil Classification Report dalam format teks. |
+| [04-classification-report.md](04-classification-report.md) | Dokumentasi Classification Report. |
+| [04-classification-report.txt](04-classification-report.txt) | Hasil Classification Report dalam format teks. |
 
 ---
 
@@ -111,8 +111,8 @@ Folder ini juga menyajikan beberapa contoh hasil prediksi model terhadap data va
 
 | File | Deskripsi |
 |------|-----------|
-| `06-sample-prediction.md` | Dokumentasi hasil prediksi model. |
-| `06-sample-prediction.png` | Contoh hasil prediksi beserta label sebenarnya. |
+| [06-sample-prediction.md](06-sample-prediction.md) | Dokumentasi hasil prediksi model. |
+| [06-sample-prediction.png](06-sample-prediction.png) | Contoh hasil prediksi beserta label sebenarnya. |
 
 Visualisasi ini menunjukkan kemampuan model dalam mengenali penyakit daun padi pada data yang belum pernah digunakan selama proses pelatihan.
 
@@ -124,7 +124,7 @@ Ringkasan eksperimen disimpan dalam file berikut.
 
 | File | Deskripsi |
 |------|-----------|
-| `07-research-summary.csv` | Ringkasan parameter penelitian dan hasil akhir eksperimen. |
+| [07-research-summary.csv](07-research-summary.csv) | Ringkasan parameter penelitian dan hasil akhir eksperimen. |
 
 Ringkasan tersebut memuat informasi seperti:
 
@@ -143,36 +143,36 @@ Ringkasan tersebut memuat informasi seperti:
 
 | Berkas | Deskripsi |
 |---------|-----------|
-| `01-model-summary.md` | Ringkasan arsitektur model. |
-| `01-model-summary.png` | Visualisasi model. |
-| `02-training-history.csv` | Riwayat pelatihan. |
-| `02-training-history.md` | Dokumentasi training. |
-| `02-training-history.png` | Grafik training. |
-| `02-training-log.txt` | Log pelatihan. |
-| `03-confusion-matrix.md` | Dokumentasi Confusion Matrix. |
-| `03-04-confusion-matrix-classification-report.png` | Visualisasi Confusion Matrix dan Classification Report. |
-| `03-evaluation-metrics.csv` | Nilai metrik evaluasi. |
-| `04-classification-report.md` | Dokumentasi Classification Report. |
-| `04-classification-report.txt` | Classification Report format teks. |
-| `05-evaluation-result.md` | Ringkasan hasil evaluasi. |
-| `05-evaluation-result.png` | Visualisasi hasil evaluasi. |
-| `06-sample-prediction.md` | Dokumentasi prediksi. |
-| `06-sample-prediction.png` | Contoh hasil prediksi. |
-| `07-research-summary.csv` | Ringkasan penelitian. |
-| `README.md` | Dokumentasi folder output. |
+| [01-model-summary.md](01-model-summary.md) | Ringkasan arsitektur model EfficientNet-B6. |
+| [01-model-summary.png](01-model-summary.png) | Visualisasi struktur model. |
+| [02-training-history.csv](02-training-history.csv) | Riwayat pelatihan model. |
+| [02-training-history.md](02-training-history.md) | Dokumentasi proses training. |
+| [02-training-history.png](02-training-history.png) | Grafik accuracy dan loss selama training. |
+| [02-training-log.txt](02-training-log.txt) | Log proses pelatihan model. |
+| [03-confusion-matrix.md](03-confusion-matrix.md) | Dokumentasi Confusion Matrix. |
+| [03-04-confusion-matrix-classification-report.png](03-04-confusion-matrix-classification-report.png) | Visualisasi Confusion Matrix dan Classification Report. |
+| [03-evaluation-metrics.csv](03-evaluation-metrics.csv) | Nilai metrik evaluasi model. |
+| [04-classification-report.md](04-classification-report.md) | Dokumentasi Classification Report. |
+| [04-classification-report.txt](04-classification-report.txt) | Classification Report dalam format teks. |
+| [05-evaluation-result.md](05-evaluation-result.md) | Ringkasan hasil evaluasi model. |
+| [05-evaluation-result.png](05-evaluation-result.png) | Visualisasi hasil evaluasi model. |
+| [06-sample-prediction.md](06-sample-prediction.md) | Dokumentasi contoh hasil prediksi. |
+| [06-sample-prediction.png](06-sample-prediction.png) | Visualisasi contoh hasil prediksi. |
+| [07-research-summary.csv](07-research-summary.csv) | Ringkasan penelitian. |
+| [README.md](README.md) | Dokumentasi folder hasil penelitian. |
 
 ---
 
 # Hubungan dengan Penelitian
 
-Folder ini merupakan hasil akhir dari implementasi model pada folder **05-kode**.
+Folder ini merupakan hasil akhir dari implementasi model pada folder **[05-kode](../05-kode/)**.
 
-Seluruh dokumen pada folder ini digunakan sebagai dasar penyusunan:
+Seluruh dokumen pada folder ini digunakan sebagai dasar dalam:
 
 - Analisis hasil penelitian.
 - Pembahasan pada laporan penelitian.
-- Manuskrip ilmiah.
-- Presentasi sidang penelitian.
+- Penyusunan manuskrip ilmiah.
+- Persiapan presentasi dan sidang penelitian.
 
 ---
 
@@ -185,7 +185,7 @@ Seluruh dokumen pada folder ini digunakan sebagai dasar penyusunan:
 | [02-literatur](../02-literatur/) | Studi literatur |
 | [03-teori](../03-teori/) | Landasan teori |
 | [04-data](../04-data/) | Dataset penelitian |
-| [05-kode](../05-kode/) | Implementasi model |
+| [05-kode](../05-kode/) | Implementasi model EfficientNet-B6 |
 | [07-manuskrip](../07-manuskrip/) | Manuskrip penelitian |
 | [08-laporan](../08-laporan/) | Laporan penelitian |
 | [09-docs](../09-docs/) | Dokumentasi penelitian |
@@ -194,6 +194,8 @@ Seluruh dokumen pada folder ini digunakan sebagai dasar penyusunan:
 
 # Catatan
 
-Folder **06-output** berisi seluruh hasil eksperimen penelitian mulai dari ringkasan model, proses pelatihan, evaluasi performa, visualisasi hasil, hingga contoh prediksi model.
+Folder **06-output** berisi seluruh hasil eksperimen penelitian mulai dari ringkasan arsitektur model, proses pelatihan, evaluasi performa, visualisasi hasil, hingga contoh prediksi model.
 
-Seluruh output pada folder ini dihasilkan langsung dari notebook penelitian pada folder **05-kode** sehingga eksperimen dapat direproduksi kembali apabila notebook dijalankan menggunakan dataset dan konfigurasi yang sama.
+Seluruh output pada folder ini dihasilkan langsung dari notebook penelitian pada folder **[05-kode](../05-kode/)** sehingga seluruh eksperimen dapat direproduksi kembali menggunakan dataset dan konfigurasi yang sama.
+
+Untuk memahami implementasi model secara lengkap, pengguna dapat melihat notebook pada folder **[05-kode](../05-kode/)**, sedangkan penjelasan metodologi dan pembahasan hasil tersedia pada folder **[08-laporan](../08-laporan/)** dan **[07-manuskrip](../07-manuskrip/)**.
