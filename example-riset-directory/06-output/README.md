@@ -118,6 +118,20 @@ Visualisasi ini menunjukkan kemampuan model dalam mengenali penyakit daun padi p
 
 ---
 
+# Model Hasil Pelatihan
+
+Dokumen berikut menjelaskan model terbaik yang dihasilkan selama proses pelatihan menggunakan **EfficientNet-B6** dengan pendekatan **Transfer Learning**.
+
+Model disimpan dalam format **TensorFlow Keras (.keras)** dan dapat digunakan kembali untuk proses inferensi (prediksi) tanpa perlu melakukan pelatihan ulang.
+
+| File | Deskripsi |
+|------|-----------|
+| [08-trained-model.md](08-trained-model.md) | Dokumentasi model hasil pelatihan, informasi konfigurasi model, serta tautan unduhan model (.keras) melalui Google Drive. |
+
+Model hasil pelatihan (**best_efficientnetb6.keras**) tidak disertakan pada repository GitHub karena ukuran file melebihi batas maksimum GitHub (100 MB). Dokumentasi lengkap beserta tautan unduhan tersedia pada file di atas.
+
+---
+
 # Ringkasan Penelitian
 
 Ringkasan eksperimen disimpan dalam file berikut.
@@ -159,6 +173,7 @@ Ringkasan tersebut memuat informasi seperti:
 | [06-sample-prediction.md](06-sample-prediction.md) | Dokumentasi contoh hasil prediksi. |
 | [06-sample-prediction.png](06-sample-prediction.png) | Visualisasi contoh hasil prediksi. |
 | [07-research-summary.csv](07-research-summary.csv) | Ringkasan penelitian. |
+| [08-trained-model.md](08-trained-model.md) | Dokumentasi model hasil pelatihan beserta tautan unduhan model (.keras). |
 | [README.md](README.md) | Dokumentasi folder hasil penelitian. |
 
 ---
@@ -194,8 +209,23 @@ Seluruh dokumen pada folder ini digunakan sebagai dasar dalam:
 
 # Catatan
 
-Folder **06-output** berisi seluruh hasil eksperimen penelitian mulai dari ringkasan arsitektur model, proses pelatihan, evaluasi performa, visualisasi hasil, hingga contoh prediksi model.
+Folder **06-output** berisi seluruh keluaran (output) penelitian yang dihasilkan setelah proses pelatihan dan evaluasi model, meliputi ringkasan arsitektur model, riwayat pelatihan, metrik evaluasi, **Confusion Matrix**, **Classification Report**, visualisasi performa model, contoh hasil prediksi, dokumentasi model hasil pelatihan, serta ringkasan penelitian.
 
-Seluruh output pada folder ini dihasilkan langsung dari notebook penelitian pada folder **[05-kode](../05-kode/)** sehingga seluruh eksperimen dapat direproduksi kembali menggunakan dataset dan konfigurasi yang sama.
+Seluruh output pada folder ini dihasilkan secara langsung dari notebook penelitian pada folder **[05-kode](../05-kode/)** sehingga eksperimen dapat direproduksi kembali menggunakan dataset dan konfigurasi yang sama.
 
-Untuk memahami implementasi model secara lengkap, pengguna dapat melihat notebook pada folder **[05-kode](../05-kode/)**, sedangkan penjelasan metodologi dan pembahasan hasil tersedia pada folder **[08-laporan](../08-laporan/)** dan **[07-manuskrip](../07-manuskrip/)**.
+Model terbaik hasil pelatihan (**best_efficientnetb6.keras**) tidak disertakan pada repository GitHub karena ukuran file melebihi batas maksimum penyimpanan GitHub (**100 MB**). Informasi model beserta tautan unduhan melalui Google Drive tersedia pada **[08-trained-model.md](08-trained-model.md)**.
+
+Untuk memahami implementasi model secara lengkap, pengguna dapat melihat notebook pada folder **[05-kode](../05-kode/)**, sedangkan metodologi penelitian, pembahasan hasil, dan analisis penelitian tersedia pada folder **[07-manuskrip](../07-manuskrip/)** serta **[08-laporan](../08-laporan/)**.
+
+---
+
+Dengan perubahan tersebut, struktur dokumentasi **06-output** menjadi lebih lengkap dan konsisten:
+
+**01** → Model Summary  
+**02** → Training History  
+**03** → Confusion Matrix  
+**04** → Classification Report  
+**05** → Evaluation Result  
+**06** → Sample Prediction  
+**07** → Research Summary  
+**08** → Trained Model (dokumentasi + link Google Drive)
