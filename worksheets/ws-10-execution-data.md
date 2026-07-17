@@ -63,34 +63,47 @@ Run gagal/anomali tidak boleh dihapus tanpa dokumentasi. Bisa jadi:
 
 ---
 
+
 ## Template A.10 — Execution Plan & Data Log
 
 ```
 EXECUTION PLAN
 
-| Run # | Skenario | Seed | Parameter | Status | Waktu | Output File |
-|-------|----------|------|-----------|--------|-------|-------------|
-| 1 | EfficientNet-B6 Transfer Learning | 42 | Input=224, Epoch=25, Batch=2 | Completed | ±45 menit | RiceLeaf_EfficientNetB6.keras |
-| 2 | Repeatability Test | 42 | Konfigurasi sama | Planned | - | evaluation_metrics.csv |
-| 3 | Repeatability Test | 42 | Konfigurasi sama | Planned | - | research_summary.csv |
+| Run # | Skenario                          | Seed | Parameter                    | Status    | Waktu     | Output File                                                                               |
+| ----- | --------------------------------- | ---- | ---------------------------- | --------- | --------- | ----------------------------------------------------------------------------------------- |
+| 1     | EfficientNet-B6 Transfer Learning | 42   | Input=224, Epoch=25, Batch=2 | Completed | ±45 menit | `.keras`, `.h5`, `training_history.csv`, `evaluation_metrics.csv`, `research_summary.csv` |
 
-Jumlah runs per skenario : 3
+Jumlah skenario : 1
 
-Total runs : 3
+Jumlah run yang dilaksanakan : 1
+
+Catatan:
+Penelitian ini menggunakan satu kali proses pelatihan (single run) sesuai rancangan eksperimen pada proposal menggunakan metode single split (80% data latih dan 20% data validasi). Pengujian multiple run tidak dilakukan karena berada di luar ruang lingkup penelitian ini.
 
 DATA LOG (per run)
 
 Run ID    : run-001
 
-Timestamp : Tanggal pelaksanaan eksperimen
+Timestamp : 28 Juni 2026
 
 Skenario  : EfficientNet-B6 Transfer Learning
 
 Input     : Dataset Rice Leafs (3.355 citra)
 
-Output    : Accuracy, Precision, Recall, F1-Score, Confusion Matrix, Classification Report
+Output    :
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- Confusion Matrix
+- Classification Report
+- training_history.csv
+- evaluation_metrics.csv
+- research_summary.csv
+- RiceLeaf_EfficientNetB6.keras
+- RiceLeaf_EfficientNetB6.h5
 
-Anomali   : Tidak ada anomali kritis
+Anomali   : Tidak ditemukan anomali kritis selama proses pelatihan. EarlyStopping menghentikan pelatihan sesuai konfigurasi callback.
 
 Catatan   : Model berhasil dilatih menggunakan Google Colab Free.
 ```
@@ -101,16 +114,17 @@ Catatan   : Model berhasil dilatih menggunakan Google Colab Free.
 
 Susun execution plan untuk eksperimen Anda. Tentukan skenario, jumlah run, dan seed sebelum eksekusi.
 
-| Run # | Skenario                          | Seed | Parameter Kunci              | Status    |
-| ----- | --------------------------------- | ---- | ---------------------------- | --------- |
-| 1     | EfficientNet-B6 Transfer Learning | 42   | Input=224, Epoch=25, Batch=2 | Completed |
-| 2     | Repeatability Test                | 42   | Input=224, Epoch=25, Batch=2 | Planned   |
-| 3     | Repeatability Test                | 42   | Input=224, Epoch=25, Batch=2 | Planned   |
+| Run # | Skenario | Seed | Parameter Kunci | Status |
+|---|---|---|---|---|
+| 1 | EfficientNet-B6 Transfer Learning | 42 | Input=224, Epoch=25, Batch=2 | Completed |
 
+**Jumlah skenario:** 1
 
-**Total skenario:** 1
-**Run per skenario:** 3
-**Total run keseluruhan:** 3
+**Jumlah run yang dilaksanakan:** 1
+
+**Catatan:**
+
+Penelitian menggunakan satu kali pelatihan sesuai rancangan penelitian pada proposal menggunakan metode single split (80% data latih dan 20% data validasi). Pengujian multiple run tidak dilakukan karena berada di luar ruang lingkup penelitian ini.
 
 ---
 
@@ -119,54 +133,58 @@ Susun execution plan untuk eksperimen Anda. Tentukan skenario, jumlah run, dan s
 Desain format data log untuk eksperimen Anda. Tentukan field apa saja yang akan dicatat.
 
 **Identitas:**
-| Field     | Contoh                            |
-| --------- | --------------------------------- |
-| Run ID    | run-001                           |
-| Timestamp | 2026-06-28 14:30 WIB              |
-| Skenario  | EfficientNet-B6 Transfer Learning |
+
+| Field | Contoh |
+|---|---|
+| Run ID | run-001 |
+| Timestamp | 28 Juni 2026 |
+| Skenario | EfficientNet-B6 Transfer Learning |
 
 **Konfigurasi:**
-| Field      | Contoh               |
-| ---------- | -------------------- |
-| Seed       | 42                   |
-| Model      | EfficientNet-B6      |
-| Input Size | 224 × 224            |
-| Batch Size | 2                    |
-| Epoch      | 25                   |
-| Optimizer  | Adam                 |
+
+| Field | Contoh |
+|---|---|
+| Seed | 42 |
+| Model | EfficientNet-B6 |
+| Input Size | 224 × 224 |
+| Batch Size | 2 |
+| Epoch | 25 |
+| Optimizer | Adam |
 | Validation | Single Split (80:20) |
 
-
 **Hasil:**
-| Metrik        | Tipe Data | Range Valid |
-| ------------- | --------- | ----------- |
-| Accuracy      | Float     | 0.0 – 1.0   |
-| Precision     | Float     | 0.0 – 1.0   |
-| Recall        | Float     | 0.0 – 1.0   |
-| F1-Score      | Float     | 0.0 – 1.0   |
-| Loss          | Float     | ≥ 0         |
-| Training Time | Float     | > 0         |
 
+| Metrik | Tipe Data | Range Valid |
+|---|---|---|
+| Accuracy | Float | 0.0 – 1.0 |
+| Precision | Float | 0.0 – 1.0 |
+| Recall | Float | 0.0 – 1.0 |
+| F1-Score | Float | 0.0 – 1.0 |
+| Loss | Float | ≥ 0 |
+| Training Time | Float | > 0 |
 
 **Format output:** [v] CSV / [ ] JSON / [ ] Database / [ ] Lainnya: ____
 
-Output yang dihasilkan:
+**Output yang dihasilkan:**
 
-training_history.csv
-evaluation_metrics.csv
-research_summary.csv
+- training_history.csv
+- evaluation_metrics.csv
+- research_summary.csv
+- RiceLeaf_EfficientNetB6.keras
+- RiceLeaf_EfficientNetB6.h5
+
 ---
 
 ## Latihan 3 — Anomaly Protocol
 
 Rencanakan bagaimana menangani anomali. Untuk setiap jenis, tentukan langkah yang diambil.
 
-| Jenis Anomali                 | Contoh                                           | Tindakan                                                                     |
-| ----------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------- |
-| Run gagal (crash)             | Google Colab kehabisan RAM atau sesi terputus    | Jalankan ulang notebook, bersihkan cache, dan ulangi pelatihan               |
-| Hasil ekstrem                 | Accuracy jauh lebih rendah dari hasil sebelumnya | Periksa dataset, parameter pelatihan, dan proses preprocessing               |
-| Waktu eksekusi anomali        | Training jauh lebih lama akibat perubahan GPU    | Catat jenis GPU yang digunakan dan waktu pelatihan                           |
-| Inkonsistensi dengan run lain | Accuracy berbeda pada konfigurasi yang sama      | Pastikan random seed tetap, konfigurasi tidak berubah, dan ulangi eksperimen |
+| Jenis Anomali | Contoh | Tindakan |
+|---|---|---|
+| Run gagal (crash) | Google Colab kehabisan RAM atau sesi terputus | Jalankan ulang notebook, bersihkan cache, dan ulangi pelatihan |
+| Hasil ekstrem | Accuracy jauh lebih rendah dari hasil sebelumnya | Periksa dataset, parameter pelatihan, dan proses preprocessing |
+| Waktu eksekusi anomali | Training jauh lebih lama akibat perubahan GPU | Catat jenis GPU yang digunakan dan waktu pelatihan |
+| Inkonsistensi hasil | Hasil evaluasi tidak sesuai dengan konfigurasi yang diharapkan | Periksa kembali konfigurasi eksperimen, dataset, preprocessing, dan ulangi pelatihan bila diperlukan |
 
 **Prinsip:** Detect → Investigate → Document → Decide
 
@@ -177,6 +195,9 @@ Rencanakan bagaimana menangani anomali. Untuk setiap jenis, tentukan langkah yan
 > Pernahkah Anda melaporkan hasil riset/tugas dari single run? Apa risikonya? Bagaimana multiple run mengubah kepercayaan terhadap hasil?
 
 **Pengalaman sebelumnya:**
-> Pada awal penelitian, hasil eksperimen diperoleh dari satu kali proses pelatihan (single run) menggunakan konfigurasi yang telah ditentukan. Pendekatan ini memberikan gambaran awal mengenai performa model, namun hasilnya masih dapat dipengaruhi oleh faktor acak seperti proses inisialisasi bobot, pembagian data, maupun kondisi lingkungan komputasi.
+
+Pada penelitian ini, hasil eksperimen diperoleh dari satu kali proses pelatihan (single run) menggunakan konfigurasi yang telah ditentukan pada proposal. Pendekatan ini memberikan gambaran awal mengenai performa model, namun hasilnya masih dapat dipengaruhi oleh faktor acak seperti inisialisasi bobot, pembagian data, maupun kondisi lingkungan komputasi. Oleh karena itu, hasil penelitian ini diinterpretasikan sesuai ruang lingkup eksperimen yang telah dirancang.
+
 **Yang akan dilakukan berbeda:**
-> Pada penelitian selanjutnya, saya akan melakukan beberapa kali pengujian (multiple run) menggunakan konfigurasi yang sama sehingga konsistensi hasil dapat dievaluasi dengan lebih baik. Pendekatan ini meningkatkan kepercayaan terhadap hasil penelitian karena memungkinkan identifikasi variasi performa model dan mengurangi pengaruh faktor acak selama proses pelatihan.
+
+Pada penelitian selanjutnya, saya akan melakukan beberapa kali pengujian (multiple run) menggunakan konfigurasi yang sama sehingga konsistensi hasil dapat dievaluasi dengan lebih baik. Pendekatan ini meningkatkan kepercayaan terhadap hasil penelitian karena memungkinkan identifikasi variasi performa model dan mengurangi pengaruh faktor acak selama proses pelatihan.
