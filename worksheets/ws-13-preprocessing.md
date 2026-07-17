@@ -61,6 +61,7 @@ Data leakage terjadi ketika informasi dari test set "bocor" ke preprocessing:
 
 ---
 
+
 ## Template A.13 — Preprocessing Documentation Log
 
 ```
@@ -72,7 +73,7 @@ Jumlah data awal  : 3.355 citra
 Cleaning:
 
 | Masalah | Jumlah Kasus | Penanganan | Justifikasi |
-|---------|-------------|------------|-------------|
+|---|---|---|---|
 | Missing | 0 | Tidak ada tindakan | Dataset lengkap |
 | Duplikat | 0 | Tidak ada tindakan | Tidak ditemukan citra duplikat pada dataset yang digunakan |
 | Error | 0 | Tidak ada tindakan | Seluruh citra berhasil dibaca dan diproses |
@@ -80,7 +81,7 @@ Cleaning:
 Transformation:
 
 | Transformasi | Variabel | Detail | Alasan |
-|-------------|----------|--------|--------|
+|---|---|---|---|
 | Resize | Seluruh citra | 224 × 224 piksel | Menyesuaikan input EfficientNet-B6 |
 | Data Augmentation | Data latih | RandomFlip, RandomRotation, RandomZoom, RandomContrast | Meningkatkan variasi data latih dan mengurangi overfitting |
 | Preprocessing | Seluruh citra | preprocess_input() EfficientNet | Menyesuaikan format input model pretrained |
@@ -91,7 +92,7 @@ Metode    : preprocess_input() EfficientNet-B6
 
 Alasan    : Model pretrained ImageNet memerlukan preprocessing bawaan agar distribusi piksel sesuai dengan saat model dilatih.
 
-Parameter : Diterapkan setelah pembagian data training dan validation.
+Parameter : Fungsi preprocess_input() diterapkan pada data setelah pembagian training dan validation sehingga tidak terjadi data leakage.
 
 Leakage Check
 
@@ -112,16 +113,15 @@ Script tersedia : [x] Ya → Google Colab Notebook
 
 Periksa dataset Anda (atau dataset contoh) dan dokumentasikan masalah yang ditemukan.
 
-| Masalah       | Jumlah Kasus | Penanganan | Justifikasi                             |
-| ------------- | ------------ | ---------- | --------------------------------------- |
-| Missing value | 0            | Tidak ada  | Dataset lengkap                         |
-| Duplikat      | 0            | Tidak ada  | Tidak ditemukan citra duplikat          |
-| Error file    | 0            | Tidak ada  | Seluruh file berhasil dibaca TensorFlow |
-
+| Masalah | Jumlah Kasus | Penanganan | Justifikasi |
+|---|---|---|---|
+| Missing value | 0 | Tidak ada | Dataset lengkap |
+| Duplikat | 0 | Tidak ada | Tidak ditemukan citra duplikat pada dataset yang digunakan |
+| Error file | 0 | Tidak ada | Seluruh file berhasil dibaca TensorFlow |
 
 **Jumlah data sebelum cleaning:** 3.355 citra
 **Jumlah data setelah cleaning:** 3.355 citra
-**Persentase data yang hilang/berubah:** 0% 
+**Persentase data yang hilang/berubah:** 0%
 
 ---
 
@@ -129,22 +129,20 @@ Periksa dataset Anda (atau dataset contoh) dan dokumentasikan masalah yang ditem
 
 Tentukan apakah data Anda perlu normalisasi, dan jika ya, metode apa yang tepat.
 
-| Variabel           | Range Asli | Distribusi                      | Outlier          | Metode                          | Alasan                                           |
-| ------------------ | ---------- | ------------------------------- | ---------------- | ------------------------------- | ------------------------------------------------ |
-| Nilai piksel citra | 0–255      | Distribusi citra RGB            | Tidak dievaluasi | preprocess_input() EfficientNet | Menyesuaikan input model pretrained              |
-| Accuracy           | 0–1        | Sudah berada pada rentang valid | Tidak            | Tidak perlu                     | Accuracy hanya digunakan sebagai metrik evaluasi |
-| Precision          | 0–1        | Sudah berada pada rentang valid | Tidak            | Tidak perlu                     | Tidak digunakan sebagai input model              |
-| Recall             | 0–1        | Sudah berada pada rentang valid | Tidak            | Tidak perlu                     | Hanya sebagai metrik evaluasi                    |
-| F1-Score           | 0–1        | Sudah berada pada rentang valid | Tidak            | Tidak perlu                     | Hanya sebagai metrik evaluasi                    |
+| Variabel | Range Asli | Metode | Alasan |
+|---|---|---|---|
+| Nilai piksel citra | 0–255 | `preprocess_input()` EfficientNet-B6 | Menyesuaikan input model pretrained EfficientNet-B6 |
 
+> Accuracy, Precision, Recall, dan F1-Score merupakan metrik evaluasi sehingga tidak melalui proses preprocessing maupun normalisasi.
 
 **Apakah normalisasi diperlukan?** [v] Ya / [ ] Tidak
+
 **Justifikasi:**
 > Citra masukan diproses menggunakan fungsi preprocess_input() bawaan EfficientNet-B6 agar distribusi nilai piksel sesuai dengan karakteristik model pretrained ImageNet. Tidak dilakukan normalisasi tambahan seperti Min-Max Scaling atau Z-score karena sudah ditangani oleh fungsi preprocessing tersebut.
 
 **Leakage check:**
-* [v] Preprocessing dilakukan setelah train-validation split.
-* [v] Tidak ada informasi data validasi yang digunakan selama pelatihan.
+- [v] Preprocessing dilakukan setelah train-validation split.
+- [v] Tidak ada informasi data validasi yang digunakan selama pelatihan.
 
 ---
 
@@ -168,6 +166,8 @@ Rice Leafs (Kaggle)
 - Duplikat : 0 kasus
 - Error pembacaan file : 0 kasus
 
+Dataset dipertahankan seluruhnya karena tidak ditemukan data yang perlu dihapus selama proses cleaning.
+
 4. Transformation
 
 - Resize citra menjadi 224 × 224 piksel
@@ -180,7 +180,7 @@ Metode :
 preprocess_input() EfficientNet-B6
 
 Parameter dihitung dari :
-Training set setelah proses pembagian data
+Fungsi preprocess_input() diterapkan pada data training dan validation setelah proses pembagian data sehingga tidak terjadi data leakage.
 
 6. Data akhir
 
@@ -198,6 +198,6 @@ Training set setelah proses pembagian data
 
 > Apakah Anda pernah melakukan normalisasi "karena biasa dilakukan" tanpa mempertimbangkan apakah benar-benar diperlukan? Apa risiko over-preprocessing?
 
->Pada awal mempelajari machine learning, saya menganggap bahwa normalisasi selalu diperlukan pada setiap penelitian. Setelah mempelajari karakteristik model EfficientNet-B6, saya memahami bahwa model pretrained telah menyediakan fungsi preprocess_input() yang dirancang khusus untuk menyesuaikan distribusi nilai piksel dengan data saat proses pretraining. Oleh karena itu, normalisasi tambahan seperti Min-Max Scaling atau Z-score tidak diperlukan pada penelitian ini.
+Pada awal mempelajari machine learning, saya menganggap bahwa normalisasi selalu diperlukan pada setiap penelitian. Setelah mempelajari karakteristik model EfficientNet-B6, saya memahami bahwa model pretrained telah menyediakan fungsi preprocess_input() yang dirancang khusus untuk menyesuaikan distribusi nilai piksel dengan data saat proses pretraining. Oleh karena itu, normalisasi tambahan seperti Min-Max Scaling atau Z-score tidak diperlukan pada penelitian ini.
 
 Over-preprocessing dapat menyebabkan perubahan distribusi data yang sebenarnya tidak diperlukan sehingga berpotensi menurunkan performa model, menyulitkan proses reproduksi penelitian, dan meningkatkan risiko data leakage apabila preprocessing dilakukan sebelum pembagian data latih dan data validasi.
