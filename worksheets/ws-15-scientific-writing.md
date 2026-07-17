@@ -79,6 +79,7 @@ Metrik-X     ✗      ✗       ✓ ←     ✗        ✗
 
 ---
 
+
 ## Template A.15 — Paper Structure Checklist
 
 ```
@@ -127,15 +128,15 @@ Writing Quality
 
 Buat outline paper untuk riset Anda menggunakan struktur IMRAD.
 
-| Section          | Konten Utama                                                                                                                                                                                                        | Target Kata |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| **Abstract**     | Menjelaskan permasalahan identifikasi penyakit daun padi, penggunaan EfficientNet-B6 dengan pendekatan transfer learning, hasil evaluasi model, dan kontribusi penelitian.                                          | 200–250     |
-| **Introduction** | Menguraikan pentingnya deteksi penyakit daun padi, research gap dari penelitian sebelumnya, research question, tujuan penelitian, dan kontribusi penelitian.                                                        | 500–700     |
-| **Related Work** | Membahas penelitian terdahulu mengenai klasifikasi penyakit daun menggunakan CNN dan EfficientNet serta posisi penelitian ini dibandingkan penelitian sebelumnya.                                                   | 700–1000    |
-| **Method**       | Menjelaskan dataset Rice Leafs, preprocessing, arsitektur EfficientNet-B6, transfer learning, konfigurasi pelatihan, serta metode evaluasi menggunakan accuracy, precision, recall, F1-score, dan confusion matrix. | 800–1200    |
-| **Results**      | Menyajikan hasil evaluasi model berupa tabel metrik, confusion matrix, classification report, grafik accuracy, dan grafik loss tanpa interpretasi.                                                                  | 500–800     |
-| **Discussion**   | Menginterpretasikan hasil penelitian, membandingkan dengan penelitian acuan, menjelaskan keterbatasan penelitian, serta memberikan rekomendasi penelitian lanjutan.                                                 | 600–900     |
-| **Conclusion**   | Menjawab research question, merangkum kontribusi penelitian, serta memberikan saran pengembangan penelitian berikutnya.                                                                                             | 200–400     |
+| Section | Konten Utama | Target Kata |
+|---|---|---|
+| **Abstract** | Menjelaskan permasalahan identifikasi penyakit daun padi, penggunaan EfficientNet-B6 dengan pendekatan transfer learning, hasil evaluasi model, dan kontribusi penelitian. | 200–250 |
+| **Introduction** | Menguraikan pentingnya deteksi penyakit daun padi, research gap dari penelitian sebelumnya, research question, tujuan penelitian, dan kontribusi penelitian. | 500–700 |
+| **Related Work** | Membahas penelitian terdahulu mengenai klasifikasi penyakit daun menggunakan CNN dan EfficientNet serta posisi penelitian ini dibandingkan penelitian sebelumnya. | 700–1000 |
+| **Method** | Menjelaskan dataset Rice Leafs, preprocessing, arsitektur EfficientNet-B6, transfer learning, konfigurasi pelatihan, serta metode evaluasi menggunakan accuracy, precision, recall, F1-score, dan confusion matrix. | 800–1200 |
+| **Results** | Menyajikan hasil evaluasi model berupa tabel metrik, confusion matrix, classification report, grafik accuracy, dan grafik loss tanpa interpretasi. | 500–800 |
+| **Discussion** | Menginterpretasikan hasil penelitian, membandingkan dengan penelitian acuan, menjelaskan keterbatasan penelitian, serta memberikan rekomendasi penelitian lanjutan. | 600–900 |
+| **Conclusion** | Menjawab research question, merangkum kontribusi penelitian, serta memberikan saran pengembangan penelitian berikutnya. | 200–400 |
 
 ---
 
@@ -143,22 +144,22 @@ Buat outline paper untuk riset Anda menggunakan struktur IMRAD.
 
 Buat consistency matrix untuk memverifikasi internal consistency paper Anda.
 
-|                                                          | Intro | Method | Result | Discussion | Conclusion |
-| -------------------------------------------------------- | :---: | :----: | :----: | :--------: | :--------: |
-| **RQ**                                                   |   ✓   |    ✓   |    ✓   |      ✓     |      ✓     |
-| **Metrik utama (Accuracy, Precision, Recall, F1-Score)** |   ✓   |    ✓   |    ✓   |      ✓     |      ✓     |
-| **Variabel Bebas (EfficientNet-B6 + Transfer Learning)** |   ✓   |    ✓   |    ✓   |      ✓     |      ✓     |
-| **Variabel Terikat (Performa Klasifikasi)**              |   ✓   |    ✓   |    ✓   |      ✓     |      ✓     |
-| **Kontribusi Penelitian**                                |   ✓   |    ✓   |    ✓   |      ✓     |      ✓     |
-
+| | Intro | Method | Result | Discussion | Conclusion |
+|---|:---:|:---:|:---:|:---:|:---:|
+| **RQ** | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Metrik utama (Accuracy, Precision, Recall, F1-Score)** | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Variabel Bebas (EfficientNet-B6 + Transfer Learning)** | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Variabel Terikat (Performa Klasifikasi)** | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Kontribusi Penelitian** | ✓ | ✗ | ✗ | ✓ | ✓ |
 
 **Isi setiap sel:** ✓ (ada & konsisten), ✗ (missing), ~ (ada tapi inkonsisten)
 
 **Inkonsistensi yang ditemukan:**
-> Tidak ditemukan inkonsistensi. Research question, metode, variabel penelitian, metrik evaluasi, hasil penelitian, serta kesimpulan telah disusun secara konsisten sesuai dengan implementasi penelitian.
+> Tidak ditemukan inkonsistensi. Research question, metode, variabel penelitian, metrik evaluasi, hasil penelitian, serta kesimpulan telah disusun secara konsisten sesuai dengan implementasi penelitian. Kontribusi penelitian dijelaskan pada bagian Introduction, Discussion, dan Conclusion, serta tidak dicantumkan pada bagian Results karena bagian tersebut hanya berisi penyajian hasil evaluasi.
 
 **Tindakan perbaikan:**
-> Memastikan seluruh istilah yang digunakan pada proposal, implementasi, hasil penelitian, dan laporan akhir tetap konsisten sehingga tidak terjadi perbedaan interpretasi pada setiap bagian penulisan ilmiah.
+> Memastikan seluruh istilah yang digunakan pada proposal, implementasi, hasil penelitian, dan laporan akhir tetap konsisten sehingga tidak terjadi perbedaan interpretasi pada setiap bagian penulisan ilmiah. Istilah seperti **transfer learning** dan **feature extraction** digunakan secara konsisten di seluruh dokumen.
+
 ---
 
 ## Latihan 3 — Writing Quality Check
@@ -168,14 +169,14 @@ Ambil satu paragraf dari tulisan Anda (atau tulis paragraf baru) dan evaluasi ku
 **Paragraf asli:**
 > Penelitian ini menggunakan model EfficientNet-B6 dengan pendekatan transfer learning untuk mengklasifikasikan penyakit daun padi. Model dilatih menggunakan dataset Rice Leafs dan dievaluasi menggunakan accuracy, precision, recall, F1-score, serta confusion matrix.
 
-| Kriteria        | Evaluasi                                            | Perbaikan                                                         |
-| --------------- | --------------------------------------------------- | ----------------------------------------------------------------- |
-| **Clarity**     | Sudah jelas, namun belum menyebut hasil penelitian. | Tambahkan nilai accuracy yang diperoleh.                          |
-| **Precision**   | Istilah teknis sudah tepat.                         | Sebutkan pendekatan transfer learning sebagai feature extraction. |
-| **Conciseness** | Tidak terdapat kalimat yang berulang.               | Tetap dipertahankan.                                              |
+| Kriteria | Evaluasi | Perbaikan |
+|---|---|---|
+| **Clarity** | Sudah jelas, namun belum menyebut hasil penelitian. | Tambahkan nilai accuracy yang diperoleh. |
+| **Precision** | Istilah teknis sudah tepat. | Sebutkan pendekatan transfer learning sebagai feature extraction. |
+| **Conciseness** | Tidak terdapat kalimat yang berulang. | Tetap dipertahankan. |
 
 **Paragraf setelah perbaikan:**
-> Penelitian ini menggunakan model EfficientNet-B6 dengan pendekatan transfer learning sebagai feature extractor untuk mengklasifikasikan penyakit daun padi menggunakan dataset Rice Leafs. Model dievaluasi menggunakan accuracy, precision, recall, F1-score, dan confusion matrix, serta menghasilkan accuracy sebesar 63,04% pada data validasi sehingga menunjukkan bahwa pendekatan tersebut mampu melakukan klasifikasi penyakit daun padi pada lingkungan komputasi Google Colab Free.
+> Penelitian ini menggunakan model EfficientNet-B6 dengan pendekatan transfer learning sebagai feature extractor untuk mengklasifikasikan penyakit daun padi menggunakan dataset Rice Leafs. Model dievaluasi menggunakan accuracy, precision, recall, F1-score, dan confusion matrix, serta menghasilkan accuracy sebesar 63,04% pada data validasi sehingga menunjukkan bahwa pendekatan transfer learning berbasis feature extraction mampu mengklasifikasikan penyakit daun padi pada dataset Rice Leafs, meskipun performanya masih memiliki ruang untuk ditingkatkan.
 
 ---
 
@@ -183,6 +184,6 @@ Ambil satu paragraf dari tulisan Anda (atau tulis paragraf baru) dan evaluasi ku
 
 > Apa perbedaan antara menulis "tentang" riset dan menulis sebagai "argumen" riset? Bagaimana urutan penulisan (Method → Discussion → Introduction) mengubah kualitas tulisan?
 
-> Menulis tentang riset hanya menjelaskan proses atau aktivitas yang dilakukan selama penelitian. Sebaliknya, menulis sebagai argumen riset berarti setiap bagian tulisan disusun untuk mendukung jawaban terhadap research question melalui bukti yang diperoleh dari hasil penelitian. Dengan demikian, seluruh bagian paper memiliki hubungan logis dari masalah hingga kesimpulan.
+Menulis tentang riset hanya menjelaskan proses atau aktivitas yang dilakukan selama penelitian. Sebaliknya, menulis sebagai argumen riset berarti setiap bagian tulisan disusun untuk mendukung jawaban terhadap research question melalui bukti yang diperoleh dari hasil penelitian. Dengan demikian, seluruh bagian paper memiliki hubungan logis dari masalah hingga kesimpulan.
 
 Menulis dimulai dari bagian Method, kemudian Results dan Discussion, baru dilanjutkan dengan Introduction, membantu menjaga konsistensi antara tujuan penelitian, metode yang digunakan, hasil yang diperoleh, dan kesimpulan. Pendekatan ini membuat penulisan lebih terarah karena seluruh argumen dibangun berdasarkan hasil penelitian yang benar-benar telah diperoleh, bukan berdasarkan asumsi sebelum penelitian dilakukan.
