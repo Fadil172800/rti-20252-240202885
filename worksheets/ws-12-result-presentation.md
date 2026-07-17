@@ -60,6 +60,7 @@ Keduanya **saling melengkapi**:
 
 ---
 
+
 ## Template A.12 — Result Presentation Plan
 
 ```
@@ -69,20 +70,24 @@ Research Question :
 Bagaimana performa model EfficientNet-B6 menggunakan pendekatan transfer learning dalam mengklasifikasikan penyakit daun padi?
 
 Metrik Utama :
-Accuracy, Precision, Recall, F1-Score
+Accuracy, Precision, Recall, F1-Score, Loss
 
 Tabel Hasil:
 
-| Skenario | Accuracy | Precision | Recall | F1-Score | n |
-|----------|----------|-----------|--------|----------|---|
-| EfficientNet-B6 Transfer Learning | 63,04% | 58,76% | 63,04% | 58,45% | 671 |
+| Skenario | Accuracy | Precision | Recall | F1-Score | Loss | n |
+|---|---|---|---|---|---|---|
+| EfficientNet-B6 Transfer Learning | 63,04% | 58,76% | 63,04% | 58,45% | 1.0564 | 671 |
+
+Catatan:
+
+Mean ± standar deviasi tidak disajikan karena penelitian ini hanya menggunakan satu eksperimen utama (single run), sehingga tidak tersedia beberapa hasil pengamatan untuk menghitung rata-rata maupun standar deviasi.
 
 Visualisasi yang Direncanakan:
 
 | # | Jenis Grafik | Pesan Utama | Metrik |
-|---|-------------|-------------|--------|
-| 1 | Line Chart | Perkembangan accuracy dan validation accuracy selama pelatihan | Accuracy |
-| 2 | Line Chart | Perkembangan training loss dan validation loss | Loss |
+|---|---|---|---|
+| 1 | Training & Validation Accuracy Curve | Perkembangan accuracy model selama pelatihan | Accuracy |
+| 2 | Training & Validation Loss Curve | Perkembangan loss model selama pelatihan | Loss |
 | 3 | Confusion Matrix Heatmap | Distribusi hasil klasifikasi setiap kelas | Confusion Matrix |
 
 Bias Check:
@@ -102,19 +107,21 @@ Bias Check:
 
 Buat tabel hasil eksperimen Anda (boleh dengan data simulasi jika belum punya data riil).
 
-| Model                             |   Accuracy |  Precision |     Recall |   F1-Score | Jumlah Data Uji (n) |
-| --------------------------------- | ---------: | ---------: | ---------: | ---------: | ------------------: |
-| EfficientNet-B6 Transfer Learning | **63,04%** | **58,76%** | **63,04%** | **58,45%** |             **671** |
-
+| Model | Accuracy | Precision | Recall | F1-Score | Loss | Jumlah Data Uji (n) |
+|---|---|---|---|---|---|---|
+| EfficientNet-B6 Transfer Learning | **63,04%** | **58,76%** | **63,04%** | **58,45%** | **1.0564** | **671** |
 
 **Checklist tabel:**
- [v] Self-contained (judul tabel jelas)
- [v] Satuan (%)
- [v] Jumlah data uji (n) dicantumkan
- [ ] Mean ± Std (tidak digunakan karena penelitian hanya memiliki satu eksperimen utama)
- [v] Format konsisten
 
-Catatan: Karena penelitian ini hanya menggunakan satu konfigurasi model dan satu hasil evaluasi utama, nilai disajikan sebagai hasil akhir tanpa mean ± standar deviasi.
+[v] Self-contained (judul tabel jelas)
+[v] Satuan (%)
+[v] Jumlah data uji (n) dicantumkan
+[ ] Mean ± Std (tidak digunakan karena penelitian hanya memiliki satu eksperimen utama)
+[v] Format konsisten
+
+**Catatan:**
+
+Mean ± standar deviasi tidak disajikan karena penelitian ini hanya menggunakan satu eksperimen utama (single run), sehingga tidak tersedia beberapa hasil pengamatan untuk menghitung rata-rata maupun standar deviasi.
 
 ---
 
@@ -122,12 +129,11 @@ Catatan: Karena penelitian ini hanya menggunakan satu konfigurasi model dan satu
 
 Rencanakan 2-3 grafik untuk menyajikan data dari Latihan 1. Setiap grafik = satu pesan.
 
-| No | Jenis Grafik             | Pesan                                                                                | Data yang Digunakan |
-| -- | ------------------------ | ------------------------------------------------------------------------------------ | ------------------- |
-| 1  | Line Chart               | Menunjukkan perkembangan accuracy dan validation accuracy selama proses pelatihan    | History Accuracy    |
-| 2  | Line Chart               | Menunjukkan perubahan training loss dan validation loss selama pelatihan             | History Loss        |
-| 3  | Heatmap Confusion Matrix | Menunjukkan distribusi prediksi benar dan salah pada setiap kelas penyakit daun padi | Confusion Matrix    |
-
+| No | Jenis Grafik | Pesan | Data yang Digunakan |
+|---|---|---|---|
+| 1 | Training & Validation Accuracy Curve | Menunjukkan perkembangan accuracy dan validation accuracy selama proses pelatihan | History Accuracy |
+| 2 | Training & Validation Loss Curve | Menunjukkan perubahan training loss dan validation loss selama pelatihan | History Loss |
+| 3 | Confusion Matrix Heatmap | Menunjukkan distribusi prediksi benar dan salah pada setiap kelas penyakit daun padi | Confusion Matrix |
 
 ---
 
@@ -137,32 +143,27 @@ Evaluasi visualisasi berikut untuk bias (skenario dari contoh):
 
 **Skenario:** Metode A = 91.2%, Metode B = 90.8%. Bar chart dengan Y-axis mulai dari 90%.
 
-| Pertanyaan                        | Jawaban                                                                                                                                      |
-| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Apakah Y-axis menyesatkan?        | Ya. Grafik dengan sumbu Y dimulai dari 90% dapat memperbesar perbedaan yang sebenarnya kecil.                                                |
-| Apakah error bar ditampilkan?     | Tidak.                                                                                                                                       |
-| Apakah semua kondisi ditampilkan? | Ya.                                                                                                                                          |
-| Apa solusinya?                    | Menggunakan sumbu Y yang proporsional atau memberikan justifikasi jika tidak dimulai dari nol, serta menambahkan error bar apabila tersedia. |
-
+| Pertanyaan | Jawaban |
+|---|---|
+| Apakah Y-axis menyesatkan? | Ya. Grafik dengan sumbu Y dimulai dari 90% dapat memperbesar perbedaan yang sebenarnya kecil. |
+| Apakah error bar ditampilkan? | Tidak. |
+| Apakah semua kondisi ditampilkan? | Ya. |
+| Apa solusinya? | Menggunakan sumbu Y yang proporsional atau memberikan justifikasi jika tidak dimulai dari nol, serta menambahkan error bar apabila tersedia. |
 
 **Evaluasi grafik Anda sendiri dari Latihan 2:**
- [v] Semua grafik menggunakan skala yang proporsional.
- [v] Seluruh hasil eksperimen ditampilkan.
- [v] Tidak menggunakan efek visual yang dapat menyesatkan.
- [v] Confusion matrix ditampilkan secara lengkap.
- [ ] Error bar tidak ditampilkan karena penelitian hanya memiliki satu hasil eksperimen sehingga tidak tersedia nilai standar deviasi.
+
+[v] Semua grafik menggunakan skala yang proporsional.
+[v] Seluruh hasil eksperimen ditampilkan.
+[v] Tidak menggunakan efek visual yang dapat menyesatkan.
+[v] Confusion matrix ditampilkan secara lengkap.
+[ ] Error bar tidak ditampilkan karena penelitian hanya memiliki satu hasil eksperimen sehingga tidak tersedia nilai standar deviasi.
+
 ---
 
 ## Refleksi
 
 > Mengapa tabel dan grafik keduanya diperlukan — tidak cukup salah satu saja? Pernahkah Anda membuat grafik yang (tanpa sengaja) menyesatkan?
 
->Tabel dan grafik memiliki fungsi yang saling melengkapi dalam penyajian hasil penelitian. Tabel memberikan informasi numerik secara rinci dan presisi sehingga memudahkan pembaca melihat nilai setiap metrik. Sebaliknya, grafik membantu memperlihatkan pola, tren, dan hubungan antarvariabel secara visual sehingga hasil penelitian lebih mudah dipahami. Oleh karena itu, penggunaan keduanya secara bersamaan memberikan penyajian hasil yang lebih informatif dan objektif.
+Tabel dan grafik memiliki fungsi yang saling melengkapi dalam penyajian hasil penelitian. Tabel memberikan informasi numerik secara rinci dan presisi sehingga memudahkan pembaca melihat nilai setiap metrik. Sebaliknya, grafik membantu memperlihatkan pola, tren, dan hubungan antarvariabel secara visual sehingga hasil penelitian lebih mudah dipahami. Oleh karena itu, penggunaan keduanya secara bersamaan memberikan penyajian hasil yang lebih informatif dan objektif.
 
-Dalam penelitian ini, penyajian grafik dilakukan dengan memperhatikan prinsip visualisasi ilmiah, seperti penggunaan skala sumbu yang proporsional, penyajian seluruh data hasil eksperimen, serta menghindari manipulasi tampilan yang dapat menimbulkan interpretasi yang menyesatkan.
-
-##catatan
-"Mean ± standar deviasi tidak disajikan karena penelitian ini hanya menggunakan satu eksperimen utama (single run)."
-
-
-
+Dalam penelitian ini, penyajian grafik dilakukan dengan memperhatikan prinsip visualisasi ilmiah, seperti penggunaan skala sumbu yang proporsional, penyajian seluruh data hasil eksperimen, serta menghindari manipulasi tampilan yang dapat menimbulkan interpretasi yang menyesatkan. Dengan demikian, tabel dan grafik saling melengkapi dalam menyampaikan hasil penelitian secara akurat, mudah dipahami, dan dapat dipertanggungjawabkan secara ilmiah.
