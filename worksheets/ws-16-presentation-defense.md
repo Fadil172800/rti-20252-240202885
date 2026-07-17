@@ -80,6 +80,7 @@ Prediksi pertanyaan berdasarkan kategori:
 
 ---
 
+
 ## Template A.16 — Defense Preparation Sheet
 
 ```
@@ -94,7 +95,7 @@ Total time     : ±15 menit
 Slide Outline
 
 | # | Pesan Utama | Visual | Waktu |
-|---|-------------|--------|-------|
+|---|---|---|---|
 | 1 | Judul Penelitian | Cover | 1 menit |
 | 2 | Latar Belakang & Permasalahan | Ilustrasi penyakit daun padi | 2 menit |
 | 3 | Research Gap & Research Question | Diagram penelitian | 1,5 menit |
@@ -104,12 +105,12 @@ Slide Outline
 | 7 | Confusion Matrix & Grafik Training | Confusion Matrix + Accuracy/Loss | 2 menit |
 | 8 | Pembahasan & Keterbatasan | Ringkasan hasil | 1,5 menit |
 | 9 | Kesimpulan | Poin-poin utama | 1 menit |
-|10| Sesi Tanya Jawab | Closing | - |
+| 10 | Sesi Tanya Jawab | Closing | - |
 
 Anticipatory Defense Matrix
 
 | Kategori | Pertanyaan Potensial | Jawaban (CER) |
-|----------|---------------------|---------------|
+|---|---|---|
 | Problem | Mengapa memilih klasifikasi penyakit daun padi? | Deteksi dini penyakit sangat penting untuk membantu petani. Penelitian menggunakan dataset Rice Leafs dan menghasilkan accuracy 63,04%, sehingga menunjukkan model mampu melakukan klasifikasi otomatis. |
 | Gap | Mengapa menggunakan EfficientNet-B6? | EfficientNet-B6 memiliki performa yang baik pada penelitian terdahulu dan efisien dalam transfer learning sehingga dipilih sebagai model penelitian. |
 | Method | Mengapa tidak menggunakan fine-tuning? | Penelitian menggunakan feature extraction karena keterbatasan sumber daya Google Colab Free sehingga metode dipilih agar proses pelatihan tetap dapat berjalan dengan baik. |
@@ -131,18 +132,17 @@ Latihan 3 : Evaluasi waktu presentasi dan perbaikan jawaban.
 
 Rencanakan presentasi 15 menit untuk riset Anda.
 
-| No | Pesan Utama                               | Visual yang Digunakan                           | Waktu     |
-| -- | ----------------------------------------- | ----------------------------------------------- | --------- |
-| 1  | Judul penelitian dan identitas peneliti   | Cover penelitian                                | 1 menit   |
-| 2  | Latar belakang dan permasalahan           | Ilustrasi penyakit daun padi                    | 2 menit   |
-| 3  | Research gap dan research question        | Diagram alur penelitian                         | 1,5 menit |
-| 4  | Metode penelitian                         | Flowchart metode                                | 2 menit   |
-| 5  | Dataset dan arsitektur EfficientNet-B6    | Diagram arsitektur model                        | 2 menit   |
-| 6  | Hasil evaluasi model                      | Tabel Accuracy, Precision, Recall, dan F1-Score | 2 menit   |
-| 7  | Confusion Matrix dan grafik Accuracy/Loss | Heatmap dan grafik                              | 2 menit   |
-| 8  | Pembahasan, keterbatasan, dan saran       | Ringkasan poin utama                            | 1,5 menit |
-| 9  | Kesimpulan                                | Poin-poin kesimpulan                            | 1 menit   |
-
+| No | Pesan Utama | Visual yang Digunakan | Waktu |
+|---|---|---|---|
+| 1 | Judul penelitian dan identitas peneliti | Cover penelitian | 1 menit |
+| 2 | Latar belakang dan permasalahan | Ilustrasi penyakit daun padi | 2 menit |
+| 3 | Research gap dan research question | Diagram alur penelitian | 1,5 menit |
+| 4 | Metode penelitian | Flowchart metode | 2 menit |
+| 5 | Dataset dan arsitektur EfficientNet-B6 | Diagram arsitektur model | 2 menit |
+| 6 | Hasil evaluasi model | Tabel Accuracy, Precision, Recall, dan F1-Score | 2 menit |
+| 7 | Confusion Matrix dan grafik Accuracy/Loss | Heatmap dan grafik | 2 menit |
+| 8 | Pembahasan, keterbatasan, dan saran | Ringkasan poin utama | 1,5 menit |
+| 9 | Kesimpulan | Poin-poin kesimpulan | 1 menit |
 
 **Total waktu estimasi:** 15 menit
 
@@ -152,14 +152,13 @@ Rencanakan presentasi 15 menit untuk riset Anda.
 
 Prediksi 5 pertanyaan yang mungkin diajukan penguji, lalu siapkan jawaban CER.
 
-| No | Kategori       | Pertanyaan                                            | Claim                                                                    | Evidence                                                                      | Reasoning                                                                                          |
-| -- | -------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| 1  | Problem        | Mengapa memilih penyakit daun padi?                   | Deteksi dini penting untuk meningkatkan produktivitas pertanian.         | Penyakit daun padi dapat menurunkan hasil panen jika terlambat dideteksi.     | Sistem klasifikasi otomatis membantu proses identifikasi penyakit secara lebih cepat.              |
-| 2  | Method         | Mengapa menggunakan EfficientNet-B6?                  | EfficientNet-B6 memiliki performa yang baik dalam klasifikasi citra.     | Model menggunakan bobot pretrained ImageNet dan pendekatan transfer learning. | Transfer learning mempercepat proses pelatihan pada dataset terbatas.                              |
-| 3  | Method         | Mengapa tidak menggunakan fine-tuning?                | Penelitian menggunakan feature extraction karena keterbatasan komputasi. | Pelatihan dilakukan pada Google Colab Free dengan RAM dan GPU terbatas.       | Pendekatan ini memungkinkan eksperimen berjalan stabil sesuai sumber daya yang tersedia.           |
-| 4  | Results        | Mengapa accuracy hanya 63,04%?                        | Hasil dipengaruhi oleh konfigurasi eksperimen dan distribusi data.       | Performa kelas Hispa dan Leaf Blast lebih rendah dibanding Healthy.           | Ketidakseimbangan jumlah data antar kelas memengaruhi kemampuan model dalam melakukan klasifikasi. |
-| 5  | Generalization | Apakah metode ini dapat diterapkan pada dataset lain? | Dapat diterapkan dengan proses pelatihan ulang.                          | EfficientNet-B6 merupakan model umum untuk klasifikasi citra.                 | Dataset lain memiliki karakteristik berbeda sehingga model perlu dievaluasi kembali.               |
-
+| No | Kategori | Pertanyaan | Claim | Evidence | Reasoning |
+|---|---|---|---|---|---|
+| 1 | Problem | Mengapa memilih penyakit daun padi? | Deteksi dini penting untuk meningkatkan produktivitas pertanian. | Penyakit daun padi dapat menurunkan hasil panen jika terlambat dideteksi. | Sistem klasifikasi otomatis membantu proses identifikasi penyakit secara lebih cepat. |
+| 2 | Method | Mengapa menggunakan EfficientNet-B6? | EfficientNet-B6 memiliki performa yang baik dalam klasifikasi citra. | Model menggunakan bobot pretrained ImageNet dan pendekatan transfer learning. | Transfer learning mempercepat proses pelatihan pada dataset terbatas. |
+| 3 | Method | Mengapa tidak menggunakan fine-tuning? | Penelitian menggunakan feature extraction karena keterbatasan komputasi. | Pelatihan dilakukan menggunakan Google Colab Free dengan RAM dan GPU terbatas sehingga fine-tuning EfficientNet-B6 berpotensi membutuhkan waktu dan memori yang lebih besar. | Oleh karena itu feature extraction dipilih agar eksperimen dapat diselesaikan secara stabil sesuai dengan sumber daya yang tersedia. |
+| 4 | Results | Mengapa accuracy hanya 63,04%? | Hasil dipengaruhi oleh konfigurasi eksperimen dan distribusi data. | Berdasarkan confusion matrix, kelas **Healthy** memiliki performa lebih baik dibandingkan kelas **Hispa** dan **Leaf Blast**. Performa kelas Hispa dan Leaf Blast lebih rendah dibanding Healthy. | Ketidakseimbangan jumlah data antar kelas memengaruhi kemampuan model dalam melakukan klasifikasi. |
+| 5 | Generalization | Apakah metode ini dapat diterapkan pada dataset lain? | Dapat diterapkan dengan proses pelatihan ulang. | EfficientNet-B6 merupakan model umum untuk klasifikasi citra. | Dataset lain memiliki karakteristik berbeda sehingga model perlu dievaluasi kembali. |
 
 ---
 
@@ -167,18 +166,18 @@ Prediksi 5 pertanyaan yang mungkin diajukan penguji, lalu siapkan jawaban CER.
 
 Minta teman/kolega mengajukan 3 pertanyaan tentang riset Anda. Catat pertanyaan dan evaluasi jawaban Anda.
 
-| No | Pertanyaan                                   | Jawaban Saya                                                                                                                                                           | Evaluasi                             |
-| -- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| 1  | Mengapa menggunakan EfficientNet-B6?         | Karena model memiliki performa yang baik pada penelitian terdahulu dan mendukung transfer learning sehingga sesuai dengan penelitian ini.                              | [✓] Direct [✓] Data-based [✓] Honest |
-| 2  | Mengapa tidak membandingkan dengan CNN lain? | Fokus penelitian adalah mengevaluasi performa EfficientNet-B6 menggunakan pendekatan transfer learning sesuai research question yang telah ditetapkan.                 | [✓] Direct [✓] Data-based [✓] Honest |
-| 3  | Apa keterbatasan penelitian ini?             | Penelitian hanya menggunakan satu konfigurasi model, satu dataset, dan belum melakukan fine-tuning sehingga hasil masih dapat ditingkatkan pada penelitian berikutnya. | [✓] Direct [✓] Data-based [✓] Honest |
-
+| No | Pertanyaan | Jawaban Saya | Evaluasi |
+|---|---|---|---|
+| 1 | Mengapa menggunakan EfficientNet-B6? | Karena model memiliki performa yang baik pada penelitian terdahulu dan mendukung transfer learning sehingga sesuai dengan penelitian ini. | [✓] Direct [✓] Data-based [✓] Honest |
+| 2 | Mengapa tidak membandingkan dengan CNN lain? | Fokus penelitian sejak proposal adalah mengevaluasi performa EfficientNet-B6 menggunakan transfer learning sehingga penelitian tidak dirancang sebagai studi komparatif terhadap beberapa arsitektur CNN. | [✓] Direct [✓] Data-based [✓] Honest |
+| 3 | Apa keterbatasan penelitian ini? | Penelitian hanya menggunakan satu konfigurasi model, satu dataset, dan belum melakukan fine-tuning sehingga hasil masih dapat ditingkatkan pada penelitian berikutnya. | [✓] Direct [✓] Data-based [✓] Honest |
 
 **Pertanyaan yang paling sulit dijawab:**
 > Mengapa hasil penelitian memiliki accuracy lebih rendah dibandingkan penelitian acuan yang menggunakan model EfficientNet-B6?
 
 **Apa yang perlu disiapkan lebih baik:**
-> Menyiapkan penjelasan yang lebih rinci mengenai perbedaan konfigurasi eksperimen, penggunaan feature extraction tanpa fine-tuning, metode validasi, distribusi dataset, serta keterbatasan sumber daya Google Colab Free yang dapat memengaruhi performa model.
+> Menyiapkan penjelasan yang lebih rinci mengenai perbedaan konfigurasi eksperimen, penggunaan feature extraction tanpa fine-tuning, metode validasi, distribusi dataset, serta keterbatasan sumber daya Google Colab Free yang dapat memengaruhi performa model, serta alasan pemilihan konfigurasi penelitian sesuai ruang lingkup proposal.
+
 ---
 
 ## Refleksi
@@ -187,5 +186,6 @@ Minta teman/kolega mengajukan 3 pertanyaan tentang riset Anda. Catat pertanyaan 
 
 **Insight terbesar:**
 > Proses penyusunan proposal hingga implementasi menunjukkan bahwa penelitian tidak hanya berfokus pada memperoleh hasil terbaik, tetapi juga menjaga konsistensi antara rumusan masalah, research question, metode, implementasi, analisis, dan kesimpulan. Selain itu, saya memahami bahwa keterbatasan penelitian dan hasil yang belum optimal tetap memiliki nilai ilmiah apabila dijelaskan secara jujur dan didukung oleh analisis yang tepat.
+
 **Yang akan selalu diterapkan:**
 > Pada penelitian berikutnya, saya akan menyusun rancangan eksperimen yang realistis sesuai dengan sumber daya yang tersedia sejak awal, menjaga konsistensi antara proposal dan implementasi, serta mendokumentasikan seluruh proses penelitian secara sistematis agar hasil penelitian mudah direproduksi dan dipertanggungjawabkan secara ilmiah.
