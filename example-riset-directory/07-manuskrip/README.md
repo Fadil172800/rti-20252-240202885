@@ -2,7 +2,7 @@
 
 Folder ini berisi manuskrip ilmiah yang disusun berdasarkan hasil penelitian berjudul **"Klasifikasi Penyakit Daun Padi Menggunakan EfficientNet-B6 dengan Pendekatan Transfer Learning"**.
 
-Manuskrip merupakan ringkasan ilmiah dari laporan penelitian yang telah disusun mengikuti struktur artikel ilmiah, sehingga siap disesuaikan dengan template jurnal yang dituju.
+Manuskrip merupakan ringkasan ilmiah dari laporan penelitian yang telah disusun mengikuti struktur artikel ilmiah, sehingga siap disesuaikan dengan template jurnal yang dituju. 
 
 ---
 
