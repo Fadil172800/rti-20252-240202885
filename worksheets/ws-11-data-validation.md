@@ -60,6 +60,7 @@ Jika gagal di langkah awal → tidak perlu lanjut.
 
 ---
 
+
 ## Template A.11 — Data Validation Checklist
 
 ```
@@ -77,11 +78,11 @@ Missing: 0 dari 1 data eksperimen
 
 Format Consistency:
 
-☑ Semua file menggunakan format yang sama (CSV)
+☑ File CSV memiliki format dan struktur yang konsisten
 
-☑ Header konsisten
+☑ File model (.keras dan .h5) berhasil disimpan tanpa error
 
-☑ Tipe data konsisten (numerik)
+☑ Seluruh file output dapat dibuka dan digunakan kembali
 
 Range & Logic:
 
@@ -94,11 +95,13 @@ Range & Logic:
 Anomali ditemukan:
 Tidak ditemukan anomali yang memengaruhi hasil penelitian.
 
-Cross-Validation:
+Validation Check:
 
 ☑ Hasil evaluasi sesuai dengan konfigurasi eksperimen
 
-☑ Trend hasil sesuai dengan rancangan penelitian
+☑ Parameter sesuai proposal
+
+☑ Output berhasil dihasilkan
 
 Keputusan:
 
@@ -115,10 +118,9 @@ Keputusan:
 
 Verifikasi apakah semua data yang direncanakan sudah terkumpul.
 
-| Skenario                          | Run Direncanakan | Run Tercatat | Missing | Alasan |
-| --------------------------------- | ---------------- | ------------ | ------- | ------ |
-| EfficientNet-B6 Transfer Learning | 1                | 1            | 0       | -      |
-
+| Skenario | Run Direncanakan | Run Tercatat | Missing | Alasan |
+|---|---|---|---|---|
+| EfficientNet-B6 Transfer Learning | 1 | 1 | 0 | - |
 
 **Total expected:** 1 | **Total actual:** 1 | **Missing:** 0
 
@@ -133,25 +135,24 @@ Periksa data Anda untuk anomali. Gunakan metode IQR atau z-score.
 
 **Dataset sampel (atau data Anda sendiri):**
 
-| Metrik    | Nilai  |
-| --------- | ------ |
-| Accuracy  | 0.6304 |
+| Metrik | Nilai |
+|---|---|
+| Accuracy | 0.6304 |
 | Precision | 0.5876 |
-| Recall    | 0.6304 |
-| F1-Score  | 0.5845 |
+| Recall | 0.6304 |
+| F1-Score | 0.5845 |
 
 **Deteksi outlier:**
 - Q1 = Tidak dapat dihitung (jumlah observasi tidak mencukupi)
 - Q3 = Tidak dapat dihitung
 - IQR = Tidak dapat dihitung
-- Outlier = Tidak ditemukan
+- Outlier = Tidak dapat dievaluasi karena jumlah observasi tidak mencukupi untuk analisis statistik menggunakan metode IQR
 
 **Investigasi (untuk setiap outlier):**
 
-| Outlier   | Nilai | Kemungkinan Penyebab | Keputusan                 |
-| --------- | ----- | -------------------- | ------------------------- |
-| Tidak ada | -     | -                    | Tidak diperlukan tindakan |
-
+| Outlier | Nilai | Kemungkinan Penyebab | Keputusan |
+|---|---|---|---|
+| Tidak ada yang dapat dievaluasi | - | Jumlah observasi hanya satu | Tidak diperlukan tindakan |
 
 ---
 
@@ -159,33 +160,33 @@ Periksa data Anda untuk anomali. Gunakan metode IQR atau z-score.
 
 Buat laporan validasi ringkas untuk dataset eksperimen Anda.
 
-1. Completeness
+**1. Completeness**
 
-100% data eksperimen berhasil dikumpulkan sesuai dengan rencana.
+Seluruh data hasil eksperimen yang direncanakan berhasil dikumpulkan sehingga tidak terdapat data yang hilang.
 
-2. Format
+**2. Format**
 
 [✓] Konsisten
 
-Seluruh file hasil menggunakan format CSV serta memiliki struktur data yang konsisten.
+Seluruh file output penelitian berhasil dihasilkan sesuai formatnya masing-masing. File CSV memiliki struktur data yang konsisten, sedangkan file model (.keras dan .h5) berhasil disimpan tanpa error dan dapat digunakan kembali.
 
-3. Range Check
+**3. Range Check**
 
 Seluruh metrik evaluasi (Accuracy, Precision, Recall, dan F1-Score) berada pada rentang nilai yang valid yaitu 0–1.
 
 Tidak ditemukan nilai yang berada di luar batas logis.
 
-4. Logic Check
+**4. Logic Check**
 
 [✓] Parameter sesuai rencana eksperimen
 
 Konfigurasi model, ukuran input, jumlah epoch, batch size, optimizer, serta random seed sesuai dengan konfigurasi yang telah ditetapkan sebelum eksperimen dilaksanakan.
 
-Kesimpulan
+**Kesimpulan**
 
 [✓] Data siap dianalisis
 
-Seluruh data hasil eksperimen telah memenuhi aspek completeness, consistency, validity, dan accuracy sehingga layak digunakan pada tahap analisis hasil penelitian.
+Seluruh data hasil eksperimen telah memenuhi aspek completeness, consistency, validity, dan accuracy sehingga layak digunakan pada tahap analisis hasil penelitian. Validasi dilakukan terhadap hasil eksperimen yang tersedia sesuai dengan ruang lingkup penelitian.
 
 ---
 
@@ -193,4 +194,4 @@ Seluruh data hasil eksperimen telah memenuhi aspek completeness, consistency, va
 
 > Apa perbedaan antara "data yang benar" dan "data yang dipercaya"? Mengapa proses validasi formal diperlukan meskipun data dikumpulkan secara otomatis?
 
-> Data yang benar adalah data yang berhasil diperoleh dari proses eksperimen sesuai dengan hasil komputasi sistem. Namun, data yang dipercaya merupakan data yang telah melalui proses validasi sehingga dapat dipastikan lengkap, konsisten, berada pada rentang nilai yang logis, dan sesuai dengan rancangan penelitian. Meskipun data dikumpulkan secara otomatis menggunakan Google Colab, proses validasi tetap diperlukan untuk memastikan tidak terjadi kesalahan akibat konfigurasi eksperimen, kerusakan file, inkonsistensi format, maupun kesalahan selama proses pelatihan dan evaluasi model. Dengan demikian, hasil penelitian menjadi lebih andal dan dapat dipertanggungjawabkan secara ilmiah.
+Data yang benar adalah data yang berhasil diperoleh dari proses eksperimen sesuai dengan hasil komputasi sistem. Namun, data yang dipercaya merupakan data yang telah melalui proses validasi sehingga dapat dipastikan lengkap, konsisten, berada pada rentang nilai yang logis, dan sesuai dengan rancangan penelitian. Meskipun data dikumpulkan secara otomatis menggunakan Google Colab, proses validasi tetap diperlukan untuk memastikan tidak terjadi kesalahan akibat konfigurasi eksperimen, kerusakan file, inkonsistensi format, maupun kesalahan selama proses pelatihan dan evaluasi model. Dengan demikian, hasil penelitian menjadi lebih andal dan dapat dipertanggungjawabkan secara ilmiah.
